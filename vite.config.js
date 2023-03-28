@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [svgr(), react()],
   server: {
     host: true,
-    port: 3000,
+    port: 4000,
   },
 });
