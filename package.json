@@ -1,0 +1,20 @@
+{
+  "name": "connectme-frontend",
+  "version": "1.0.0",
+  "description": "Connect me frontend with React + Redux + Sass",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shovoncse/ConnectMe-FrontEnd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shovoncse/ConnectMe-FrontEnd/issues"
+  },
+  "homepage": "https://github.com/shovoncse/ConnectMe-FrontEnd#readme"
+}
