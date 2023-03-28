@@ -1,0 +1,114 @@
+main {
+  --c-primary: #818cf8;
+  --c-gray-dark: #9b8b8b;
+  --c-gray-light: #d8e4f2;
+  --c-gray-lighter: #f9f9f9;
+  --c-pink: #e63946;
+  --c-darkblue: #25396f;
+  --c-lightblue: #1d9bf0;
+
+  --c-secondary: #25396f;
+  --c-background: #f7faff;
+  --c-gray-md: #a4b6e1;
+  --c-black: #55595c;
+  --c-body: #fff;
+  --shadow: 0 4px 40px 5px rgba(16, 137, 255, 0.05);
+  --c-tile: #fff;
+  --c-border: #d8e4f2;
+  --c-formInput: #f9f9f9;
+  --c-formInput-alt: #fff;
+  --c-formLabel: #25396f;
+  --c-verified: #1d9bf0;
+
+  --c-skeleton: #e6eaff;
+  --c-shimmer: rgba(255, 255, 255, 0.4);
+}
+
+main.dark {
+  --c-secondary: #eaeaea;
+  --c-background: #181717;
+  --c-gray-md: #888888;
+  --c-black: rgb(218, 214, 214);
+  --c-body: #121212;
+  --shadow: none;
+  --c-tile: #121212;
+  --c-border: #1d1d1d;
+  --c-formInput: #1d1d1d;
+  --c-formInput-alt: #1d1d1d;
+  --c-formLabel: #f9f9f9;
+  --c-verified: #fff;
+
+  --c-skeleton: #1d1d1d;
+  --c-shimmer: rgba(255, 255, 255, 0.01);
+
+  // cold dark theme
+  // --c-secondary: #eaeaea;
+  // --c-background: hsl(216, 28%, 9%);
+  // --c-gray-dark: #72839a;
+  // --c-gray-md: #72839a;
+  // --c-black: rgb(218, 214, 214);
+  // --c-body: #0d1117;
+  // --shadow: none;
+  // --c-tile: hsl(216, 29%, 8%);
+  // --c-border: hsl(216, 29%, 9%);
+  // --c-formInput: hsl(216, 29%, 9%);
+  // --c-formInput-alt: hsl(216, 29%, 9%);
+  // --c-formLabel: #f9f9f9;
+  // --c-verified: #fff;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #f5f5f5;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #818cf8;
+}
+
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+html {
+  font-size: 62.5%;
+  @media only screen and (max-width: 800px) {
+    font-size: 50%;
+  }
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--c-body);
+  // overflow: auto;
+}
+
+main {
+  background-color: var(--c-body);
+  // overflow: overlay;
+  // height: max-content;
+}
+
+.mainContainer {
+  max-width: 1366px;
+  margin: 0 auto;
+  background-color: var(--c-body);
+}
