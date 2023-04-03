@@ -21,7 +21,7 @@ Run the project in your machine locally.
 Clone the repo locally using:
 
 ```sh
-git clone https://github.com/shovoncse/ConnectMe-FrontEnd.git
+git clone https://github.com/shovoncse/connectme-frontend.git
 ```
 
 ### Step 2: Install Dependencies
