@@ -7,9 +7,10 @@
 
 ## ⚙️ Tech Stack
 
-- React
-- Redux
-- Sass
+- HTML
+- CSS
+- Bootstrap
+- JavaScript
 
 ## 🚀 Local Development
 
