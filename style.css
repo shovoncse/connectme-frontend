@@ -1,0 +1,641 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+:root{
+    --border-radius: 2rem;
+    --card-border-radius:1rem;
+    --btn-padding:0.6rem 1rem;
+    --card-padding: 1rem;
+    --search-padding: 0.6rem 1rem;
+}
+*,
+*::before, *::after{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+    list-style:none;
+    text-decoration: none;
+    border: none;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    color:black;
+    background: rgba(244, 239, 239, 0.912);
+    overflow-x: hidden;
+}
+/* GENERAL STYLE*/
+.container{
+     width: 80%;
+    margin: 0 auto;
+    
+}
+.profile-photo{
+   width: 2.7rem;
+   aspect-ratio: 1/1;
+    border-radius: 50%;
+    overflow: hidden;
+}
+img{
+    display: block;
+    width: 100%;
+}
+.btn{
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    font-weight: 500;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 300ms ease;
+    font-size: 0.9rem;
+}
+.btn:hover{
+    opacity: 0.8;
+}
+.btn-primary{
+    background: #0d6efd;
+    color: white;
+    border: 2px solid white;
+}
+.text-bold{
+    font-weight: 500;
+}
+.text-muted{
+    color:gray;
+}
+/*----------Navbar-----------------*/
+nav {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    background: #0d6efd;
+}
+nav .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.search-bar{
+    background: rgb(230, 216, 216);
+    border-radius: 2rem;
+    padding: 0.6rem 1rem;
+}
+.search-bar input[type="search"]{
+    background: transparent;
+    color: var(--color-dark);
+    font-size: 0.9rem;
+    width: 30vw;
+    margin-left: 1rem;
+}
+nav .search-bar input[type="search"]::placeholder{
+    color: var(--color-grey);
+}
+nav .create{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+/*-----------------------Main---------------------------*/
+main{
+    position: relative;
+    top: 5.4rem;
+}
+main .container{
+    display: grid;
+    grid-template-columns: 18vw auto 20vw;
+    column-gap: 2rem;
+    position: relative;
+}
+/*-----------------------Left sidebar---------------------------*/
+main .container .left{
+    height: max-content;
+    position: sticky;
+    top: 5.4rem;
+}
+main .container .left .profile{
+    padding: 1rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 0 0.5rem rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    width: 100%;
+}
+.left .sidebar{
+    margin-top: 1rem;
+    background: white;
+    border-radius: 1rem;
+}
+.left .sidebar .menu-item{
+    display: flex;
+    align-items: center;
+    height: 4rem;
+    position: relative;
+    cursor: pointer;
+}
+.left .sidebar .menu-item:hover{
+    background: rgba(0,0,0,0.1);
+}
+.left .sidebar i{
+    font-size: 1.4rem;
+    color: gray;
+    margin-left: 2rem;
+    position: relative;
+}
+.left .sidebar i .notification-count{
+    background: red;
+    color: white;
+    font-size: 0.7rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 0.8rem;
+    position: absolute;
+    top: -0.2rem;
+    right: -0.3rem;
+    width: fit-content;
+}
+.left .sidebar h3{
+    margin-left: 1.5rem;
+    font-size: 1rem;
+    color: black
+}
+.left .sidebar .active{
+    background: rgba(0,0,0,0.1);
+}
+.left .sidebar .active i,
+.left .sidebar .active h3{
+    color: black;
+}
+.left .sidebar .active::before{
+    content: "";
+    position: absolute;
+    width: 0.5rem;
+    height: 100%;
+    background: #0d6efd;
+    display: block;
+}
+.left .sidebar .menu-item:first-child.active{
+    border-top-left-radius: 1rem;
+    overflow: hidden;
+}
+.left .sidebar .menu-item:last-child.active{
+    border-bottom-left-radius: 1rem;
+    overflow: hidden;
+}
+.left .btn{
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+}
+/**********************notification popup***********/
+.left .notifications-popup{
+    position: absolute;
+    top: 0;
+    left: 110%;
+    width: 30rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 0 0.5rem rgba(0,0,0,0.1);
+    padding: 1rem;
+    z-index: 8;
+    display: none;
+}
+.left .notifications-popup::before{
+    content: "";
+    position: absolute;
+    width: 1.2rem;
+    height: 1.2rem;
+    background: white;
+    display: block;
+    left: -0.6rem;
+    transform: rotate(45deg);
+}
+.left .notifications-popup > div {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.left .notifications-popup small{
+    display: block;
+}
+/*------------------Middle section------------------------*/
+.middle .stories{
+    display: flex;
+    justify-content: center;
+    height: 12rem;
+    gap: 0.5rem;
+}
+.middle .stories .story{
+    padding: 1rem;
+    border-radius: 2rem;
+    box-shadow: 0 0 0.5rem rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;    
+    color:white;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 300ms ease;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+.middle .stories .story::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 5rem;
+    background:linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+    display: block;
+    bottom: 0;   
+}
+.middle .stories .story .name{
+    z-index: 2;
+}
+.middle .stories .story:nth-child(1){
+    background: url("images/story-1.jpg") no-repeat center center/cover;
+}
+.middle .stories .story:nth-child(2){
+    background: url("images/story-2.jpg") no-repeat center center/cover;
+}
+.middle .stories .story:nth-child(3){
+    background: url("images/story-3.jpg") no-repeat center center/cover;
+}
+.middle .stories .story:nth-child(4){
+    background: url("images/story-4.jpg") no-repeat center center/cover;
+}
+.middle .stories .story:nth-child(5){
+    background: url("images/story-5.jpg") no-repeat center center/cover;
+}
+.middle .stories .profile-photo
+{
+  width: 2rem;
+  height: 2rem;
+  align-self: start;
+  border: 3px solid #0d6efd;
+}
+/*------------------------POST---------------*/
+.middle .create-post {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+    background: white;
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    width: 100%;
+}
+.middle .create-post input[type="text"]{
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    width: 100%;
+    padding: 0.5rem 0;
+}
+/*-------------------------------------------*/
+.row {
+    margin-bottom: 0.5rem;
+    background: rgba(244, 239, 239, 0.986);
+    padding: 1rem;
+    border-radius: 2rem;
+}
+span.uil-message {
+    float: right;
+    font: icon;
+}
+input.comment-box {
+    background: transparent;
+}
+
+/*------------------------FEEDBACK---------------*/
+.middle .feeds .feed {
+    margin: 1rem 0;
+    background: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    line-height: 1.5;
+    font-size: 0.85rem;
+}
+.middle .feed .head{
+    display: flex;
+    justify-content: space-between;
+}
+.middle .feed .user{
+   display: flex;
+   gap: 1rem;
+}
+.middle .feed .photo{
+    margin: 0.7rem 0;
+    overflow: hidden;
+    border-radius: 2rem;
+}
+.middle .feed .action-buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.6rem;
+    font-size: 1.4rem;
+}
+.middle .liked-by{
+    display: flex;
+}
+.middle .liked-by span{
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    border: 2px solid white;
+    display: block;
+    margin-left: -0.6rem;
+    overflow: hidden;
+}
+.middle .liked-by span:first-child{
+    margin: 0;
+}
+.middle .liked-by p{
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+}
+/*----------------------------------RIGHT BAR---------------------------------*/
+main .container .right{
+    height: max-content;
+    position: sticky;
+    top: -18rem;
+    bottom: 0;
+}
+.right .messages{
+    background: white;
+    border-radius: 1rem;
+    padding: 1rem;
+
+}
+.right .messages .heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.right .messages i {
+    font-size: 1.4rem;
+}
+.right .messages .search-bar{
+  display: flex;
+  margin-bottom: 1rem;
+}
+.right .messages .category{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.right .messages .category h6{
+    width: 100%;
+    align-items: center;
+    border-bottom: 4px solid rgb(236, 220, 220);
+    padding-bottom: 0.5rem;
+    font-size: 0.85rem;
+}
+.right .messages .category .active{
+    border-bottom: 4px solid #0d6efd;
+}
+.right .message .message-request{
+    color: antiquewhite;
+}
+.right .messages .message{
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: start;
+}
+.right .message .profile-photo{
+   position: relative;
+   overflow: visible;
+}
+.right .messages .message:last-child{
+    margin: 0;
+}
+.right .messages .message p{
+    font-size: 0.8rem;
+}
+.right .messages .message .profile-photo .active{
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background: green;
+    border: 3px solid white;
+}
+/*---------------------------Friend Request-------------------*/
+.right .friend-requests{
+    margin-top: 1rem;
+}
+.right .friend-requests h4{
+   color: gray;
+    margin: 1rem 0;
+}
+.right .request {
+    padding: 1rem;
+    background: white;
+    border-radius: 1rem;
+    margin-bottom: 0.7rem;
+}
+.right .request .info{
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.right .request .action{
+    display: flex;
+    gap: 1rem;
+}
+/*-----------------------------Theme customization---------------------------*/
+.customize-theme{
+    background:rgba(246, 206, 206, 0.951);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display:grid;
+    text-align: center;
+    place-items: center;
+    font-size: 0.9rem;
+    display:none;
+
+}
+.customize-theme .card{
+    background: white;
+    padding: 3rem;
+    border-radius: 1rem;
+    width: 50%
+}
+/*-------------------------------font size---------------------*/
+.customize-theme .font-size{
+    margin-top: 5rem;
+}
+.customize-theme .font-size > div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(223, 215, 215, 0.947);
+    padding: 0.5rem;
+    border-radius: 1rem;
+}
+.customize-theme .choose-size{
+    background: rgb(183, 179, 222) ;
+    height: 0.3rem;
+    width:100%;
+    margin: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.customize-theme .choose-size span{
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: rgb(166, 162, 203);
+    cursor: pointer;
+}
+.customize-theme .choose-size span.active {
+    background: rgb(108, 93, 240);
+}
+/*-------------font color----------------------------*/
+.customize-theme .color{
+    margin-top: 2rem;
+}
+.customize-theme .choose-color{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(223, 215, 215, 0.947);
+    padding: 0.5rem;
+    border-radius: 1rem;
+}
+.customize-theme .choose-color span{
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+}
+.customize-theme .choose-color span:nth-child(1){
+    background: hsl(252, 75%, 60%);
+}
+.customize-theme .choose-color span:nth-child(2){
+    background: hsl(52, 75%, 60%);
+}
+.customize-theme .choose-color span:nth-child(3){
+    background: hsl(352, 75%, 60%);
+}
+.customize-theme .choose-color span:nth-child(4){
+    background: hsl(152, 75%, 60%);
+}
+.customize-theme .choose-color span:nth-child(5){
+    background: hsl(201, 75%, 60%);
+}
+.customize-theme .choose-color span.active{
+    border: 5px solid white;
+}
+
+/*-----------------------background------------*/
+.customize-theme .background{
+    margin-top: 2rem;
+}
+.customize-theme .choose-bg{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:1.5rem;
+}
+.customize-theme .choose-bg > div{
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0.4rem;
+}
+.customize-theme .choose-bg > div.active{
+    border: 2px solid rgb(108, 93, 240); ;
+}
+.customize-theme .choose-bg  .bg-1{
+    background: white;
+    color: black;
+}
+.customize-theme .choose-bg  .bg-2{
+    background: hsl(252, 30%, 17%);
+    color: white;
+}
+.customize-theme .choose-bg  .bg-3{
+    background: hsl(252, 30%, 10%);
+    color: white;
+}
+.customize-theme .choose-bg  > div span{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 2px solid gray;
+    margin-right: 1rem;
+}
+
+/*************************/
+/*-----------------------Media Query-----------------------*/
+@media screen and (max-width: 1200px) {
+    .container{
+        width: 90%;
+    }
+    main-container{
+        grid-template-columns: 5rem auto 30vw;
+        gap: 1rem;
+    }
+    .left{
+        width: 5rem;
+        z-index: 5;
+    }
+    main .container .left .profile{
+        display: none;
+    }
+    .sidebar h3{
+        display: none;
+    }
+    .left .btn{
+        display: none;
+    }
+}
+/***********************Media quries for tablet and mobile mode**************/
+@media screen and (max-width: 992) {
+    nav .search-bar{
+        display: none;
+    }
+    main .container{
+        grid-template-columns: 0 auto 5rem;
+        gap:0;
+    }
+    main .container .left{
+        grid-column: 3/4;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+    }
+    
+    /**************notification popup**************/
+    .left .notifications-popup {
+        position: absolute;
+        left: -20rem;
+        width: 20rem;
+    }    
+    .left .notifications-popup::before{
+        display: absolute;
+        top: 1.3rem;
+        left: calc(20rem -0.6rem);
+        display: block;
+    }
+    main .container .middle {
+        grid-column: 1/3;
+    }
+    main .container .right{
+        display: none;
+    }
+}
