@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 if (response.ok) {
                     // handle success
-                    alert("Registration successful. Please login to continue.");
+                    alert("Registration successful.");
                     return response.json();
                 } else {
                     // handle errors
