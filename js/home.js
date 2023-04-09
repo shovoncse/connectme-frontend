@@ -20,16 +20,52 @@ menuItems.forEach(item => {
 })
 
 
-// main
-// Replace 'TOKEN_VALUE' with your actual token value
-// const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzFhNzBiMGJiNmRiMDRjYzkxY2RhYyIsImlhdCI6MTY4MTAyNzQ5NSwiZXhwIjoxNjgxMDI5Mjk1fQ.RFRJVbE9elnauIkfLgMcPsKU9mbjIz2SXgHpmeLoSyk';
 
-// fetch('http://localhost:3001/api/posts/', {
-//   headers: {
-//     'Authorization': `Bearer ${token}`
-//   }
-// })
-//   .then(response => response.json())
-//   .then(data => {
-//     console.log(data);
-//   });
+// wait for the DOM to be loaded
+document.addEventListener("DOMContentLoaded", function() {
+
+    // get cm-data from local storage
+    const cmData = localStorage.getItem("cm-data");
+    const cmToken = localStorage.getItem("cm-token");
+
+    if(cmData){
+        try {
+        // parse the cm-data
+        const cmDataParsed = JSON.parse(cmData);
+        // get the user name element
+        const userName = document.getElementById("user-name");
+
+        // set the user name
+        userName.innerHTML = cmDataParsed.name;
+        } catch (error) {
+            // if there is an error, remove cm-data and cm-token from local storage
+            localStorage.removeItem("cm-data");
+            localStorage.removeItem("cm-token");
+            // redirect to login page
+            window.location.href = "../connectme-frontend/login.html";
+        }
+    }
+
+    if(!cmToken){
+        // if user is not logged in, redirect to login page
+        window.location.href = "../connectme-frontend/login.html";
+    }
+
+
+    // logout button
+    const logoutButton = document.getElementById("logout-button");
+
+    // add event listener to logout button
+    logoutButton.addEventListener("click", function(e) {
+        // prevent default action
+        e.preventDefault();
+
+        // remove cm-data and cm-token from local storage
+        localStorage.removeItem("cm-data");
+        localStorage.removeItem("cm-token");
+
+        // redirect to login page
+        window.location.href = "../connectme-frontend/login.html";
+    });
+
+});
