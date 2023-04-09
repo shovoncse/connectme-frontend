@@ -1,27 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 :root{
-    --primary-color-hue: 252;
-    --dark-color-lightness: 17%;
-    --light-color-lightness: 95%;
-    --white-color-lightness: 100%;
-
-    --color-white: hsl(252, 30%, var(--white-color-lightness));
-    --color-light: hsl(252, 30%, var(--light-color-lightness));
-    --color-gray: hsl(252, 15%, 65%);
-    --color-primary:hsl(var(--primary-color-hue), 100%, 50%);
-    --color-secondary: hsl(252, 30%, 90%);
-    --color-success: hsl(120, 95%, 65%);
-    --color-danger: hsl(0, 95%, 65%);
-    --color-dark: hsl(252, 30%, var(--dark-color-lightness));
-    --color-black: hsl(252, 30%, 10%);
-
     --border-radius: 2rem;
     --card-border-radius:1rem;
     --btn-padding:0.6rem 1rem;
     --card-padding: 1rem;
     --search-padding: 0.6rem 1rem;
-    --sticky-top-left: 5.4rem;
-    --sticky-top-right: -18rem;
 }
 *,
 *::before, *::after{
@@ -35,8 +18,8 @@
 }
 body{
     font-family: 'Poppins', sans-serif;
-    color:var(--color-dark);
-    background: var(--color-light);
+    color:black;
+    background: rgba(244, 239, 239, 0.912);
     overflow-x: hidden;
 }
 /* GENERAL STYLE*/
@@ -57,9 +40,9 @@ img{
 }
 .btn{
     display: inline-block;
-    padding: var(--btn-padding);
+    padding: 0.6rem 1rem;
     font-weight: 500;
-    border-radius: var(--border-radius);
+    border-radius: 2rem;
     cursor: pointer;
     transition: all 300ms ease;
     font-size: 0.9rem;
@@ -68,7 +51,7 @@ img{
     opacity: 0.8;
 }
 .btn-primary{
-    background: var(--color-primary);
+    background: #39add4;
     color: white;
     border: 2px solid white;
 }
@@ -76,7 +59,7 @@ img{
     font-weight: 500;
 }
 .text-muted{
-    color:var(--color-gray) ;
+    color:gray;
 }
 /*----------Navbar-----------------*/
 nav {
@@ -84,8 +67,10 @@ nav {
     position: fixed;
     top: 0;
     z-index: 10;
-    background:  #0d6efd;
-    z-index: 10;
+    background: #39add4;
+    height: 80px;
+    display: flex;
+    align-items: center;
 }
 nav .container{
     display: flex;
@@ -93,13 +78,13 @@ nav .container{
     align-items: center;
 }
 .search-bar{
-    background: var(--color-light);
-    border-radius: var(--border-radius);
-    padding: var(--search-padding);
+    background: rgb(230, 216, 216);
+    border-radius: 2rem;
+    padding: 0.6rem 1rem;
 }
 .search-bar input[type="search"]{
     background: transparent;
-    color: var(--color-gray);
+    color: var(--color-dark);
     font-size: 0.9rem;
     width: 30vw;
     margin-left: 1rem;
@@ -127,12 +112,12 @@ main .container{
 main .container .left{
     height: max-content;
     position: sticky;
-    top: var(--sticky-top-left);
+    top: 5.4rem;
 }
 main .container .left .profile{
-    padding: var(--card-padding);
-    background: var(--color-white);
-    border-radius: var(--card-border-radius);
+    padding: 1rem;
+    background: white;
+    border-radius: 1rem;
     box-shadow: 0 0 0.5rem rgba(0,0,0,0.1);
     display: flex;
     align-items: center;
@@ -141,8 +126,8 @@ main .container .left .profile{
 }
 .left .sidebar{
     margin-top: 1rem;
-    background: var(--color-white);
-    border-radius: var(--card-border-radius);
+    background: white;
+    border-radius: 1rem;
 }
 .left .sidebar .menu-item{
     display: flex;
@@ -152,17 +137,17 @@ main .container .left .profile{
     cursor: pointer;
 }
 .left .sidebar .menu-item:hover{
-    background: var(--color-light);
+    background: rgba(0,0,0,0.1);
 }
 .left .sidebar i{
     font-size: 1.4rem;
-    color: var(--color-gray);
+    color: gray;
     margin-left: 2rem;
     position: relative;
 }
 .left .sidebar i .notification-count{
-    background: var(--color-danger);
-    color: var(--color-white);
+    background: red;
+    color: white;
     font-size: 0.7rem;
     padding: 0.1rem 0.4rem;
     border-radius: 0.8rem;
@@ -174,29 +159,29 @@ main .container .left .profile{
 .left .sidebar h3{
     margin-left: 1.5rem;
     font-size: 1rem;
-    color: var(--color-dark);
+    color: black
 }
 .left .sidebar .active{
-    background: var(--color-light);
+    background: rgba(0,0,0,0.1);
 }
 .left .sidebar .active i,
 .left .sidebar .active h3{
-    color: var(--color-primary);
+    color: black;
 }
 .left .sidebar .active::before{
     content: "";
     position: absolute;
     width: 0.5rem;
     height: 100%;
-    background:var(--color-primary);
+    background: #39add4;
     display: block;
 }
 .left .sidebar .menu-item:first-child.active{
-    border-top-left-radius: var(--card-border-radius);
+    border-top-left-radius: 1rem;
     overflow: hidden;
 }
 .left .sidebar .menu-item:last-child.active{
-    border-bottom-left-radius: var(--card-border-radius);
+    border-bottom-left-radius: 1rem;
     overflow: hidden;
 }
 .left .btn{
@@ -211,10 +196,10 @@ main .container .left .profile{
     top: 0;
     left: 110%;
     width: 30rem;
-    background: var(--color-white);
-    border-radius: var(--card-border-radius);
-    box-shadow: 0 0 2rem hsl(var(--color-primary), 75%, 60% 25%);
-    padding: var(--card-padding);
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 0 0.5rem rgba(0,0,0,0.1);
+    padding: 1rem;
     z-index: 8;
     display: none;
 }
@@ -223,7 +208,7 @@ main .container .left .profile{
     position: absolute;
     width: 1.2rem;
     height: 1.2rem;
-    background: var(--color-white);
+    background: white;
     display: block;
     left: -0.6rem;
     transform: rotate(45deg);
@@ -245,8 +230,9 @@ main .container .left .profile{
     gap: 0.5rem;
 }
 .middle .stories .story{
-    padding: var(--card-padding);
-    border-radius: var(--card-border-radius);
+    padding: 1rem;
+    border-radius: 2rem;
+    box-shadow: 0 0 0.5rem rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -272,26 +258,26 @@ main .container .left .profile{
     z-index: 2;
 }
 .middle .stories .story:nth-child(1){
-    background: url("images/story-1.jpg") no-repeat center center/cover;
+    background: url("../img/story-1.jpg") no-repeat center center/cover;
 }
 .middle .stories .story:nth-child(2){
-    background: url("images/story-2.jpg") no-repeat center center/cover;
+    background: url("../img/story-2.jpg") no-repeat center center/cover;
 }
 .middle .stories .story:nth-child(3){
-    background: url("images/story-3.jpg") no-repeat center center/cover;
+    background: url("../img/story-3.jpg") no-repeat center center/cover;
 }
 .middle .stories .story:nth-child(4){
-    background: url("images/story-4.jpg") no-repeat center center/cover;
+    background: url("../img/story-4.jpg") no-repeat center center/cover;
 }
 .middle .stories .story:nth-child(5){
-    background: url("images/story-5.jpg") no-repeat center center/cover;
+    background: url("../img/story-5.jpg") no-repeat center center/cover;
 }
 .middle .stories .profile-photo
 {
   width: 2rem;
   height: 2rem;
   align-self: start;
-  border: 3px solid var(--color-primary);
+  border: 3px solid #39add4;
 }
 /*------------------------POST---------------*/
 .middle .create-post {
@@ -299,18 +285,17 @@ main .container .left .profile{
     align-items: center;
     justify-content: space-between;
     margin-top: 1rem;
-    background: var(--color-white);
+    background: white;
     padding: 0.4rem 1rem;
-    border-radius: var(--border-radius);
+    border-radius: 2rem;
     width: 100%;
 }
 .middle .create-post input[type="text"]{
-   justify-self: start;
-   width: 100%;
-   padding-left: 1rem;
-   background: transparent;
-   color: var(--color-dark);
-   margin-right: 1rem;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    width: 100%;
+    padding: 0.5rem 0;
 }
 /*-------------------------------------------*/
 .row {
@@ -330,9 +315,9 @@ input.comment-box {
 /*------------------------FEEDBACK---------------*/
 .middle .feeds .feed {
     margin: 1rem 0;
-    background: var(--color-white);
-    border-radius: var(--card-border-radius);
-    padding: var(--card-padding);
+    background: white;
+    border-radius: 1rem;
+    padding: 1rem;
     line-height: 1.5;
     font-size: 0.85rem;
 }
@@ -347,7 +332,7 @@ input.comment-box {
 .middle .feed .photo{
     margin: 0.7rem 0;
     overflow: hidden;
-    border-radius: var(--card-border-radius);
+    border-radius: 2rem;
 }
 .middle .feed .action-buttons{
     display: flex;
@@ -363,7 +348,7 @@ input.comment-box {
     width: 1.4rem;
     height: 1.4rem;
     border-radius: 50%;
-    border: 2px solid var(--color-white);
+    border: 2px solid white;
     display: block;
     margin-left: -0.6rem;
     overflow: hidden;
@@ -379,13 +364,13 @@ input.comment-box {
 main .container .right{
     height: max-content;
     position: sticky;
-    top: var(--sticky-top-right);
+    top: -18rem;
     bottom: 0;
 }
 .right .messages{
-    background: var(--color-white);
-    border-radius: var(--card-border-radius);
-    padding: var(--card-padding);
+    background: white;
+    border-radius: 1rem;
+    padding: 1rem;
 
 }
 .right .messages .heading{
@@ -410,12 +395,12 @@ main .container .right{
 .right .messages .category h6{
     width: 100%;
     align-items: center;
-    border-bottom: 4px solid var(--color-light);
+    border-bottom: 4px solid rgb(236, 220, 220);
     padding-bottom: 0.5rem;
     font-size: 0.85rem;
 }
 .right .messages .category .active{
-    border-bottom: 4px solid var(--color-dark);
+    border-bottom: 4px solid #39add4;
 }
 .right .message .message-request{
     color: antiquewhite;
@@ -440,24 +425,21 @@ main .container .right{
     width: 0.8rem;
     height: 0.8rem;
     border-radius: 50%;
-    background: var(--color-success);
-    border: 3px solid var(--color-white);
-    position: absolute;
-    bottom: 0;
-    right: 0;
+    background: green;
+    border: 3px solid white;
 }
 /*---------------------------Friend Request-------------------*/
 .right .friend-requests{
     margin-top: 1rem;
 }
 .right .friend-requests h4{
-   color: var(--color-gray);
+   color: gray;
     margin: 1rem 0;
 }
 .right .request {
     padding: 1rem;
-    background: var(--color-white);
-    border-radius: var(--card-border-radius);
+    background: white;
+    border-radius: 1rem;
     margin-bottom: 0.7rem;
 }
 .right .request .info{
@@ -471,7 +453,7 @@ main .container .right{
 }
 /*-----------------------------Theme customization---------------------------*/
 .customize-theme{
-    background:rgba(255, 255, 255, 0.5);
+    background:rgba(246, 206, 206, 0.951);
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -486,9 +468,9 @@ main .container .right{
 
 }
 .customize-theme .card{
-    background: var(--color-white);
+    background: white;
     padding: 3rem;
-    border-radius: var(--card-border-radius);
+    border-radius: 1rem;
     width: 50%
 }
 /*-------------------------------font size---------------------*/
@@ -499,12 +481,12 @@ main .container .right{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background:var(--color-light);
-    padding: var(--search-padding);
-    border-radius:var(--card-border-radius);
+    background: rgba(223, 215, 215, 0.947);
+    padding: 0.5rem;
+    border-radius: 1rem;
 }
 .customize-theme .choose-size{
-    background: var(--color-secondary) ;
+    background: rgb(183, 179, 222) ;
     height: 0.3rem;
     width:100%;
     margin: 0 1rem;
@@ -516,11 +498,11 @@ main .container .right{
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
-    background:var(--color-secondary);
+    background: rgb(166, 162, 203);
     cursor: pointer;
 }
 .customize-theme .choose-size span.active {
-    background: var(--color-primary);
+    background: rgb(108, 93, 240);
 }
 /*-------------font color----------------------------*/
 .customize-theme .color{
@@ -530,18 +512,17 @@ main .container .right{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--color-light);
-    padding: var(--search-padding);
-    border-radius: var(--card-border-radius);
+    background: rgba(223, 215, 215, 0.947);
+    padding: 0.5rem;
+    border-radius: 1rem;
 }
 .customize-theme .choose-color span{
     width: 2.2rem;
     height: 2.2rem;
     border-radius: 50%;
-    cursor: pointer;
 }
 .customize-theme .choose-color span:nth-child(1){
-    background: hsl(252, 100%, 50%);
+    background: hsl(252, 75%, 60%);
 }
 .customize-theme .choose-color span:nth-child(2){
     background: hsl(52, 75%, 60%);
@@ -570,7 +551,7 @@ main .container .right{
     gap:1.5rem;
 }
 .customize-theme .choose-bg > div{
-    padding: var(--card-padding);
+    padding: 1rem;
     width: 100%;
     display: flex;
     align-items: center;
@@ -580,7 +561,7 @@ main .container .right{
     border-radius: 0.4rem;
 }
 .customize-theme .choose-bg > div.active{
-    border: 2px solid var(--color-primary);
+    border: 2px solid rgb(108, 93, 240); ;
 }
 .customize-theme .choose-bg  .bg-1{
     background: white;
@@ -598,9 +579,8 @@ main .container .right{
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-    border: 2px solid var(--color-gray);
+    border: 2px solid gray;
     margin-right: 1rem;
-    cursor: pointer;
 }
 
 /*************************/
@@ -625,9 +605,6 @@ main .container .right{
     }
     .left .btn{
         display: none;
-    }
-    .customize-theme .card{
-        width: 80vw;
     }
 }
 /***********************Media quries for tablet and mobile mode**************/
@@ -663,17 +640,5 @@ main .container .right{
     }
     main .container .right{
         display: none;
-    }
-    .customize-theme .card{
-        width: 92vw;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .container{
-        width: 90%;
-    }
-    .customize-theme .card{
-        width: 90vw;
     }
 }
