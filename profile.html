@@ -1,12 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>profile</title>
+    <title>Profile | Connect Me</title>
+    <!--------iconscout cdn----------->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+    <link rel="stylesheet" href="css/style.css">
+
+
 </head>
+
 <body>
-    <h1>Profile</h1>
+    <!--------Navbar---------->
+    <nav>
+        <div class="container">
+            <h2 class="logo">
+                <img src="img/logo1.png" alt="" style="width:270px;">
+            </h2>
+            <div class="search-bar">
+                <i class="uil uil-search"></i>
+                <input type="search" placeholder="search">
+            </div>
+            <div class="create">
+                <label class="btn btn-primary" for="create-post">Create</label>
+                <div class="profile-photo">
+                    <img src="img/profile-1.jpg">
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!---------------------------Main-------------------------->
+    <main>
+        <div class="container">
+            <!---------------------------Left-------------------------->
+            <div class="left">
+                <a href="" class="profile">
+                    <div class="profile-photo">
+                        <img src="img/profile-1.jpg">
+                    </div>
+                    <div class="handle">
+                        <h4 style="color:black">RachnaKumar</h4>
+                        <p class="text-muted">Web Developer</p>
+                    </div>
+                </a>
+                <!---------------------------Sidebar-------------------------->
+                <div class="sidebar">
+                    <a  class="menu-item active">
+                        <span><i class="uil uil-home"></i></span>
+                        <h3>Home</h3>
+                    </a>
+                    <a class="menu-item" id="notifications">
+                        <span><i class="uil uil-bell"><small class="notification-count">9+</small></i></span>
+                        <h3>Notification</h3>
+                        <!----------------notification popup-------------->
+                        <div class="notifications-popup">
+                            <div>
+                                <div class="profile-photo">
+                                    <img src="img/profile-2.jpg">
+                                </div>
+                                <div class="notification-body">
+                                    <b>Mona lisa</b> accepted your friend request
+                                    <small class="text-muted"> 1 day ago</small>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="profile-photo">
+                                    <img src="img/profile-3.jpg">
+                                </div>
+                                <div class="notification-body">
+                                    <b>Susaan Junaid</b> commnet on your post
+                                    <small class="text-muted"> 2 Hour ago</small>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="profile-photo">
+                                    <img src="img/profile-4.jpg">
+                                </div>
+                                <div class="notification-body">
+                                    <b>Jhon Marrk</b> commnet on your post
+                                    <small class="text-muted"> 1 Hour ago</small>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="profile-photo">
+                                    <img src="img/profile-5.jpg">
+                                </div>
+                                <div class="notification-body">
+                                    <b>kerian Kaif</b> comment on your post
+                                    <small class="text-muted"> few minutes ago</small>
+                                </div>
+                            </div>
+                        </div>
+                        <!----------------end notification popup-------------->
+                    </a>
+                    <a class="menu-item" id="messages-notifications">
+                        <span><i class="uil uil-envelope-alt"><small class="notification-count">6</small></i></span>
+                        <h3>Messages</h3>
+                    </a>
+                    <a class="menu-item">
+                        <span><i class="uil uil-bookmark"></i></span>
+                        <h3>Bookmarks</h3>
+                    </a>
+                    <a href="profile.html" class="menu-item">
+                        <span><i class="uil uil-user"></i></span>
+                        <h3>Profile</h3>
+                    </a>
+                    <a class="menu-item" id="theme">
+                        <span><i class="uil uil-palette"></i></span>
+                        <h3>Theme</h3>
+                    </a>
+                    <a class="menu-item">
+                        <span><i class="uil uil-setting"></i></span>
+                        <h3>Setting</h3>
+                    </a>
+                </div>
+                <!---------------------------End of Sidebar-------------------------->
+                <label for="create-post" class="btn btn-primary">Create Post</label>
+            </div>
+            <!--------------------------END OF LEFT------------------>
+            <!---------------------------Middle-------------------------->
+            <div class="middle">
+                <h2>Profile Page comming  soon...</h2>
+            </div>
+            <!------------------End of Middle section------------------------------>
+            <!---------------------------Right-------------------------->
+
+            <div class="right">
+                <div class="messages">
+                    <div class="heading">
+                        <h4>Messages</h4><i class="uil uil-edit"></i>
+                    </div>
+                    <!----------search bar----------->
+                    <div class="search-bar">
+                        <i class="uil uil-search"></i>
+                        <input type="search" placeholder="Search" id="messages-search">
+                    </div>
+                    <!----------messages Category----------->
+                    <div class="category">
+                        <h6 class="active">Primary</h6>
+                        <h6>Social</h6>
+                        <h6 class="message-requests">Requests(7)</h6>
+                    </div>
+                    <!----------messages ----------->
+                    <div class="message">
+                        <div class="profile-photo">
+                            <img src="img/profile-12.jpg" alt="">
+                        </div>
+                        <div class="message-body">
+                            <h4>John Doe</h4>
+                            <p class="text-bold">Hey, how are you?</p>
+                        </div>
+                    </div>
+                    <!----------end messages ----------->
+                    <div class="message">
+                        <div class="profile-photo">
+                            <img src="img/profile-15.jpg" alt="">
+                        </div>
+                        <div class="message-body">
+                            <h4>John Doe</h4>
+                            <p class="text-bold">Hey, how are you?</p>
+                        </div>
+                    </div>
+                    <!----------end messages ----------->
+                    <div class="message">
+                        <div class="profile-photo">
+                            <img src="img/profile-17.jpg" alt="">
+                        </div>
+                        <div class="message-body">
+                            <h4>John Doe</h4>
+                            <p class="text-bold">Hey, how are you?</p>
+                        </div>
+                    </div>
+                    <!----------end messages ----------->
+                    <div class="message">
+                        <div class="profile-photo">
+                            <img src="img/profile-17.jpg" alt="">
+                        </div>
+                        <div class="message-body">
+                            <h4>John Doe</h4>
+                            <p class="text-bold">Hey, how are you?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!----------FRIEND REQUEST----------->
+                <div class="friend-requests">
+                    <h4>Requests</h4>
+                    <div class="request">
+                        <div class="info">
+                            <div class="profile-photo">
+                                <img src="img/profile-13.jpg" alt="">
+                            </div>
+                            <div>
+                                <h5>Kaif kat</h5>
+                                <p class="text-muted">
+                                    5 mutual friends
+                                </p>
+                            </div>
+                        </div>
+                        <div class="action">
+                            <button class="btn btn-primary">Confirm</button>
+                            <button class="btn">Delete</button>
+                        </div>
+                    </div>
+                    <!----------end of request----------->
+                    <div class="request">
+                        <div class="info">
+                            <div class="profile-photo">
+                                <img src="img/profile-16.jpg" alt="">
+                            </div>
+                            <div>
+                                <h5>Kaif kat</h5>
+                                <p class="text-muted">
+                                    5 mutual friends
+                                </p>
+                            </div>
+                        </div>
+                        <div class="action">
+                            <button class="btn btn-primary">Confirm</button>
+                            <button class="btn">Delete</button>
+                        </div>
+                    </div>
+                    <!----------end of request----------->
+                    <div class="request">
+                        <div class="info">
+                            <div class="profile-photo">
+                                <img src="img/profile-17.jpg" alt="">
+                            </div>
+                            <div>
+                                <h5>Kaif kat</h5>
+                                <p class="text-muted">
+                                    5 mutual friends
+                                </p>
+                            </div>
+                        </div>
+                        <div class="action">
+                            <button class="btn btn-primary">Confirm</button>
+                            <button class="btn">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---------------------------Right end-------------------------->
+    </main>
+
+    <script src="js/profile.js"></script>
 </body>
+
 </html>
