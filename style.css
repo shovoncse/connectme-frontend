@@ -1,10 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 :root{
+    --primary-color-hue: 252;
+    --dark-color-lightness: 17%;
+    --light-color-lightness: 95%;
+    --white-color-lightness: 100%;
+
+    --color-white: hsl(252, 30%, var(--white-color-lightness));
+    --color-light: hsl(252, 30%, var(--light-color-lightness));
+    --color-gray: hsl(252, 15%, 65%);
+    --color-primary:hsl(var(--primary-color-hue), 100%, 50%);
+    --color-secondary: hsl(252, 30%, 90%);
+    --color-success: hsl(120, 95%, 65%);
+    --color-danger: hsl(0, 95%, 65%);
+    --color-dark: hsl(252, 30%, var(--dark-color-lightness));
+    --color-black: hsl(252, 30%, 10%);
+
     --border-radius: 2rem;
     --card-border-radius:1rem;
     --btn-padding:0.6rem 1rem;
     --card-padding: 1rem;
     --search-padding: 0.6rem 1rem;
+    --sticky-top-left: 5.4rem;
+    --sticky-top-right: -18rem;
 }
 *,
 *::before, *::after{
@@ -18,8 +35,8 @@
 }
 body{
     font-family: 'Poppins', sans-serif;
-    color:black;
-    background: rgba(244, 239, 239, 0.912);
+    color:var(--color-dark);
+    background: var(--color-light);
     overflow-x: hidden;
 }
 /* GENERAL STYLE*/
@@ -40,9 +57,9 @@ img{
 }
 .btn{
     display: inline-block;
-    padding: 0.6rem 1rem;
+    padding: var(--btn-padding);
     font-weight: 500;
-    border-radius: 2rem;
+    border-radius: var(--border-radius);
     cursor: pointer;
     transition: all 300ms ease;
     font-size: 0.9rem;
@@ -51,7 +68,7 @@ img{
     opacity: 0.8;
 }
 .btn-primary{
-    background: #0d6efd;
+    background: var(--color-primary);
     color: white;
     border: 2px solid white;
 }
@@ -59,7 +76,7 @@ img{
     font-weight: 500;
 }
 .text-muted{
-    color:gray;
+    color:var(--color-gray) ;
 }
 /*----------Navbar-----------------*/
 nav {
@@ -67,7 +84,8 @@ nav {
     position: fixed;
     top: 0;
     z-index: 10;
-    background: #0d6efd;
+    background:  #0d6efd;
+    z-index: 10;
 }
 nav .container{
     display: flex;
@@ -75,13 +93,13 @@ nav .container{
     align-items: center;
 }
 .search-bar{
-    background: rgb(230, 216, 216);
-    border-radius: 2rem;
-    padding: 0.6rem 1rem;
+    background: var(--color-light);
+    border-radius: var(--border-radius);
+    padding: var(--search-padding);
 }
 .search-bar input[type="search"]{
     background: transparent;
-    color: var(--color-dark);
+    color: var(--color-gray);
     font-size: 0.9rem;
     width: 30vw;
     margin-left: 1rem;
@@ -109,12 +127,12 @@ main .container{
 main .container .left{
     height: max-content;
     position: sticky;
-    top: 5.4rem;
+    top: var(--sticky-top-left);
 }
 main .container .left .profile{
-    padding: 1rem;
-    background: white;
-    border-radius: 1rem;
+    padding: var(--card-padding);
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
     box-shadow: 0 0 0.5rem rgba(0,0,0,0.1);
     display: flex;
     align-items: center;
@@ -123,8 +141,8 @@ main .container .left .profile{
 }
 .left .sidebar{
     margin-top: 1rem;
-    background: white;
-    border-radius: 1rem;
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
 }
 .left .sidebar .menu-item{
     display: flex;
@@ -134,17 +152,17 @@ main .container .left .profile{
     cursor: pointer;
 }
 .left .sidebar .menu-item:hover{
-    background: rgba(0,0,0,0.1);
+    background: var(--color-light);
 }
 .left .sidebar i{
     font-size: 1.4rem;
-    color: gray;
+    color: var(--color-gray);
     margin-left: 2rem;
     position: relative;
 }
 .left .sidebar i .notification-count{
-    background: red;
-    color: white;
+    background: var(--color-danger);
+    color: var(--color-white);
     font-size: 0.7rem;
     padding: 0.1rem 0.4rem;
     border-radius: 0.8rem;
@@ -156,29 +174,29 @@ main .container .left .profile{
 .left .sidebar h3{
     margin-left: 1.5rem;
     font-size: 1rem;
-    color: black
+    color: var(--color-dark);
 }
 .left .sidebar .active{
-    background: rgba(0,0,0,0.1);
+    background: var(--color-light);
 }
 .left .sidebar .active i,
 .left .sidebar .active h3{
-    color: black;
+    color: var(--color-primary);
 }
 .left .sidebar .active::before{
     content: "";
     position: absolute;
     width: 0.5rem;
     height: 100%;
-    background: #0d6efd;
+    background:var(--color-primary);
     display: block;
 }
 .left .sidebar .menu-item:first-child.active{
-    border-top-left-radius: 1rem;
+    border-top-left-radius: var(--card-border-radius);
     overflow: hidden;
 }
 .left .sidebar .menu-item:last-child.active{
-    border-bottom-left-radius: 1rem;
+    border-bottom-left-radius: var(--card-border-radius);
     overflow: hidden;
 }
 .left .btn{
@@ -193,10 +211,10 @@ main .container .left .profile{
     top: 0;
     left: 110%;
     width: 30rem;
-    background: white;
-    border-radius: 1rem;
-    box-shadow: 0 0 0.5rem rgba(0,0,0,0.1);
-    padding: 1rem;
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    box-shadow: 0 0 2rem hsl(var(--color-primary), 75%, 60% 25%);
+    padding: var(--card-padding);
     z-index: 8;
     display: none;
 }
@@ -205,7 +223,7 @@ main .container .left .profile{
     position: absolute;
     width: 1.2rem;
     height: 1.2rem;
-    background: white;
+    background: var(--color-white);
     display: block;
     left: -0.6rem;
     transform: rotate(45deg);
@@ -227,9 +245,8 @@ main .container .left .profile{
     gap: 0.5rem;
 }
 .middle .stories .story{
-    padding: 1rem;
-    border-radius: 2rem;
-    box-shadow: 0 0 0.5rem rgba(0,0,0,0.1);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -274,7 +291,7 @@ main .container .left .profile{
   width: 2rem;
   height: 2rem;
   align-self: start;
-  border: 3px solid #0d6efd;
+  border: 3px solid var(--color-primary);
 }
 /*------------------------POST---------------*/
 .middle .create-post {
@@ -282,17 +299,18 @@ main .container .left .profile{
     align-items: center;
     justify-content: space-between;
     margin-top: 1rem;
-    background: white;
+    background: var(--color-white);
     padding: 0.4rem 1rem;
-    border-radius: 2rem;
+    border-radius: var(--border-radius);
     width: 100%;
 }
 .middle .create-post input[type="text"]{
-    border: none;
-    outline: none;
-    font-size: 1rem;
-    width: 100%;
-    padding: 0.5rem 0;
+   justify-self: start;
+   width: 100%;
+   padding-left: 1rem;
+   background: transparent;
+   color: var(--color-dark);
+   margin-right: 1rem;
 }
 /*-------------------------------------------*/
 .row {
@@ -312,9 +330,9 @@ input.comment-box {
 /*------------------------FEEDBACK---------------*/
 .middle .feeds .feed {
     margin: 1rem 0;
-    background: white;
-    border-radius: 1rem;
-    padding: 1rem;
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
     line-height: 1.5;
     font-size: 0.85rem;
 }
@@ -329,7 +347,7 @@ input.comment-box {
 .middle .feed .photo{
     margin: 0.7rem 0;
     overflow: hidden;
-    border-radius: 2rem;
+    border-radius: var(--card-border-radius);
 }
 .middle .feed .action-buttons{
     display: flex;
@@ -345,7 +363,7 @@ input.comment-box {
     width: 1.4rem;
     height: 1.4rem;
     border-radius: 50%;
-    border: 2px solid white;
+    border: 2px solid var(--color-white);
     display: block;
     margin-left: -0.6rem;
     overflow: hidden;
@@ -361,13 +379,13 @@ input.comment-box {
 main .container .right{
     height: max-content;
     position: sticky;
-    top: -18rem;
+    top: var(--sticky-top-right);
     bottom: 0;
 }
 .right .messages{
-    background: white;
-    border-radius: 1rem;
-    padding: 1rem;
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
 
 }
 .right .messages .heading{
@@ -392,12 +410,12 @@ main .container .right{
 .right .messages .category h6{
     width: 100%;
     align-items: center;
-    border-bottom: 4px solid rgb(236, 220, 220);
+    border-bottom: 4px solid var(--color-light);
     padding-bottom: 0.5rem;
     font-size: 0.85rem;
 }
 .right .messages .category .active{
-    border-bottom: 4px solid #0d6efd;
+    border-bottom: 4px solid var(--color-dark);
 }
 .right .message .message-request{
     color: antiquewhite;
@@ -422,21 +440,24 @@ main .container .right{
     width: 0.8rem;
     height: 0.8rem;
     border-radius: 50%;
-    background: green;
-    border: 3px solid white;
+    background: var(--color-success);
+    border: 3px solid var(--color-white);
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 /*---------------------------Friend Request-------------------*/
 .right .friend-requests{
     margin-top: 1rem;
 }
 .right .friend-requests h4{
-   color: gray;
+   color: var(--color-gray);
     margin: 1rem 0;
 }
 .right .request {
     padding: 1rem;
-    background: white;
-    border-radius: 1rem;
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
     margin-bottom: 0.7rem;
 }
 .right .request .info{
@@ -450,7 +471,7 @@ main .container .right{
 }
 /*-----------------------------Theme customization---------------------------*/
 .customize-theme{
-    background:rgba(246, 206, 206, 0.951);
+    background:rgba(255, 255, 255, 0.5);
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -465,9 +486,9 @@ main .container .right{
 
 }
 .customize-theme .card{
-    background: white;
+    background: var(--color-white);
     padding: 3rem;
-    border-radius: 1rem;
+    border-radius: var(--card-border-radius);
     width: 50%
 }
 /*-------------------------------font size---------------------*/
@@ -478,12 +499,12 @@ main .container .right{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(223, 215, 215, 0.947);
-    padding: 0.5rem;
-    border-radius: 1rem;
+    background:var(--color-light);
+    padding: var(--search-padding);
+    border-radius:var(--card-border-radius);
 }
 .customize-theme .choose-size{
-    background: rgb(183, 179, 222) ;
+    background: var(--color-secondary) ;
     height: 0.3rem;
     width:100%;
     margin: 0 1rem;
@@ -495,11 +516,11 @@ main .container .right{
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
-    background: rgb(166, 162, 203);
+    background:var(--color-secondary);
     cursor: pointer;
 }
 .customize-theme .choose-size span.active {
-    background: rgb(108, 93, 240);
+    background: var(--color-primary);
 }
 /*-------------font color----------------------------*/
 .customize-theme .color{
@@ -509,17 +530,18 @@ main .container .right{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(223, 215, 215, 0.947);
-    padding: 0.5rem;
-    border-radius: 1rem;
+    background: var(--color-light);
+    padding: var(--search-padding);
+    border-radius: var(--card-border-radius);
 }
 .customize-theme .choose-color span{
     width: 2.2rem;
     height: 2.2rem;
     border-radius: 50%;
+    cursor: pointer;
 }
 .customize-theme .choose-color span:nth-child(1){
-    background: hsl(252, 75%, 60%);
+    background: hsl(252, 100%, 50%);
 }
 .customize-theme .choose-color span:nth-child(2){
     background: hsl(52, 75%, 60%);
@@ -548,7 +570,7 @@ main .container .right{
     gap:1.5rem;
 }
 .customize-theme .choose-bg > div{
-    padding: 1rem;
+    padding: var(--card-padding);
     width: 100%;
     display: flex;
     align-items: center;
@@ -558,7 +580,7 @@ main .container .right{
     border-radius: 0.4rem;
 }
 .customize-theme .choose-bg > div.active{
-    border: 2px solid rgb(108, 93, 240); ;
+    border: 2px solid var(--color-primary);
 }
 .customize-theme .choose-bg  .bg-1{
     background: white;
@@ -576,8 +598,9 @@ main .container .right{
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-    border: 2px solid gray;
+    border: 2px solid var(--color-gray);
     margin-right: 1rem;
+    cursor: pointer;
 }
 
 /*************************/
@@ -602,6 +625,9 @@ main .container .right{
     }
     .left .btn{
         display: none;
+    }
+    .customize-theme .card{
+        width: 80vw;
     }
 }
 /***********************Media quries for tablet and mobile mode**************/
@@ -637,5 +663,17 @@ main .container .right{
     }
     main .container .right{
         display: none;
+    }
+    .customize-theme .card{
+        width: 92vw;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container{
+        width: 90%;
+    }
+    .customize-theme .card{
+        width: 90vw;
     }
 }
