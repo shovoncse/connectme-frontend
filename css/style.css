@@ -756,6 +756,9 @@ main .container .right{
     margin-bottom: 20px;
     border-radius: 4px;
 }
+.post-content{
+    padding: 20px 10px;
+}
 .profile-intro h3{
   font-weight: 600;
 }
