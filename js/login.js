@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 })
                 .then(data => {
                     // save the token in local storage
-                    localStorage.setItem("cm-token", data.token);
+                    localStorage.setItem("cm-token", data.accessToken);
                     localStorage.setItem("cm-data", JSON.stringify(data));
                     // redirect to home page
                     window.location.href = "../connectme-frontend/index.html";
