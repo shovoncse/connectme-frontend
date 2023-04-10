@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up | Connect Me</title>
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/login/vendors/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/login/vendors/css/bootstrap-icons.css" />
+  <link rel="stylesheet" href="assets/login/resources/css/style.css" />
+</head>
+
+<body>
+  <!-- Start -->
+  <section class="signin bg-light py-5 d-flex align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="signin-form">
+          <div class="signin-form-inner">
+            <div class="signin-form-top">
+              <h1 class="h2 text-center text-dark">Sign Up</h1>
+              <p class="text-center mb-4">
+                Sign up to Connect Me and start connecting with your friends. It's free and always will be.
+              </p>
+              <form action="#">
+                <div class="input-group mb-3">
+                  <i class="bi bi-person position-absolute top-50 start-0 ms-3 translate-middle-y"></i>
+                  <input class="form-control rounded ps-5" type="text" placeholder="Name" required id="name"/>
+                </div>
+                <div class="input-group mb-3">
+                  <i class="bi bi-envelope position-absolute top-50 start-0 ms-3 translate-middle-y"></i>
+                  <input class="form-control rounded ps-5" type="email" placeholder="Email" required id="email" />
+                </div>
+
+                <div class="input-group mb-3">
+                  <a href="#"><i class="bi bi-lock position-absolute top-50 start-0 ms-3 translate-middle-y"></i></a>
+                  <input class="form-control rounded ps-5" type="password" placeholder="password" required id="password" />
+                </div>
+                </div>
+                <button class="mb-3 btn btn-primary d-block w-100 btn-lg" type="submit" id="register-button">
+                  Sign Up
+                </button>
+                <p class="text-center">
+                  Already have an account? <a class="link-primary" href="login.html">Sign In</a>
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- End -->
+
+  <!-- JS -->
+  <script src="assets/login/vendors/js/bootstrap.bundle.min.js"></script>
+  <script src="js/register.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In | Connect Me</title>
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/login/vendors/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/login/vendors/css/bootstrap-icons.css" />
+  <link rel="stylesheet" href="assets/login/resources/css/style.css" />
+</head>
+
+<body>
+  <!-- Start -->
+  <section class="signin bg-light py-5 d-flex align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="signin-form">
+          <div class="signin-form-inner">
+            <div class="signin-form-top">
+              <h1 class="h2 text-center text-dark">Sign In</h1>
+              <p class="text-center mb-4">
+                Sign in to your account using email and password provided
+                during registration.
+              </p>
+              <form action="#">
+                <div class="input-group mb-3">
+                  <i class="bi bi-envelope position-absolute top-50 start-0 ms-3 translate-middle-y"></i>
+                  <input class="form-control rounded ps-5" type="email" id="email" placeholder="Email" required />
+                </div>
+
+                <div class="input-group mb-3">
+                  <a href="#"><i class="bi bi-lock position-absolute top-50 start-0 ms-3 translate-middle-y"></i></a>
+                  <input class="form-control rounded ps-5" type="password" id="password" placeholder="password" required />
+                </div>
+                <div class="mb-3 d-flex justify-content-between">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="keep-signed" />
+                    <label for="keep-signed"> Keep me signed in </label>
+                  </div>
+                </div>
+                <button class="mb-3 btn btn-primary d-block w-100 btn-lg" type="submit" id="login-button">
+                  Sign In
+                </button>
+                <p class="text-center">
+                  Don't have an account?
+                  <a class="link-primary" href="registration.html">Sign Up</a>
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- End -->
+
+  <!-- JS -->
+  <script src="assets/login/vendors/js/bootstrap.bundle.min.js"></script>
+  <script src="js/login.js"></script>
+</body>
+
+</html>
