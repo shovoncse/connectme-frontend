@@ -51,7 +51,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 })
                 .catch(error => {
-                    alert(error.message);
+                    localStorage.removeItem("cm-data");
+                    localStorage.removeItem("cm-token");
+                    // redirect to login page
+                    window.location.href = "../connectme-frontend/login.html";
                 });
 
         } catch (error) {
@@ -170,11 +173,11 @@ function generatePostHtml(name, content) {
         <div class="head">
             <div class="user">
                 <div class="profile-photo">
-                    <img src="img/profile-12.jpg" alt="">
+                    <img src="img/profile-1.jpg" alt="">
                 </div>
                 <div class="ingo">
                     <h3>${name}</h3>
-                    <small> UK, 40 MINUTES AGE</small>
+                    <small> 10 MINUTES AGO</small>
                 </div>
 
             </div>
