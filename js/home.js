@@ -44,7 +44,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     let posts = "";
                     // loop through the posts
                     data.forEach(post => {
-                        posts += generatePostHtml(post.user.name, post.postContent);
+                        console.log(post);
+                        posts += generatePostHtml(post.user.name, post.postContent, post.updatedAt);
                     });
                     // add the posts to the posts container
                     postsArea.insertAdjacentHTML("afterend", posts);
@@ -94,7 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // create a post
-
     const postBtn = document.getElementById("post-btn");
     postBtn.addEventListener("click", function (e) {
         e.preventDefault();
@@ -126,12 +126,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             })
             .then(data => {
-                console.log(data);
                 // get the posts container
                 const postsArea = document.querySelector("form.create-post");
 
                 // add the posts to the posts container
-                postsArea.insertAdjacentHTML("afterend", generatePostHtml(loggedInUser, data.postContent));
+                postsArea.insertAdjacentHTML("afterend", generatePostHtml(loggedInUser, data.postContent, data.updatedAt));
 
                 document.getElementById("post-text").value = ""
             })
@@ -166,7 +165,7 @@ menuItems.forEach(item => {
 })
 
 // post html
-function generatePostHtml(name, content) {
+function generatePostHtml(name, content, time) {
 
     return `<div class="feeds">
     <div class="feed">
@@ -177,7 +176,7 @@ function generatePostHtml(name, content) {
                 </div>
                 <div class="ingo">
                     <h3>${name}</h3>
-                    <small> 10 MINUTES AGO</small>
+                    <small>${getRelativeTime(time)}</small>
                 </div>
 
             </div>
@@ -192,3 +191,24 @@ function generatePostHtml(name, content) {
     </div>
 </div>`
 }
+
+// get relative time
+function getRelativeTime(dateTimeString) {
+    const date = new Date(dateTimeString);
+    const now = new Date();
+    const diff = now - date;
+    const seconds = Math.floor(diff / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+  
+    if (days > 0) {
+      return days + " day" + (days > 1 ? "s" : "") + " ago";
+    } else if (hours > 0) {
+      return hours + " hour" + (hours > 1 ? "s" : "") + " ago";
+    } else if (minutes > 0) {
+      return minutes + " minute" + (minutes > 1 ? "s" : "") + " ago";
+    } else {
+      return "just now";
+    }
+  }
