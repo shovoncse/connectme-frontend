@@ -17,13 +17,20 @@ document.addEventListener("DOMContentLoaded", function() {
             const password = document.getElementById("password").value;
             // check for empty values
             if (!email || !password) {
-                alert("Please fill in all the fields.");
+                swal({
+                    title: 'Fill the empty fields !',
+                    text: 'Check the missing fields !',
+                    icon: "warning",
+                });
                 return;
             }
             // check the format of email
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-                alert("Please enter a valid email address.");
+                swal({
+                    title: 'Plz enter valid email address!',
+                    icon: "warning",
+                });
                 return;
             }
             // create the API request options object
@@ -47,11 +54,21 @@ document.addEventListener("DOMContentLoaded", function() {
                     } else {
                         // handle errors
                         return response.json().then(error => {
-                            throw new Error(error.message);
+                            swal({
+                                title: "fetch Error 1",
+                                text: error.message,
+                                icon: "error",
+                            });
                         });
                     }
                 })
                 .then(data => {
+                    console.log(data)
+                    swal({
+                        title: "Log In",
+                        text: "LogIn successfully......",
+                        icon: "success",
+                    });
                     // save the token in local storage
                     localStorage.setItem("cm-token", data.accessToken);
                     localStorage.setItem("cm-data", JSON.stringify(data));
@@ -60,7 +77,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 })
                 .catch(error => {
                     // handle errors
-                    alert(error.message);
+                    swal({
+                        title: "fetch Error 2",
+                        text: error.message,
+                        icon: "error",
+                    });
                 });
         });
     }
