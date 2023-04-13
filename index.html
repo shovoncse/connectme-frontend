@@ -49,7 +49,7 @@
                 </a>
                 <!---------------------------Sidebar-------------------------->
                 <div class="sidebar">
-                    <a  class="menu-item active">
+                    <a class="menu-item active">
                         <span><i class="uil uil-home"></i></span>
                         <h3>Home</h3>
                     </a>
@@ -124,13 +124,85 @@
             <!--------------------------END OF LEFT------------------>
             <!---------------------------Middle-------------------------->
             <div class="middle">
-                <form class="create-post">
-                    <div class="profile-photo">
-                        <img src="img/profile-1.jpg">
+                <div class="create-post">
+                    <form class="create-post-inner">
+                        <div class="profile-photo">
+                            <img src="img/profile-1.jpg">
+                        </div>
+                        <input type="text" placeholder="What is going on Buddy?" id="post-text" style="padding-left: 8px;">
+                        <div class="image-upload">
+                            <label for="upload-btn">
+                                <img src="img/image-upload.png" alt="Upload Image">
+                            </label>
+                            <input type="file" id="upload-btn" accept="image/*">
+                        </div>
+                        <input type="submit" value="Post" class="btn btn-primary" id="post-btn">
+                    </form>
+                    <div class="image-preview"></div>
+                </div>
+
+                <div class="feeds">
+                    <div class="feed">
+                        <div class="head">
+                            <div class="user">
+                                <div class="profile-photo">
+                                    <img src="img/profile-12.jpg" alt="">
+                                </div>
+                                <div class="ingo">
+                                    <h3>Mst Airen Aktar</h3>
+                                    <small> UK, 40 MINUTES AGE</small>
+                                </div>
+
+                            </div>
+                            <span class="edit">
+                                <i class="uil uil-ellipsis-h"></i>
+                            </span>
+                        </div>
+                        <div class="photo">
+                            <img src="img/feed-3.jpg" alt="">
+                        </div>
+                        <!------------icons----------->
+                        <div class="action-buttons">
+                            <div class="interation-button">
+                                <span> <i class="uil uil-heart"></i></span>
+                                <span> <i class="uil uil-comment-dots"></i>
+                                </span>
+                                <span> <i class="uil uil-share-alt"></i></span>
+                            </div>
+                            <div class="bookmark">
+                                <span> <i class="uil uil-bookmark"></i></span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="comment">
+                                        <div class="comment-body">
+                                            <input type="text" placeholder="Add a comment..." class="comment-box">
+                                            <span class="uil-message"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!------------like by peoples----------->
+                        <div class="liked-by">
+                            <span><img src="img/profile-11.jpg"></span>
+                            <span><img src="img/profile-10.jpg"></span>
+                            <span><img src="img/profile-9.jpg"></span>
+                            <p>Liked by <b>Mona lisa</b> and <b>1,453 others</b></p>
+                        </div>
+                        <!------------captions----------->
+                        <div class="caption">
+                            <p><b>Rose Asable</b> Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Quisquam, <span class="hash-tag">#lifestyle</span></p>
+                        </div>
+                        <!------------comments----------->
+                        <div class="comment text-muted">View all 120 commnets</div>
+
                     </div>
-                    <input type="text" placeholder="What is going on Buddy?" id="post-text" style="padding-left: 8px;">
-                    <input type="submit" value="Post" class="btn btn-primary" id="post-btn">
-                </form>
+                </div>
             </div>
             <!------------------End of Middle section------------------------------>
             <!---------------------------Right-------------------------->

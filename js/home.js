@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // get cm-data from local storage
     const cmData = localStorage.getItem("cm-data");
     const cmToken = localStorage.getItem("cm-token");
+
     let loggedInUser = "Demo User";
     if (cmData && cmToken) {
         try {
@@ -40,11 +41,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
                 .then(data => {
                     // get the posts container
-                    const postsArea = document.querySelector("form.create-post");
+                    const postsArea = document.querySelector(".create-post");
                     let posts = "";
                     // loop through the posts
                     data.forEach(post => {
-                        console.log(post);
                         posts += generatePostHtml(post.user.name, post.postContent, post.updatedAt);
                     });
                     // add the posts to the posts container
@@ -70,12 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.removeItem("cm-token");
         window.location.href = "../connectme-frontend/login.html";
     }
-
-    if (!cmToken) {
-        // if user is not logged in, redirect to login page
-        window.location.href = "../connectme-frontend/login.html";
-    }
-
 
     // logout button
     const logoutButton = document.getElementById("logout-button");
@@ -127,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(data => {
                 // get the posts container
-                const postsArea = document.querySelector("form.create-post");
+                const postsArea = document.querySelector(".create-post");
 
                 // add the posts to the posts container
                 postsArea.insertAdjacentHTML("afterend", generatePostHtml(loggedInUser, data.postContent, data.updatedAt));
@@ -201,14 +195,43 @@ function getRelativeTime(dateTimeString) {
     const minutes = Math.floor(seconds / 60);
     const hours = Math.floor(minutes / 60);
     const days = Math.floor(hours / 24);
-  
+
     if (days > 0) {
-      return days + " day" + (days > 1 ? "s" : "") + " ago";
+        return days + " day" + (days > 1 ? "s" : "") + " ago";
     } else if (hours > 0) {
-      return hours + " hour" + (hours > 1 ? "s" : "") + " ago";
+        return hours + " hour" + (hours > 1 ? "s" : "") + " ago";
     } else if (minutes > 0) {
-      return minutes + " minute" + (minutes > 1 ? "s" : "") + " ago";
+        return minutes + " minute" + (minutes > 1 ? "s" : "") + " ago";
     } else {
-      return "just now";
+        return "just now";
     }
-  }
+}
+
+/**
+ * Image upload
+ */
+
+const uploadBtn = document.getElementById('upload-btn');
+const imagePreview = document.querySelector('.image-preview');
+const deleteBtn = document.createElement('div');
+deleteBtn.classList.add('delete-btn');
+deleteBtn.innerHTML = '&times;';
+
+uploadBtn.addEventListener('change', () => {
+    const file = uploadBtn.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+        const image = document.createElement('img');
+        image.src = reader.result;
+        imagePreview.innerHTML = '';
+        imagePreview.appendChild(image);
+        imagePreview.style.display = 'block';
+        imagePreview.appendChild(deleteBtn);
+    };
+});
+
+deleteBtn.addEventListener('click', () => {
+    imagePreview.innerHTML = '';
+    imagePreview.style.display = 'none';
+});
