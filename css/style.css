@@ -287,6 +287,7 @@ main .container .left .profile{
 
 .middle .create-post .image-preview {
     padding: 5px;
+    position: relative;
 }
 
 .middle .create-post-inner {
@@ -346,8 +347,8 @@ main .container .left .profile{
   
   .delete-btn {
     position: absolute;
-    top: 4px;
-    right: 4px;
+    top: 12px;
+    right: 12px;
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -393,9 +394,8 @@ input.comment-box {
    gap: 1rem;
 }
 .middle .feed .photo{
-    margin: 0.7rem 0;
+    /* margin: 0.7rem 0; */
     overflow: hidden;
-    border-radius: 2rem;
 }
 .middle .feed .action-buttons{
     display: flex;
