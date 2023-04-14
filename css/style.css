@@ -281,14 +281,23 @@ main .container .left .profile{
 }
 /*------------------------POST---------------*/
 .middle .create-post {
+    border-radius: 2rem;
+    background: white;
+}
+
+.middle .create-post .image-preview {
+    padding: 5px;
+    position: relative;
+}
+
+.middle .create-post-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 1rem;
-    background: white;
     padding: 0.4rem 1rem;
-    border-radius: 2rem;
     width: 100%;
+    position: relative;
 }
 .middle .create-post input[type="text"]{
     border: none;
@@ -296,6 +305,79 @@ main .container .left .profile{
     font-size: 1rem;
     width: 100%;
     padding: 0.5rem 0;
+}
+  
+  .image-upload {
+    position: relative;
+  }
+  
+  #upload-btn {
+    display: none;
+  }
+  
+  .image-upload label {
+    cursor: pointer;
+  }
+  
+  .image-upload img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+  
+  .image-preview {
+    display: none;
+    /* position: absolute; */
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .image-preview img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .delete-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  /* Loader */
+  .loader {
+    background: #fff5f5d1;
+    overflow: overlay;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader img {
+    width: 88px;
 }
 /*-------------------------------------------*/
 .row {
@@ -330,9 +412,8 @@ input.comment-box {
    gap: 1rem;
 }
 .middle .feed .photo{
-    margin: 0.7rem 0;
+    /* margin: 0.7rem 0; */
     overflow: hidden;
-    border-radius: 2rem;
 }
 .middle .feed .action-buttons{
     display: flex;

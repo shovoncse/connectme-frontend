@@ -49,7 +49,7 @@
                 </a>
                 <!---------------------------Sidebar-------------------------->
                 <div class="sidebar">
-                    <a  class="menu-item active">
+                    <a class="menu-item active">
                         <span><i class="uil uil-home"></i></span>
                         <h3>Home</h3>
                     </a>
@@ -124,13 +124,22 @@
             <!--------------------------END OF LEFT------------------>
             <!---------------------------Middle-------------------------->
             <div class="middle">
-                <form class="create-post">
-                    <div class="profile-photo">
-                        <img src="img/profile-1.jpg">
-                    </div>
-                    <input type="text" placeholder="What is going on Buddy?" id="post-text" style="padding-left: 8px;">
-                    <input type="submit" value="Post" class="btn btn-primary" id="post-btn">
-                </form>
+                <div class="create-post">
+                    <form class="create-post-inner" id="post-form">
+                        <div class="profile-photo">
+                            <img src="img/profile-1.jpg">
+                        </div>
+                        <input type="text" placeholder="What is going on Buddy?" id="post-text" style="padding-left: 8px;">
+                        <div class="image-upload">
+                            <label for="upload-btn">
+                                <img src="img/image-upload.png" alt="Upload Image">
+                            </label>
+                            <input type="file" id="upload-btn" accept="image/*">
+                        </div>
+                        <input type="submit" value="Post" class="btn btn-primary" id="post-btn">
+                    </form>
+                    <div class="image-preview"></div>
+                </div>
             </div>
             <!------------------End of Middle section------------------------------>
             <!---------------------------Right-------------------------->
@@ -254,6 +263,7 @@
             <!---------------------------Right end-------------------------->
     </main>
 
+    <script src="js/common.js"></script>
     <script src="js/home.js"></script>
 </body>
 
