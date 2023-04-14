@@ -363,9 +363,11 @@ input.comment-box {
 /*----------------------------------RIGHT BAR---------------------------------*/
 main .container .right{
     height: max-content;
-    position: sticky;
     top: -18rem;
     bottom: 0;
+}
+div#req-message {
+    margin-top: 2rem;
 }
 .right .messages{
     background: white;
@@ -410,6 +412,7 @@ main .container .right{
     gap: 1rem;
     margin-bottom: 1rem;
     align-items: start;
+    margin-top: 1rem;
 }
 .right .message .profile-photo{
    position: relative;
@@ -956,4 +959,29 @@ main .container .right{
     color: #9a9a9a;
     padding: 10px;
     font-size: 30px;
+}
+/***************new changes*****************/
+button#confirm-btn {
+    font-size: 12px;
+    padding: 7px;
+    font-weight: bolder;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+button#delete-btn {
+    font-size: 12px;
+    font-weight: bold;
+}
+div#req-photo {
+    top: 10px;
+}
+span.dot {
+    height: 10px;
+    width: 10px;
+    background-color: green;
+    border-radius: 50%;
+    display: block;
+    float: right;
+    margin-top: -5px;
+    position: inherit;
 }

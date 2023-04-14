@@ -138,27 +138,23 @@
             <div class="right">
                 <div class="messages">
                     <div class="heading">
-                        <h4>Messages</h4><i class="uil uil-edit"></i>
+                        <h4>Contact</h4><i class="uil uil-user"></i>
                     </div>
                     <!----------search bar----------->
                     <div class="search-bar">
                         <i class="uil uil-search"></i>
                         <input type="search" placeholder="Search" id="messages-search">
                     </div>
-                    <!----------messages Category----------->
-                    <div class="category">
-                        <h6 class="active">Primary</h6>
-                        <h6>Social</h6>
-                        <h6 class="message-requests">Requests(7)</h6>
-                    </div>
+
                     <!----------messages ----------->
                     <div class="message">
                         <div class="profile-photo">
-                            <img src="img/profile-12.jpg" alt="">
+                            <img src="img/profile-10.jpg" alt="">
+                            <span class="dot"></span>
                         </div>
                         <div class="message-body">
                             <h4>RachnaKumar</h4>
-                            <p class="text-bold">Hey, how are you?</p>
+                         
                         </div>
                     </div>
                     <!----------end messages ----------->
@@ -168,17 +164,17 @@
                         </div>
                         <div class="message-body">
                             <h4>Ashif Ahmed</h4>
-                            <p class="text-bold">Hey, how are you?</p>
+                            
                         </div>
                     </div>
                     <!----------end messages ----------->
                     <div class="message">
                         <div class="profile-photo">
-                            <img src="img/profile-17.jpg" alt="">
+                            <img src="img/profile-18.jpg" alt="">
                         </div>
                         <div class="message-body">
                             <h4>Nafisa</h4>
-                            <p class="text-bold">Hey, how are you?</p>
+                            
                         </div>
                     </div>
                     <!----------end messages ----------->
@@ -188,70 +184,91 @@
                         </div>
                         <div class="message-body">
                             <h4>Airen Aktar</h4>
-                            <p class="text-bold">Hey, how are you?</p>
+                           
                         </div>
                     </div>
                 </div>
-
-                <!----------FRIEND REQUEST----------->
-                <div class="friend-requests">
-                    <h4>Requests</h4>
-                    <div class="request">
-                        <div class="info">
-                            <div class="profile-photo">
-                                <img src="img/profile-13.jpg" alt="">
+                <!--------request-->
+                <div class="right" id="req-message">
+                    <div class="messages" >
+                        <div class="heading">
+                            <h4>Friend Request</h4><i class="uil uil-user"></i>
+                        </div>
+                        <!----------messages ----------->
+                        <div class="message">
+                            <div class="profile-photo" id="req-photo">
+                                <img src="img/profile-12.jpg" alt="">
                             </div>
-                            <div>
-                                <h5>Kaif kat</h5>
+                            <div class="message-body">
+                                <h4>Airen Aktar</h4>
                                 <p class="text-muted">
                                     5 mutual friends
                                 </p>
+                                <div class="action">
+                                    <button class="btn btn-primary" id="confirm-btn">Confirm</button>
+                                    <button class="btn" id="delete-btn">Delete</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="action">
-                            <button class="btn btn-primary">Confirm</button>
-                            <button class="btn">Delete</button>
+                        <hr style="border: 1px solid gray;">
+                        <!----------end messages ----------->
+                        <div class="message" style="top:5px">
+                            <div class="profile-photo" id="req-photo">
+                                <img src="img/profile-11.jpg" alt="">
+                            </div>
+                            <div class="message-body">
+                                <h4>Hamid Raza</h4>
+                                <p class="text-muted">
+                                    5 mutual friends
+                                </p>
+                                <div class="action">
+                                    <button class="btn btn-primary" id="confirm-btn">Confirm</button>
+                                    <button class="btn" id="delete-btn">Delete</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <!----------end of request----------->
-                    <div class="request">
-                        <div class="info">
-                            <div class="profile-photo">
+                        <hr style="border: 1px solid gray;">
+                        <!----------end messages ----------->
+                        <div class="message">
+                            <div class="profile-photo" id="req-photo">
+                                <img src="img/profile-14.jpg" alt="">
+                            </div>
+                            <div class="message-body">
+                                <h5>Airen Aktar</h5>
+                                <p class="text-muted">
+                                    5 mutual friends
+                                </p>
+                                <div class="action">
+                                    <button class="btn btn-primary" id="confirm-btn">Confirm</button>
+                                    <button class="btn" id="delete-btn">Delete</button>
+                                </div>
+                            </div>                           
+                        </div>
+                        <hr style="border: 1px solid gray;">
+                        <!----------end messages ----------->
+                        <div class="message">
+                            <div class="profile-photo" id="req-photo">
                                 <img src="img/profile-16.jpg" alt="">
                             </div>
-                            <div>
-                                <h5>Kaif kat</h5>
+                            <div class="message-body">
+                                <h5>Shovan Kumar</h5>
                                 <p class="text-muted">
                                     5 mutual friends
                                 </p>
-                            </div>
+                                <div class="action">
+                                    <button class="btn btn-primary" id="confirm-btn">Confirm</button>
+                                    <button class="btn" id="delete-btn">Delete</button>
+                                </div>
+                            </div>                           
                         </div>
-                        <div class="action">
-                            <button class="btn btn-primary">Confirm</button>
-                            <button class="btn">Delete</button>
-                        </div>
+                        <hr style="border: 1px solid gray;">
                     </div>
-                    <!----------end of request----------->
-                    <div class="request">
-                        <div class="info">
-                            <div class="profile-photo">
-                                <img src="img/profile-17.jpg" alt="">
-                            </div>
-                            <div>
-                                <h5>Kaif kat</h5>
-                                <p class="text-muted">
-                                    5 mutual friends
-                                </p>
-                            </div>
-                        </div>
-                        <div class="action">
-                            <button class="btn btn-primary">Confirm</button>
-                            <button class="btn">Delete</button>
-                        </div>
-                    </div>
+    
                 </div>
             </div>
             <!---------------------------Right end-------------------------->
+
+            
     </main>
 
     <script src="js/home.js"></script>
