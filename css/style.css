@@ -776,16 +776,26 @@ main .container .right{
     margin-left: 10px;
 }
 .pd-right button{
-    background: #1876f2;
+    background: #e4e6eb;
     border: 0;
     outline: 0;
     padding: 6px 10px;
     display: inline-flex;
     align-items: center;
-    color: #fff;
+    color: #151313;
     border-radius: 3px;
     margin-left: 10px;
     cursor: pointer;
+}
+.pd-right button:first-child:hover{
+    background-color: #1523de;
+    color: #fff;
+}
+
+.pd-right button:hover{
+    background-color:rgb(33, 9, 242) ;
+    color: white;
+    
 }
 .pd-right button a{
     display: inline-flex;
@@ -794,6 +804,11 @@ main .container .right{
     padding: 6px 15px;
     border-radius: 4px;
     margin-right: 10px;
+}
+.pd-right a:hover{
+    background-color: #0a1acf;
+    color: white;
+
 }
 .pd-right button img{
     height: 20px;
