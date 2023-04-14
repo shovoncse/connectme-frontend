@@ -1,4 +1,5 @@
 // wait for the DOM to be loaded
+loader(true);
 document.addEventListener("DOMContentLoaded", function () {
 
     // get cm-data from local storage
@@ -49,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
                     // add the posts to the posts container
                     postsArea.insertAdjacentHTML("afterend", posts);
+                    loader(false);
 
                 })
                 .catch(error => {
@@ -75,14 +77,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const logoutButton = document.getElementById("logout-button");
 
     // add event listener to logout button
-    logoutButton.addEventListener("click", function (e) {
+    logoutButton.addEventListener("click", async function (e) {
+        loader(true);
         // prevent default action
         e.preventDefault();
 
         // remove cm-data and cm-token from local storage
         localStorage.removeItem("cm-data");
         localStorage.removeItem("cm-token");
-
+        await new Promise(r => setTimeout(r, 1000));
+        loader(false);
         // redirect to login page
         window.location.href = "../connectme-frontend/login.html";
     });
@@ -173,28 +177,31 @@ document.addEventListener("DOMContentLoaded", function () {
     const input = document.getElementById('upload-btn');
 
     form.addEventListener('submit', async (event) => {
+        loader(true);
         event.preventDefault();
 
         const apiKey = '02598d03c9a3fd5b85ebb55a67fb5755';
         const apiUrl = 'https://api.imgbb.com/1/upload';
+        let imageUrl = '';
+        // if only text input
+        if (input.files[0]) {
+            const formData = new FormData();
+            formData.append('image', input.files[0]);
+            formData.append('key', apiKey);
 
-        const formData = new FormData();
-        formData.append('image', input.files[0]);
-        formData.append('key', apiKey);
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                body: formData
+            });
 
-        const response = await fetch(apiUrl, {
-            method: 'POST',
-            body: formData
-        });
+            const data = await response.json();
+            imageUrl = data.data.url;
+        }
 
-        const data = await response.json();
-        const imageUrl = data.data.url;
 
         // get the post text from the input field
         const postText = document.getElementById('post-text').value;
 
-        // do something with the post object, e.g. send it to your backend server
-        console.log(imageUrl);
         const requestOptions = {
             method: "POST",
             headers: {
@@ -227,10 +234,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById("post-text").value = ""
                 imagePreview.innerHTML = '';
                 imagePreview.style.display = 'none';
+                input.files[0] = null;
+                loader(false);
             })
             .catch(error => {
                 alert(error.message);
             });
+
     });
 
 

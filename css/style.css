@@ -361,6 +361,24 @@ main .container .left .profile{
     z-index: 1;
   }
 
+  /* Loader */
+  .loader {
+    background: #fff5f5d1;
+    overflow: overlay;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader img {
+    width: 88px;
+}
 /*-------------------------------------------*/
 .row {
     margin-bottom: 0.5rem;
