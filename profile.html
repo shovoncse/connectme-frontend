@@ -137,14 +137,22 @@
                             <small>Public<i class="fa-regular fa-angle-down"></i></small>
                         </div>
                     </div>
-
-                    <div class="Post-input-container">
-                        <textarea rows="3" placeholder="What's on your mind, Buddy?"></textarea>
-                        <div class="add-post-links">
-                            <a href="#"><img src="assets/profile/Images/image.png"> Photo/Video</a>
-                            
-                        </div>
+                    
+                    <div class="create-post">
+                        <form class="create-post-inner" id="post-form">
+                            <input type="text" placeholder="What is going on Buddy?" id="post-text"
+                                style="padding-left: 8px;">
+                            <div class="image-upload">
+                                <label for="upload-btn">
+                                    <img src="img/image-upload.png" alt="Upload Image">
+                                </label>
+                                <input type="file" id="upload-btn" accept="image/*">
+                            </div>
+                            <input type="submit" value="Post" class="btn btn-primary" id="post-btn">
+                        </form>
+                        <div class="image-preview"></div>
                     </div>
+                    <hr>
                 </div>
 
                 <div class="post-container">
@@ -158,7 +166,8 @@
                         </div>
                         <a href="#"><i class="fas fa-ellipsis-v"></i></a>
                     </div>
-                    <p class="post-text">As a group we care we share and we devide our work with each other.<br>Be with <span>Connect Me </span> For some better experiance of a social media platform<a
+                    <p class="post-text">As a group we care we share and we devide our work with each other.<br>Be with
+                        <span>Connect Me </span> For some better experiance of a social media platform<a
                             href="#">#ConnectMe</a>
                         <a href="#">#Group-E</a> <a href="#">#Web_Programming_Project</a>
                     </p>
@@ -180,7 +189,7 @@
 
                 </div>
 
-              
+
 
             </div>
         </div>
