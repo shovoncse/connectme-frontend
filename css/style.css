@@ -82,14 +82,14 @@ nav .container{
     border-radius: 2rem;
     padding: 0.6rem 1rem;
 }
-.search-bar input[type="Search"]{
+.search-bar input[type="search"]{
     background: transparent;
     color: var(--color-dark);
     font-size: 0.9rem;
     width: 30vw;
     margin-left: 1rem;
 }
-nav .search-bar input[type="Search"]::placeholder{
+nav .search-bar input[type="search"]::placeholder{
     color: var(--color-grey);
 }
 nav .create{
@@ -821,6 +821,7 @@ main .container .right{
 }
 .pd-right{
     text-align: right;
+    display: flex;
 }
 .pd-right a{
     background: #e4e6eb;
