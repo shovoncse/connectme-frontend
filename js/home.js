@@ -61,16 +61,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
 
         } catch (error) {
-            // if there is an error, remove cm-data and cm-token from local storage
-            localStorage.removeItem("cm-data");
-            localStorage.removeItem("cm-token");
-            // redirect to login page
-            window.location.href = "../connectme-frontend/login.html";
+            resetLocalStorage();
         }
     } else {
-        localStorage.removeItem("cm-data");
-        localStorage.removeItem("cm-token");
-        window.location.href = "../connectme-frontend/login.html";
+        resetLocalStorage();
     }
 
     // logout button
@@ -92,52 +86,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    // SIDEBAR
-    const menuItems = document.querySelectorAll('.menu-item');
-    const changeActiveItem = () => {
-        menuItems.forEach((item) => {
-            item.classList.remove('active');
-        });
-    };
-    menuItems.forEach(item => {
-        item.addEventListener('click', () => {
-            changeActiveItem();
-            item.classList.add('active');
-            if (item.id != 'notifications') {
-                document.querySelector('.notifications-popup').style.display = 'none';
-            }
-            else {
-                document.querySelector('.notifications-popup').style.display = 'block';
-                document.querySelector('#notifications .notification-count').style.display = 'none';
-            }
-        })
-    })
-
-    // post html
-    function generatePostHtml(name, content, time, image) {
-        return `<div class="feeds"> <div class="feed"> <div class="head"> <div class="user"> <div class="profile-photo"> <img src="img/profile-1.jpg" alt=""> </div> <div class="ingo"> <h3>${name}</h3> <small> ${getRelativeTime(time)}</small> </div> </div> <span class="edit"> <i class="uil uil-ellipsis-h"></i> </span> </div> <div id="post-content" class="post-content"> <p>${content}</p> </div> <div class="photo"> ${image ? `<img src="${image}" alt="">` : ''} </div> <div class="action-buttons"> <div class="interation-button"> <span> <i class="uil uil-heart"></i></span> <span> <i class="uil uil-comment-dots"></i> </span> <span> <i class="uil uil-share-alt"></i></span> </div> <div class="bookmark"> <span> <i class="uil uil-bookmark"></i></span> </div> </div> <div> <div class="row"> <div class="col-md-12"> <div class="comment"> <div class="comment-body"> <input type="text" placeholder="Add a comment..." class="comment-box"> <span class="uil-message"></span> </div> </div> </div> </div> </div> </div> </div>`
-    }
-
-    // get relative time
-    function getRelativeTime(dateTimeString) {
-        const date = new Date(dateTimeString);
-        const now = new Date();
-        const diff = now - date;
-        const seconds = Math.floor(diff / 1000);
-        const minutes = Math.floor(seconds / 60);
-        const hours = Math.floor(minutes / 60);
-        const days = Math.floor(hours / 24);
-
-        if (days > 0) {
-            return days + " day" + (days > 1 ? "s" : "") + " ago";
-        } else if (hours > 0) {
-            return hours + " hour" + (hours > 1 ? "s" : "") + " ago";
-        } else if (minutes > 0) {
-            return minutes + " minute" + (minutes > 1 ? "s" : "") + " ago";
-        } else {
-            return "just now";
-        }
-    }
 
     /**
      * Image upload
@@ -242,8 +190,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
     });
-
-
 
 
 
