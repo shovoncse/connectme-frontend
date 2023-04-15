@@ -10,6 +10,10 @@ try {
             const userName = document.getElementById("user-name");
             userName.innerHTML = user.name;
         }
+        const postAreaLogo = document.querySelector('#home-post-area-img');
+        if (postAreaLogo) {
+            postAreaLogo.src = user.image;
+        }
     }
 } catch (e) {
     console.log(e);
