@@ -18,7 +18,7 @@
     <!--------Navbar---------->
     <nav>
         <div class="container">
-            <h2 class="logo">
+            <h2 class="logo" onclick="window.location.href='index.html'">
                 <img src="img/logo1.png" alt="" style="width:270px;">
             </h2>
             <div class="search-bar">
@@ -27,7 +27,7 @@
             </div>
             <div class="create">
                 <label class="btn btn-primary" for="create-post">Create</label>
-                <div class="profile-photo">
+                <div class="profile-photo" onclick="window.location.href='profile.html'">
                     <img src="img/profile-1.jpg">
                 </div>
             </div>
@@ -36,15 +36,15 @@
     <!---------------------------Main-------------------------->
 
     <div class="profile-container">
-        <img src="assets/profile/Images/coverpic.jpg" class="cover-pic">
+        <img src="img/default-cover.jpg" class="cover-pic" id="profile-cover-image">
         <div class="profile-details">
 
             <div class="pd-left">
                 <div class="pd-row">
-                    <img src="assets/profile/Images/profile-6.png" class="profile-pic">
+                    <img src="img/default-profile.jpg" class="profile-pic" id="profile-image">
                     <div>
-                        <h3>Nicolas Jonathon</h3>
-                        <p>220 Friends- 20 Mutual</p>
+                        <h3 id="profile-name">Nicolas Jonathon</h3>
+                        <p id="profile-username">@username</p>
 
                         <img src="assets/profile/Images/profile-4.jpg">
                         <img src="assets/profile/Images/profile-5.png">
@@ -66,13 +66,13 @@
 
                 <div class="profile-intro">
                     <h3>Intro</h3>
-                    <p class="intro-text">Work hard till you succeed</p>
+                    <p class="intro-text" id="profile-bio">Work hard till you succeed</p>
                     <hr>
                     <ul>
-                        <li><img src="assets/profile/Images/Jobicon.png">Software Engineer</li>
-                        <li><img src="assets/profile/Images/studyicon.png">Studies at OAMK</li>
-                        <li><img src="assets/profile/Images/location.jpg"> Dhaka,Bangladesh</li>
-                        <li><img src="assets/profile/Images/location.jpg"> Lives in Oulu,Finland</li>
+                        <li><img src="assets/profile/Images/Jobicon.png"><span id="profile-profession">Software Engineer</span></li>
+                        <li><img src="assets/profile/Images/studyicon.png"><span id="profile-education">Studies at OAMK</span></li>
+                        <li><img src="assets/profile/Images/location.jpg"> Lives in&nbsp;<span id="profile-location">Dhaka,Bangladesh</span></li>
+                        <li><img src="assets/profile/Images/location.jpg"> From&nbsp;<span id="profile-country">Oulu,Finland</span></li>
                     </ul>
                 </div>
 
@@ -129,11 +129,11 @@
 
 
             <div class="post-col">
-                <div class="Write-post-container">
+                <div class="Write-post-container" id="profile-posts">
                     <div class="user-profile">
-                        <img src="assets/profile/Images/profile-3.png">
+                        <img src="img/default-profile.jpg" id="profile-image-2">
                         <div>
-                            <p>Branden Dio</p>
+                            <p id="profile-name-2">Branden Dio</p>
                             <small>Public<i class="fa-regular fa-angle-down"></i></small>
                         </div>
                     </div>
@@ -150,51 +150,16 @@
                             </div>
                             <input type="submit" value="Post" class="btn btn-primary" id="post-btn">
                         </form>
-                        <div class="image-preview"></div>
+                        <div class="image-preview" id="image-preview"></div>
                     </div>
                     <hr>
                 </div>
-
-                <div class="post-container">
-                    <div class="post-row">
-                        <div class="user-profile">
-                            <img src="assets/profile/Images/profile-6.png">
-                            <div>
-                                <p>Ashif</p>
-                                <span>April 14 2023, 11:23 pm</span>
-                            </div>
-                        </div>
-                        <a href="#"><i class="fas fa-ellipsis-v"></i></a>
-                    </div>
-                    <p class="post-text">As a group we care we share and we devide our work with each other.<br>Be with
-                        <span>Connect Me </span> For some better experiance of a social media platform<a
-                            href="#">#ConnectMe</a>
-                        <a href="#">#Group-E</a> <a href="#">#Web_Programming_Project</a>
-                    </p>
-                    <img src="assets/profile/Images/post-4.jpg" class="post-img">
-
-                    <div class="post-row">
-                        <div class="activity-icons">
-                            <div><img src="assets/profile/Images/Likebutton.png">150</div>
-                            <div><img src="assets/profile/Images/commentbtn.png">14</div>
-                            <div><img src="assets/profile/Images/sharebutton.png">2</div>
-
-                        </div>
-
-                        <div class="post-profile-icon">
-                            <img src="assets/profile/Images/profile-1.jpg"> <i class="fas fa-caret-down"></i>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-
+                <!-- posts -->
             </div>
         </div>
     </div>
 
+    <script src="js/common.js"></script>
     <script src="js/profile.js"></script>
 </body>
 

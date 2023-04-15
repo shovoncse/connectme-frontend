@@ -894,10 +894,19 @@ main .container .right {
 
 }
 
+.no-post-found {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #626262;
+    margin: 50px 20px;
+
+}
+
 .profile-pic {
     width: 100px;
     margin-right: 20px;
-    border-radius: 6px;
+    border-radius: 50px;
     padding: 2px;
     background: #fff;
 }
@@ -1001,6 +1010,7 @@ main .container .right {
 .post-col {
     margin-left: 20px;
     background: white;
+    width: 60%;
 }
 
 .profile-intro {
