@@ -1,24 +1,49 @@
-// nav bar & left sidebar
-try {
-    const user = JSON.parse(localStorage.getItem("cm-data"));
-    if (user.image) {
-        document.querySelector('#nav-user-logo').src = user.image;
-
-        const leftlogo = document.querySelector('.left .profile-photo img');
-        if (leftlogo) {
-            leftlogo.src = user.image;
-            const userName = document.getElementById("user-name");
-            userName.innerHTML = user.name;
-        }
-        const postAreaLogo = document.querySelector('#home-post-area-img');
-        if (postAreaLogo) {
-            postAreaLogo.src = user.image;
-        }
-    }
-} catch (e) {
-    console.log(e);
+let user = localStorage.getItem("cm-data");
+if(user && user != 'undefined'){
+    user = JSON.parse(user);
+}else{
+    resetLocalStorage();
 }
 
+// dom loaded
+document.addEventListener('DOMContentLoaded', async () => {
+    // nav bar & left sidebar
+    try {
+        if (user.image) {
+            document.querySelector('#nav-user-logo').src = user.image;
+
+            const leftlogo = document.querySelector('.left .profile-photo img');
+            if (leftlogo) {
+                leftlogo.src = user.image;
+                const userName = document.getElementById("user-name");
+                userName.innerHTML = user.name;
+            }
+            const postAreaLogo = document.querySelector('#home-post-area-img');
+            if (postAreaLogo) {
+                postAreaLogo.src = user.image;
+            }
+        }
+
+        if (user.accessToken) {
+            const requestOptions = {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + user.accessToken
+                }
+            };
+
+            const checkUsername = await apiRequest(`http://localhost:3001/api/users/verify_username/${user.username}`, requestOptions);
+
+            if (checkUsername.available) {
+                resetLocalStorage();
+            }
+        }
+    } catch (e) {
+        console.log(e);
+    }
+
+})
 
 // set loader function
 function loader(status) {
@@ -183,7 +208,7 @@ function resetForm(txtInputId, imagePreviewId, inputId) {
     const input = document.getElementById(inputId);
     const imagePreview = document.getElementById(imagePreviewId);
     const txtInput = document.getElementById(txtInputId);
-    
+
     txtInput.value = ""
     imagePreview.innerHTML = '';
     imagePreview.style.display = 'none';

@@ -150,27 +150,27 @@
                         <input type="text" id="username" name="username">
                         <label for="profile-image">Profile Image:</label>
                         <div class="file-upload">
-                            <div class="image-upload">
-                                <label for="profile-upload-btn">
+                            <div class="image-upload profile-image-area">
+                                <label for="profile-upload-btn" class="upload-label">
                                     <img src="img/image-upload.png" alt="Upload Image">
                                 </label>
                                 <input type="file" id="profile-upload-btn" name="profile-image" accept="image/*">
                             </div>
-                            <div class="image-preview"></div>
+                            <div class="image-preview" id="profile-image-preview"></div>
                         </div>
                         <label for="cover-image">Cover Image:</label>
                         <div class="file-upload">
-                            <div class="image-upload">
-                                <label for="cover-upload-btn">
+                            <div class="image-upload cover-image-area">
+                                <label for="cover-upload-btn"  class="upload-label">
                                     <img src="img/image-upload.png" alt="Upload Image">
                                 </label>
                                 <input type="file" id="cover-upload-btn" name="cover-image" accept="image/*">
                             </div>
-                            <div class="image-preview"></div>
+                            <div class="image-preview" id="cover-image-preview"></div>
                         </div>
                     </div>
                 </form>
-                <button type="button" class="btn btn-primary">Update</button>
+                <button type="button" class="btn btn-primary" id="update-profile">Update</button>
             </div>
 
 
