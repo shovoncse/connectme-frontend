@@ -37,15 +37,15 @@
     <!---------------------------Main-------------------------->
 
     <div class="profile-container">
-        <img src="assets/profile/Images/coverpic.jpg" class="cover-pic">
+        <img src="img/default-cover.jpg" class="cover-pic" id="profile-cover-image">
         <div class="profile-details">
 
             <div class="pd-left">
                 <div class="pd-row">
-                    <img src="assets/profile/Images/profile-6.png" class="profile-pic">
+                    <img src="img/default-profile.jpg" class="profile-pic" id="profile-image">
                     <div>
-                        <h3>Nicolas Jonathon</h3>
-                        <p>220 Friends- 20 Mutual</p>
+                        <h3 id="profile-name">Nicolas Jonathon</h3>
+                        <p id="profile-username">@username</p>
 
                         <img src="assets/profile/Images/profile-4.jpg">
                         <img src="assets/profile/Images/profile-5.png">
@@ -65,13 +65,13 @@
 
                 <div class="profile-intro">
                     <h3>Intro</h3>
-                    <p class="intro-text">Work hard till you succeed</p>
+                    <p class="intro-text" id="profile-bio">Work hard till you succeed</p>
                     <hr>
                     <ul>
-                        <li><img src="assets/profile/Images/Jobicon.png">Software Engineer</li>
-                        <li><img src="assets/profile/Images/studyicon.png">Studies at OAMK</li>
-                        <li><img src="assets/profile/Images/location.jpg"> Dhaka,Bangladesh</li>
-                        <li><img src="assets/profile/Images/location.jpg"> Lives in Oulu,Finland</li>
+                        <li><img src="assets/profile/Images/Jobicon.png"><span id="profile-profession">Software Engineer</span></li>
+                        <li><img src="assets/profile/Images/studyicon.png"><span id="profile-education">Studies at OAMK</span></li>
+                        <li><img src="assets/profile/Images/location.jpg"> Lives in&nbsp;<span id="profile-location">Dhaka,Bangladesh</span></li>
+                        <li><img src="assets/profile/Images/location.jpg"> From&nbsp;<span id="profile-country">Oulu,Finland</span></li>
                     </ul>
                 </div>
 
@@ -177,7 +177,9 @@
         </div>
     </div>
 
-    <script src="js/profile.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/profile/profile-common.js"></script>
+    <script src="js/profile/update-profile.js"></script>
 </body>
 
 </html>

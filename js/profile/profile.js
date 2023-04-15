@@ -68,35 +68,19 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 // profile dom manupulation
 function populateProfile({ user, posts }) {
-  const profileImage = document.getElementById("profile-image");
-  const profileImage2 = document.getElementById("profile-image-2");
-  const coverImage = document.getElementById("profile-cover-image");
-  const profileName = document.getElementById("profile-name");
-  const profileName2 = document.getElementById("profile-name-2");
-  const profileUsername = document.getElementById("profile-username");
-  const profileLoaction = document.getElementById("profile-location");
-  const profileCountry = document.getElementById("profile-country");
-  const profileProfession = document.getElementById("profile-profession");
-  const profileBio = document.getElementById("profile-bio");
+  generalProfileData(user);
   const profilePosts = document.getElementById("profile-posts");
-
-  profileImage.src = user.image;
-  profileImage2.src = user.image;
-  coverImage.src = user.cover;
-  profileName.innerHTML = user.name;
+  const profileName2 = document.getElementById("profile-name-2");
   profileName2.innerHTML = user.name;
-  profileUsername.innerHTML = '@' + user.username;
-  profileLoaction.innerHTML = user.location;
-  profileCountry.innerHTML = user.country;
-  profileProfession.innerHTML = user.profession;
-  profileBio.innerHTML = user.bio;
-
+  const profileImage2 = document.getElementById("profile-image-2");
+  profileImage2.src = user.image;
+  
   if (posts.length) {
     profilePosts.insertAdjacentHTML("afterend", profilePostHtml(posts));
   } else {
     profilePosts.insertAdjacentHTML("afterend", `<p class="no-post-found">No posts found</p>`);
   }
-
+  
 }
 
 // generate multiple profile post html
