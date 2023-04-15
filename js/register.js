@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function() {
                       resolve();
                     }, 1000);
                   }).then(() => {
-                    window.location.href = "../connectme-frontend/profile.html";
+                    window.location.href = "../connectme-frontend/index.html";
                   });
             })
             .catch(error => {
@@ -77,3 +77,14 @@ document.addEventListener("DOMContentLoaded", function() {
       });
   }
 });
+
+
+// alert
+function showAlert(txt, icon, timer = 3000, showConfirmButton = false ) {
+    Swal.fire({
+        icon: icon,
+        text: txt,
+        showConfirmButton: showConfirmButton,
+        timer: timer
+    })
+  }
