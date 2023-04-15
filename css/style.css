@@ -39,6 +39,11 @@ body {
     aspect-ratio: 1/1;
     border-radius: 50%;
     overflow: hidden;
+    cursor: pointer;
+}
+
+.logo {
+    cursor: pointer;
 }
 
 img {

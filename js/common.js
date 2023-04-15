@@ -1,3 +1,12 @@
+// nav bar
+try {
+    const user = JSON.parse(localStorage.getItem("cm-data"));
+    if (user) {
+        document.querySelector('#nav-user-logo').src = user.image;
+    }
+}catch (e) {
+    console.log(e);
+}
 // set loader function
 function loader(status) {
     const loaderHtml = '<div class="loader"><img src="https://i.gifer.com/ZZ5H.gif"/></div>';
