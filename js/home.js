@@ -9,12 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let loggedInUser = "Demo User";
     if (cmData && cmToken) {
         try {
-            // parse the cm-data
             const cmDataParsed = JSON.parse(cmData);
-            // get the user name element
             const userName = document.getElementById("user-name");
             loggedInUser = cmDataParsed.name;
-            // set the user name
             userName.innerHTML = cmDataParsed.name;
 
 
@@ -46,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     let posts = "";
                     // loop through the posts
                     data.forEach(post => {
-                        posts += generatePostHtml(post.user.name, post.postContent, post.updatedAt, post.image);
+                        posts += generatePostHtml(post);
                     });
                     // add the posts to the posts container
                     postsArea.insertAdjacentHTML("afterend", posts);
@@ -177,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const postsArea = document.querySelector(".create-post");
 
                 // add the posts to the posts container
-                postsArea.insertAdjacentHTML("afterend", generatePostHtml(loggedInUser, data.postContent, data.updatedAt, data.image));
+                postsArea.insertAdjacentHTML("afterend", generatePostHtml(data));
 
                 document.getElementById("post-text").value = ""
                 imagePreview.innerHTML = '';

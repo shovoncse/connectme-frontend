@@ -34,6 +34,10 @@ body {
 
 }
 
+.c-pointer {
+    cursor: pointer;
+}
+
 .profile-photo {
     width: 2.7rem;
     aspect-ratio: 1/1;

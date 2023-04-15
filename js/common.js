@@ -1,12 +1,19 @@
-// nav bar
+// nav bar & left sidebar
 try {
     const user = JSON.parse(localStorage.getItem("cm-data"));
-    if (user) {
+    if (user.image) {
         document.querySelector('#nav-user-logo').src = user.image;
+
+        const leftlogo = document.querySelector('.left .profile-photo img');
+        if (leftlogo) {
+            leftlogo.src = user.image;
+        }
     }
 }catch (e) {
     console.log(e);
 }
+
+
 // set loader function
 function loader(status) {
     const loaderHtml = '<div class="loader"><img src="https://i.gifer.com/ZZ5H.gif"/></div>';
@@ -83,8 +90,8 @@ menuItems.forEach(item => {
 })
 
 // home post html
-function generatePostHtml(name, content, time, image) {
-    return `<div class="feeds"> <div class="feed"> <div class="head"> <div class="user"> <div class="profile-photo"> <img src="img/profile-1.jpg" alt=""> </div> <div class="ingo"> <h3>${name}</h3> <small> ${getRelativeTime(time)}</small> </div> </div> <span class="edit"> <i class="uil uil-ellipsis-h"></i> </span> </div> <div id="post-content" class="post-content"> <p>${content}</p> </div> <div class="photo"> ${image ? `<img src="${image}" alt="">` : ''} </div> <div class="action-buttons"> <div class="interation-button"> <span> <i class="uil uil-heart"></i></span> <span> <i class="uil uil-comment-dots"></i> </span> <span> <i class="uil uil-share-alt"></i></span> </div> <div class="bookmark"> <span> <i class="uil uil-bookmark"></i></span> </div> </div> <div> <div class="row"> <div class="col-md-12"> <div class="comment"> <div class="comment-body"> <input type="text" placeholder="Add a comment..." class="comment-box"> <span class="uil-message"></span> </div> </div> </div> </div> </div> </div> </div>`
+function generatePostHtml({ image, postContent, updatedAt, user  }) {
+    return `<div class="feeds"> <div class="feed"> <div class="head"> <div class="user"> <div class="profile-photo" onclick="window.location.href='profile.html?id=${user.username}'"> <img src="${user.image}" alt=""> </div> <div class="ingo"> <h3 class="c-pointer" onclick="window.location.href='profile.html?id=${user.username}'" >${user.name}</h3> <small> ${getRelativeTime(updatedAt)}</small> </div> </div> <span class="edit"> <i class="uil uil-ellipsis-h"></i> </span> </div> <div id="post-content" class="post-content"> <p>${postContent}</p> </div> <div class="photo"> ${image ? `<img src="${image}" alt="">` : ''} </div> <div class="action-buttons"> <div class="interation-button"> <span> <i class="uil uil-heart"></i></span> <span> <i class="uil uil-comment-dots"></i> </span> <span> <i class="uil uil-share-alt"></i></span> </div> <div class="bookmark"> <span> <i class="uil uil-bookmark"></i></span> </div> </div> <div> <div class="row"> <div class="col-md-12"> <div class="comment"> <div class="comment-body"> <input type="text" placeholder="Add a comment..." class="comment-box"> <span class="uil-message"></span> </div> </div> </div> </div> </div> </div> </div>`
 }
 
 // get relative time
