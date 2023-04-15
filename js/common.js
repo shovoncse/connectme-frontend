@@ -7,9 +7,11 @@ try {
         const leftlogo = document.querySelector('.left .profile-photo img');
         if (leftlogo) {
             leftlogo.src = user.image;
+            const userName = document.getElementById("user-name");
+            userName.innerHTML = user.name;
         }
     }
-}catch (e) {
+} catch (e) {
     console.log(e);
 }
 
@@ -58,6 +60,7 @@ async function apiRequest(url, requestOptions) {
                 return data;
             })
             .catch(error => {
+                console.log(error);
                 // resetLocalStorage();
                 return error;
             });
@@ -90,7 +93,7 @@ menuItems.forEach(item => {
 })
 
 // home post html
-function generatePostHtml({ image, postContent, updatedAt, user  }) {
+function generatePostHtml({ image, postContent, updatedAt, user }) {
     return `<div class="feeds"> <div class="feed"> <div class="head"> <div class="user"> <div class="profile-photo" onclick="window.location.href='profile.html?id=${user.username}'"> <img src="${user.image}" alt=""> </div> <div class="ingo"> <h3 class="c-pointer" onclick="window.location.href='profile.html?id=${user.username}'" >${user.name}</h3> <small> ${getRelativeTime(updatedAt)}</small> </div> </div> <span class="edit"> <i class="uil uil-ellipsis-h"></i> </span> </div> <div id="post-content" class="post-content"> <p>${postContent}</p> </div> <div class="photo"> ${image ? `<img src="${image}" alt="">` : ''} </div> <div class="action-buttons"> <div class="interation-button"> <span> <i class="uil uil-heart"></i></span> <span> <i class="uil uil-comment-dots"></i> </span> <span> <i class="uil uil-share-alt"></i></span> </div> <div class="bookmark"> <span> <i class="uil uil-bookmark"></i></span> </div> </div> <div> <div class="row"> <div class="col-md-12"> <div class="comment"> <div class="comment-body"> <input type="text" placeholder="Add a comment..." class="comment-box"> <span class="uil-message"></span> </div> </div> </div> </div> </div> </div> </div>`
 }
 
@@ -168,4 +171,17 @@ async function imageHostToCloud(inputId) {
     }
 
     return imageUrl;
+}
+
+
+// reset form
+function resetForm(txtInputId, imagePreviewId, inputId) {
+    const input = document.getElementById(inputId);
+    const imagePreview = document.getElementById(imagePreviewId);
+    const txtInput = document.getElementById(txtInputId);
+    
+    txtInput.value = ""
+    imagePreview.innerHTML = '';
+    imagePreview.style.display = 'none';
+    input.files[0] = null;
 }

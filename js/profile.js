@@ -56,11 +56,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const postData = await apiRequest(`http://localhost:3001/api/posts/`, requestOptions);
 
-    console.log(postData);
     if (postData) {
       const postContainer = document.getElementById('profile-posts');
       postContainer.insertAdjacentHTML('afterend', generateProfilePostHtml(postData));
-      form.reset();
+      resetForm('post-text', 'image-preview', 'upload-btn')
     }
     loader(false);
   });
