@@ -1,7 +1,7 @@
 // wait for the DOM to be loaded
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // check if any user already logged in
-    if(localStorage.getItem("cm-token")){
+    if (localStorage.getItem("cm-token")) {
         // if user is already logged in, redirect to home page
         window.location.href = "../connectme-frontend/index.html";
     } else {
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // get the login button element
         const loginButton = document.getElementById("login-button");
         // add event listener to login button
-        loginButton.addEventListener("click", function(e) {
+        loginButton.addEventListener("click", function (e) {
             // prevent default action
             e.preventDefault();
             // get the values from the form
@@ -17,13 +17,13 @@ document.addEventListener("DOMContentLoaded", function() {
             const password = document.getElementById("password").value;
             // check for empty values
             if (!email || !password) {
-                alert("Please fill in all the fields.");
+                showAlert("Please fill in all the fields.", "warning", 5000, true);
                 return;
             }
             // check the format of email
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-                alert("Please enter a valid email address.");
+                showAlert("Please enter a valid email address.", "warning", 5000, true);
                 return;
             }
             // create the API request options object
@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 .then(response => {
                     if (response.ok) {
                         // handle success
-                        alert("Login successful.");
                         return response.json();
                     } else {
                         // handle errors
@@ -55,12 +54,19 @@ document.addEventListener("DOMContentLoaded", function() {
                     // save the token in local storage
                     localStorage.setItem("cm-token", data.accessToken);
                     localStorage.setItem("cm-data", JSON.stringify(data));
+                    showAlert("Login successful.", "success", 1000, true);
                     // redirect to home page
-                    window.location.href = "../connectme-frontend/index.html";
+                    new Promise((resolve, reject) => {
+                        setTimeout(() => {
+                            resolve();
+                        }, 1000);
+                    }).then(() => {
+                        window.location.href = "../connectme-frontend/index.html";
+                    });
                 })
                 .catch(error => {
                     // handle errors
-                    alert(error.message);
+                    showAlert(error.message, "error", 8000, true);
                 });
         });
     }

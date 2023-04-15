@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       // Check if required fields are filled
       if (!name || !bio || !profession || !education || !location || !country || !username) {
         loader(false);
-        alert("Please fill all fields");
+        showAlert("Please fill all fields", "error", 8000, true);
         return;
       }
 
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       const nameRegex = /^[a-zA-Z\s]*$/;
       if (!nameRegex.test(name)) {
         loader(false);
-        alert("Name should contain only letters");
+        showAlert("Name should contain only letters", "warning", 8000, true);
         return;
       }
 
@@ -76,8 +76,15 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       loader(false);
       if (updateData) {
-        localStorage.setItem("cm-data", JSON.stringify(updateData));
-        window.location.href = "../connectme-frontend/profile.html";
+        showAlert("Updated Successfully!", "success", 1000);
+        new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve();
+          }, 1000);
+        }).then(() => {
+          localStorage.setItem("cm-data", JSON.stringify(updateData));
+          window.location.href = "../connectme-frontend/profile.html";
+        });
       }
 
     });
@@ -163,13 +170,13 @@ async function validateUsername(username) {
 
   // check if the username is between 6-20 characters long
   if (username.length < 6 || username.length > 20) {
-    alert("Username must be between 6-20 characters");
+    showAlert("Username must be between 6-20 characters", "info", 8000, true);
     return false;
   }
 
   // check if the username contains only alphanumeric characters and underscores
   if (!/^[a-zA-Z0-9_]+$/.test(username)) {
-    alert("Username can only contain alphanumeric characters and underscores");
+    showAlert("Username can only contain alphanumeric characters and underscores", "info", 8000, true);
     return false;
   }
 
@@ -180,13 +187,15 @@ async function validateUsername(username) {
       "Authorization": "Bearer " + cmToken
     }
   };
-
+  if(username === user.username){
+    return true;
+  }
   const checkUsername = await apiRequest(`http://localhost:3001/api/users/verify_username/${username}`, requestOptions);
 
   if (checkUsername && checkUsername.available) {
     return true;
   } else {
-    alert("Username already taken");
+    showAlert("Username already taken", "warning", 8000, true);
     return false;
   }
 }
