@@ -61,8 +61,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     if (postData) {
       const postContainer = document.getElementById('profile-posts');
-      postContainer.insertAdjacentHTML('afterend', generateProfilePostHtml(postData));
+      postContainer.insertAdjacentHTML('afterend', generatePostHtml(postData));
       resetForm('post-text', 'image-preview', 'upload-btn')
+
+      // remove no post found if class exist
+      const noPostFound = document.querySelector(".no-post-found");
+      if (noPostFound) {
+        noPostFound.remove();
+      }
     }
     loader(false);
   });
@@ -95,38 +101,11 @@ function populateProfile({ user, posts }) {
 function profilePostHtml(posts) {
   let html = "";
   posts.forEach(post => {
-    html += generateProfilePostHtml(post);
+    html += generatePostHtml(post);
   });
   return html;
 }
 
-// generate single profile post html
-function generateProfilePostHtml(post) {
-  return `
-  <div class="post-container">
-                    <div class="post-row">
-                        <div class="user-profile">
-                            <img src="${post.user.image}">
-                            <div>
-                                <p>${post.user.name}</p>
-                                <span>${getRelativeTime(post.createdAt)}</span>
-                            </div>
-                        </div>
-                        <a href="#"><i class="fas fa-ellipsis-v"></i></a>
-                    </div>
-                    <p class="post-text">${post.postContent}</p>
-                    ${post.image ? `<img src="${post.image}" class="post-img">` : ''}
-                    <div class="post-row">
-                        <div class="activity-icons">
-                            <div><img src="assets/profile/Images/Likebutton.png">${Math.floor(Math.random() * 28)}</div>
-                            <div><img src="assets/profile/Images/commentbtn.png">${Math.floor(Math.random() * 12)}</div>
-                            <div><img src="assets/profile/Images/sharebutton.png">${Math.floor(Math.random() * 5)}</div>
-
-                        </div>
-
-                    </div>
-                </div>`
-}
 
 // view other profile
 function viewIngOthersProfile(otherProfile = true) {

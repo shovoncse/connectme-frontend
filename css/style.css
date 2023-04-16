@@ -1385,3 +1385,36 @@ main .container .right {
 .show {
     display: block;
 }
+
+/* post design - profile page */
+.post-col .feeds .feed {
+    margin: 1rem 0;
+    background: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    line-height: 1.5;
+    font-size: 0.85rem;
+}
+
+.post-col .feed .head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-col .feed .user {
+    display: flex;
+    gap: 1rem;
+}
+
+.post-col .feed .photo {
+    /* margin: 0.7rem 0; */
+    overflow: hidden;
+}
+
+.post-col .feed .action-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.6rem;
+    font-size: 1.4rem;
+}

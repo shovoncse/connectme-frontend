@@ -154,9 +154,18 @@ async function deletePost(id) {
             const deletePost = await apiRequest(`http://localhost:3001/api/posts/${id}`, requestOptions);
 
             if (deletePost) {
-                showAlert("Your post has been deleted.", "success");
                 const post = document.getElementById('post_' + id);
                 post.remove();
+
+                // add no post message if no post
+                const posts = document.querySelectorAll('.feeds');
+                if (posts.length == 0) {
+                    const profilePosts = document.getElementById("profile-posts");
+                    profilePosts.insertAdjacentHTML("afterend", `<p class="no-post-found">No posts found</p>`);
+                    
+                }
+
+                showAlert("Your post has been deleted.", "success", 1000);
             } else {
                 showAlert(deletePost, "error");
             }
