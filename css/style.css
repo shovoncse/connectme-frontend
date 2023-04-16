@@ -1210,7 +1210,7 @@ main .container .right {
 }
 
 .post-text {
-    color: #9a9a9a;
+    color: #000;
     margin: 15px 0;
     font-size: 15px;
 
@@ -1294,4 +1294,8 @@ main .container .right {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.hide {
+    display: none!important;
 }

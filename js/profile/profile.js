@@ -7,9 +7,12 @@ document.addEventListener("DOMContentLoaded", async function () {
   const cmToken = localStorage.getItem("cm-token");
 
   if (cmToken) {
-
+    
     if (!userId) {
       userId = user.username || user.email;
+      viewIngOthersProfile(false);
+    }else{
+      viewIngOthersProfile(true);
     }
 
     const requestOptions = {
@@ -77,6 +80,11 @@ function populateProfile({ user, posts }) {
   
   if (posts.length) {
     profilePosts.insertAdjacentHTML("afterend", profilePostHtml(posts));
+    // remove no post found if class exist
+    const noPostFound = document.querySelector(".no-post-found");
+    if (noPostFound) {
+      noPostFound.remove();
+    }
   } else {
     profilePosts.insertAdjacentHTML("afterend", `<p class="no-post-found">No posts found</p>`);
   }
@@ -116,10 +124,29 @@ function generateProfilePostHtml(post) {
 
                         </div>
 
-                        <div class="post-profile-icon">
-                            <img src="${post.image}">
-                        </div>
-
                     </div>
                 </div>`
+}
+
+// view other profile
+function viewIngOthersProfile(otherProfile = true) {
+
+  const postArea = document.getElementById("profile-posts");
+  const editProfile = document.getElementById("edit-profile");
+  const sendSms = document.getElementById("send-sms");
+  const addFriend = document.getElementById("add-friend");
+
+  if (otherProfile) {
+    postArea.classList.add("hide");
+    editProfile.classList.add("hide");
+    sendSms.classList.remove("hide");
+    addFriend.classList.remove("hide");
+  } 
+  else {
+    postArea.classList.remove("hide");
+    editProfile.classList.remove("hide");
+    sendSms.classList.add("hide");
+    addFriend.classList.add("hide");
+  }
+
 }
