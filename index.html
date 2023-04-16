@@ -18,7 +18,7 @@
     <!--------Navbar---------->
     <nav>
         <div class="container">
-            <h2 class="logo">
+            <h2 class="logo" onclick="window.location.href='index.html'">
                 <img src="img/logo1.png" alt="" style="width:270px;">
             </h2>
             <div class="search-bar">
@@ -27,8 +27,8 @@
             </div>
             <div class="create">
                 <label class="btn btn-primary" for="create-post">Create</label>
-                <div class="profile-photo">
-                    <img src="img/profile-1.jpg">
+                <div class="profile-photo" onclick="window.location.href='profile.html'">
+                    <img src="img/profile-1.jpg" id="nav-user-logo">
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
         <div class="container">
             <!---------------------------Left-------------------------->
             <div class="left">
-                <a href="" class="profile">
+                <a href="profile.html" class="profile">
                     <div class="profile-photo">
                         <img src="img/profile-1.jpg">
                     </div>
@@ -127,7 +127,7 @@
                 <div class="create-post">
                     <form class="create-post-inner" id="post-form">
                         <div class="profile-photo">
-                            <img src="img/profile-1.jpg">
+                            <img src="img/profile-1.jpg" id="home-post-area-img">
                         </div>
                         <input type="text" placeholder="What is going on Buddy?" id="post-text" style="padding-left: 8px;">
                         <div class="image-upload">
@@ -138,7 +138,7 @@
                         </div>
                         <input type="submit" value="Post" class="btn btn-primary" id="post-btn">
                     </form>
-                    <div class="image-preview"></div>
+                    <div class="image-preview" id="image-preview"></div>
                 </div>
             </div>
             <!------------------End of Middle section------------------------------>
@@ -263,7 +263,7 @@
             </div>
             <!---------------------------Right end-------------------------->
     </main>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="js/common.js"></script>
     <script src="js/home.js"></script>
 </body>

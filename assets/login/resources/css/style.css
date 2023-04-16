@@ -23,7 +23,7 @@ a {
   background: url(../img/signin-illustration.png) center / cover;
 }
 .signin-form-inner {
-  z-index: 9999;
+  z-index: 1;
   position: relative;
   max-width: 400px;
   margin: 0 auto;
@@ -31,7 +31,7 @@ a {
   background-color: #fff;
 }
 .signin .position-absolute {
-  z-index: 9999;
+  z-index: 1;
 }
 .signin input:focus,
 .btn:focus {
