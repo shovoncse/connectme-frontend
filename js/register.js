@@ -21,14 +21,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
           // check for empty values
           if (!name || !email || !password) {
-              alert("Please fill in all the fields.");
+              showAlert("Please fill in all the fields.", "warning", 5000, true);
               return;
           }
 
           // check the format of email
           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
           if (!emailRegex.test(email)) {
-              alert("Please enter a valid email address.");
+              showAlert("Please enter a valid email address.", "warning", 5000, true);
               return;
           }
 
@@ -50,8 +50,6 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(response => {
 
                 if (response.ok) {
-                    // handle success
-                    alert("Registration successful.");
                     return response.json();
                 } else {
                     // handle errors
@@ -61,15 +59,32 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             })
             .then(data => {
+                showAlert("Registration Successful.", "success", 1000, true);
                 // save the token in local storage
                 localStorage.setItem("cm-token", data.accessToken);
                 localStorage.setItem("cm-data", JSON.stringify(data));
-                // redirect to home page
-                window.location.href = "../connectme-frontend/index.html";
+                new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                      resolve();
+                    }, 1000);
+                  }).then(() => {
+                    window.location.href = "../connectme-frontend/index.html";
+                  });
             })
             .catch(error => {
-                alert(error.message);
+                showAlert(error.message, "error", 8000, true);
             });
       });
   }
 });
+
+
+// alert
+function showAlert(txt, icon, timer = 3000, showConfirmButton = false ) {
+    Swal.fire({
+        icon: icon,
+        text: txt,
+        showConfirmButton: showConfirmButton,
+        timer: timer
+    })
+  }

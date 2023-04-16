@@ -19,7 +19,7 @@
     <!--------Navbar---------->
     <nav>
         <div class="container">
-            <h2 class="logo">
+            <h2 class="logo" onclick="window.location.href='index.html'">
                 <img src="img/logo1.png" alt="" style="width:270px;">
             </h2>
             <div class="search-bar">
@@ -28,8 +28,8 @@
             </div>
             <div class="create">
                 <label class="btn btn-primary" for="create-post">Create</label>
-                <div class="profile-photo">
-                    <img src="img/profile-1.jpg">
+                <div class="profile-photo" onclick="window.location.href='profile.html'">
+                    <img src="img/profile-1.jpg" id="nav-user-logo">
                 </div>
             </div>
         </div>
@@ -37,15 +37,15 @@
     <!---------------------------Main-------------------------->
 
     <div class="profile-container">
-        <img src="assets/profile/Images/coverpic.jpg" class="cover-pic">
+        <img src="img/default-cover.jpg" class="cover-pic" id="profile-cover-image">
         <div class="profile-details">
 
             <div class="pd-left">
                 <div class="pd-row">
-                    <img src="assets/profile/Images/profile-6.png" class="profile-pic">
+                    <img src="img/default-profile.jpg" class="profile-pic" id="profile-image">
                     <div>
-                        <h3>Nicolas Jonathon</h3>
-                        <p>220 Friends- 20 Mutual</p>
+                        <h3 id="profile-name">Nicolas Jonathon</h3>
+                        <p id="profile-username">@username</p>
 
                         <img src="assets/profile/Images/profile-4.jpg">
                         <img src="assets/profile/Images/profile-5.png">
@@ -65,13 +65,13 @@
 
                 <div class="profile-intro">
                     <h3>Intro</h3>
-                    <p class="intro-text">Work hard till you succeed</p>
+                    <p class="intro-text" id="profile-bio">Work hard till you succeed</p>
                     <hr>
                     <ul>
-                        <li><img src="assets/profile/Images/Jobicon.png">Software Engineer</li>
-                        <li><img src="assets/profile/Images/studyicon.png">Studies at OAMK</li>
-                        <li><img src="assets/profile/Images/location.jpg"> Dhaka,Bangladesh</li>
-                        <li><img src="assets/profile/Images/location.jpg"> Lives in Oulu,Finland</li>
+                        <li><img src="assets/profile/Images/Jobicon.png"><span id="profile-profession">Software Engineer</span></li>
+                        <li><img src="assets/profile/Images/studyicon.png"><span id="profile-education">Studies at OAMK</span></li>
+                        <li><img src="assets/profile/Images/location.jpg"> Lives in&nbsp;<span id="profile-location">Dhaka,Bangladesh</span></li>
+                        <li><img src="assets/profile/Images/location.jpg"> From&nbsp;<span id="profile-country">Oulu,Finland</span></li>
                     </ul>
                 </div>
 
@@ -146,36 +146,40 @@
                         <input type="text" id="country" name="country" value="Finland">
                     </div>
                     <div class="form-right">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username">
                         <label for="profile-image">Profile Image:</label>
                         <div class="file-upload">
-                            <div class="image-upload">
-                                <label for="profile-upload-btn">
+                            <div class="image-upload profile-image-area">
+                                <label for="profile-upload-btn" class="upload-label">
                                     <img src="img/image-upload.png" alt="Upload Image">
                                 </label>
                                 <input type="file" id="profile-upload-btn" name="profile-image" accept="image/*">
                             </div>
-                            <div class="image-preview"></div>
+                            <div class="image-preview" id="profile-image-preview"></div>
                         </div>
                         <label for="cover-image">Cover Image:</label>
                         <div class="file-upload">
-                            <div class="image-upload">
-                                <label for="cover-upload-btn">
+                            <div class="image-upload cover-image-area">
+                                <label for="cover-upload-btn"  class="upload-label">
                                     <img src="img/image-upload.png" alt="Upload Image">
                                 </label>
                                 <input type="file" id="cover-upload-btn" name="cover-image" accept="image/*">
                             </div>
-                            <div class="image-preview"></div>
+                            <div class="image-preview" id="cover-image-preview"></div>
                         </div>
                     </div>
                 </form>
-                <button type="button" class="btn btn-primary">Update</button>
+                <button type="button" class="btn btn-primary" id="update-profile">Update</button>
             </div>
 
 
         </div>
     </div>
-
-    <script src="js/profile.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="js/common.js"></script>
+    <script src="js/profile/profile-common.js"></script>
+    <script src="js/profile/update-profile.js"></script>
 </body>
 
 </html>
