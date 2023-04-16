@@ -65,7 +65,6 @@ function loader(status) {
     }
 }
 
-
 // function reset local storage and redirect to login page
 function resetLocalStorage() {
     localStorage.removeItem("cm-data");
@@ -109,6 +108,7 @@ const changeActiveItem = () => {
         item.classList.remove('active');
     });
 };
+
 menuItems.forEach(item => {
     item.addEventListener('click', () => {
         changeActiveItem();
@@ -162,7 +162,7 @@ async function deletePost(id) {
                 if (posts.length == 0) {
                     const profilePosts = document.getElementById("profile-posts");
                     profilePosts.insertAdjacentHTML("afterend", `<p class="no-post-found">No posts found</p>`);
-                    
+
                 }
 
                 showAlert("Your post has been deleted.", "success", 1000);
@@ -173,22 +173,34 @@ async function deletePost(id) {
     })
 }
 
+let loggedInUser = user;
 // home post html
-function generatePostHtml({ _id, image, postContent, updatedAt, user: postUuser }) {
+function generatePostHtml({ _id, image, postContent, updatedAt, user }) {
     return `
     <div class="feeds" id="post_${_id}">
    <div class="feed">
       <div class="head">
          <div class="user">
-            <div class="profile-photo" onclick="window.location.href='profile.html?id=${postUuser.username}'"> 
-               <img src="${postUuser.image}" alt=""> 
+         ${loggedInUser.username == user.username ? `
+         <div class="profile-photo" onclick="window.location.href='profile.html'"> 
+               <img src="${user.image}" alt=""> 
             </div>
+         ` : `
+         <div class="profile-photo" onclick="window.location.href='profile.html?id=${user.username}'"> 
+               <img src="${user.image}" alt=""> 
+            </div>
+         `}
+            
             <div class="ingo">
-               <h3 class="c-pointer" onclick="window.location.href='profile.html?id=${postUuser.username}'" >${user.name}</h3>
+               ${loggedInUser.username == user.username ? `
+               <h3 class="c-pointer" onclick="window.location.href='profile.html'" >${user.name}</h3>
+         ` : `
+         <h3 class="c-pointer" onclick="window.location.href='profile.html?id=${user.username}'" >${user.name}</h3>
+         `}
                <small> ${getRelativeTime(updatedAt)}</small> 
             </div>
          </div>
-         ${postUuser.username == user.username ?
+         ${loggedInUser.username == user.username ?
             `
             <div class="dropdown">
                                 <span class="dropdown-toggle" onclick="toggleDropdown('${_id}')"><i
