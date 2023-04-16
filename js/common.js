@@ -1,7 +1,7 @@
 let user = localStorage.getItem("cm-data");
-if(user && user != 'undefined'){
+if (user && user != 'undefined') {
     user = JSON.parse(user);
-}else{
+} else {
     resetLocalStorage();
 }
 
@@ -121,9 +121,94 @@ menuItems.forEach(item => {
     })
 })
 
+
+// home menu dropdown
+function toggleDropdown(id) {
+    var dropdownMenu = document.getElementById(id);
+    dropdownMenu.classList.toggle("show");
+}
+
+// home post delete
+async function deletePost(id) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+
+            const requestOptions = {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + user.accessToken
+                }
+            };
+
+            const deletePost = await apiRequest(`http://localhost:3001/api/posts/${id}`, requestOptions);
+
+            if (deletePost) {
+                showAlert("Your post has been deleted.", "success");
+                const post = document.getElementById('post_' + id);
+                post.remove();
+            } else {
+                showAlert(deletePost, "error");
+            }
+        }
+    })
+}
+
 // home post html
-function generatePostHtml({ image, postContent, updatedAt, user }) {
-    return `<div class="feeds"> <div class="feed"> <div class="head"> <div class="user"> <div class="profile-photo" onclick="window.location.href='profile.html?id=${user.username}'"> <img src="${user.image}" alt=""> </div> <div class="ingo"> <h3 class="c-pointer" onclick="window.location.href='profile.html?id=${user.username}'" >${user.name}</h3> <small> ${getRelativeTime(updatedAt)}</small> </div> </div> <span class="edit"> <i class="uil uil-ellipsis-h"></i> </span> </div> <div id="post-content" class="post-content"> <p>${postContent}</p> </div> <div class="photo"> ${image ? `<img src="${image}" alt="">` : ''} </div> <div class="action-buttons"> <div class="interation-button"> <span> <i class="uil uil-heart"></i></span> <span> <i class="uil uil-comment-dots"></i> </span> <span> <i class="uil uil-share-alt"></i></span> </div> <div class="bookmark"> <span> <i class="uil uil-bookmark"></i></span> </div> </div> <div> <div class="row"> <div class="col-md-12"> <div class="comment"> <div class="comment-body"> <input type="text" placeholder="Add a comment..." class="comment-box"> <span class="uil-message"></span> </div> </div> </div> </div> </div> </div> </div>`
+function generatePostHtml({ _id, image, postContent, updatedAt, user: postUuser }) {
+    return `
+    <div class="feeds" id="post_${_id}">
+   <div class="feed">
+      <div class="head">
+         <div class="user">
+            <div class="profile-photo" onclick="window.location.href='profile.html?id=${postUuser.username}'"> 
+               <img src="${postUuser.image}" alt=""> 
+            </div>
+            <div class="ingo">
+               <h3 class="c-pointer" onclick="window.location.href='profile.html?id=${postUuser.username}'" >${user.name}</h3>
+               <small> ${getRelativeTime(updatedAt)}</small> 
+            </div>
+         </div>
+         ${postUuser.username == user.username ?
+            `
+            <div class="dropdown">
+                                <span class="dropdown-toggle" onclick="toggleDropdown('${_id}')"><i
+                                        class="uil uil-ellipsis-h"></i></span>
+                                <div class="dropdown-menu" id="${_id}">
+                                    <a class="dropdown-item" href="#">Edit</a>
+                                    <a class="dropdown-item" href="#" onclick="deletePost('${_id}')">Delete</a>
+                                </div>
+                            </div>
+            ` : ``
+        }
+      </div>
+      <div id="post-content" class="post-content">
+         <p>${postContent}</p>
+      </div>
+      <div class="photo"> ${image ? `<img src="${image}" alt="">` : ''} </div>
+      <div class="action-buttons">
+         <div class="interation-button"> <span> <i class="uil uil-heart"></i></span> <span> <i class="uil uil-comment-dots"></i> </span> <span> <i class="uil uil-share-alt"></i></span> </div>
+         <div class="bookmark"> <span> <i class="uil uil-bookmark"></i></span> </div>
+      </div>
+      <div>
+         <div class="row">
+            <div class="col-md-12">
+               <div class="comment">
+                  <div class="comment-body"> <input type="text" placeholder="Add a comment..." class="comment-box"> <span class="uil-message"></span> </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>`
 }
 
 // get relative time
@@ -216,11 +301,12 @@ function resetForm(txtInputId, imagePreviewId, inputId) {
 }
 
 // alert
-function showAlert(txt, icon, timer = 3000, showConfirmButton = false ) {
+function showAlert(txt, icon, timer = 3000, showConfirmButton = false) {
     Swal.fire({
         icon: icon,
         text: txt,
         showConfirmButton: showConfirmButton,
         timer: timer
     })
-  }
+}
+
