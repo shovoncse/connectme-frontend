@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 leftlogo.src = user.image;
                 const userName = document.getElementById("user-name");
                 userName.innerHTML = user.name;
+                const userProfession = document.getElementById("user-profession");
+                userProfession.innerHTML = user.profession;
             }
             const postAreaLogo = document.querySelector('#home-post-area-img');
             if (postAreaLogo) {
