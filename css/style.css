@@ -1214,3 +1214,32 @@ main .container .right {
     padding: 10px;
     font-size: 30px;
 }
+/******************/
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: rgb(70, 202, 70);
+    border-radius: 50%;
+    float: right;
+    margin-top: -7px;
+}
+img.contact-img {
+    border-radius: 21px;
+    border: 2px solid #39add4;
+}
+div#msg-req {
+    margin-top: 1em;
+}
+.actions {
+    display: flex;
+}
+button#confirm-btn, button#delete-btn{
+    font-size: 13px;
+    border-radius: 20px;
+    margin: 2px;
+    font-weight: bold;
+    padding: 0.4rem 1rem;
+}
+img.req-img {
+    width: 53px;
+}
