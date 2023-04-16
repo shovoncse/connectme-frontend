@@ -101,6 +101,7 @@ function populateProfile({ user, posts }) {
 function profilePostHtml(posts) {
   let html = "";
   posts.forEach(post => {
+      console.log(post);
     html += generatePostHtml(post);
   });
   return html;
