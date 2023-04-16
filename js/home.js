@@ -1,21 +1,13 @@
 // wait for the DOM to be loaded
-document.addEventListener("DOMContentLoaded", function () {
+loader(true);
+document.addEventListener("DOMContentLoaded", async function () {
 
     // get cm-data from local storage
     const cmData = localStorage.getItem("cm-data");
     const cmToken = localStorage.getItem("cm-token");
-    let loggedInUser = "Demo User";
+
     if (cmData && cmToken) {
         try {
-            // parse the cm-data
-            const cmDataParsed = JSON.parse(cmData);
-            // get the user name element
-            const userName = document.getElementById("user-name");
-            loggedInUser = cmDataParsed.name;
-            // set the user name
-            userName.innerHTML = cmDataParsed.name;
-
-
             // create the API request options object
             const requestOptions = {
                 method: "GET",
@@ -24,86 +16,46 @@ document.addEventListener("DOMContentLoaded", function () {
                     "Authorization": "Bearer " + cmToken
                 }
             };
-
-            // get all post from database
-            fetch("http://localhost:3001/api/posts/", requestOptions)
-                .then(response => {
-
-                    if (response.ok) {
-                        return response.json();
-                    } else {
-                        // handle errors
-                        return response.json().then(error => {
-                            throw new Error(error.message);
-                        });
-                    }
-                })
-                .then(data => {
-                    // get the posts container
-                    const postsArea = document.querySelector("form.create-post");
-                    let posts = "";
-                    // loop through the posts
-                    data.forEach(post => {
-                        posts += generatePostHtml(post.user.name, post.postContent);
-                    });
-                    // add the posts to the posts container
-                    postsArea.insertAdjacentHTML("afterend", posts);
-
-                })
-                .catch(error => {
-                    localStorage.removeItem("cm-data");
-                    localStorage.removeItem("cm-token");
-                    // redirect to login page
-                    window.location.href = "../connectme-frontend/login.html";
+            const allPosts = await apiRequest("http://localhost:3001/api/posts/", requestOptions);
+            const postsArea = document.querySelector(".create-post");
+            if (allPosts.length > 0) {
+                let posts = "";
+                allPosts.forEach(post => {
+                    posts += generatePostHtml(post);
                 });
+                postsArea.insertAdjacentHTML("afterend", posts);
+                loader(false);
+            } else {
+                postsArea.insertAdjacentHTML("afterend", `<p class="no-post-found">No posts found</p>`);
+                loader(false);
+            }
 
         } catch (error) {
-            // if there is an error, remove cm-data and cm-token from local storage
-            localStorage.removeItem("cm-data");
-            localStorage.removeItem("cm-token");
-            // redirect to login page
-            window.location.href = "../connectme-frontend/login.html";
+            console.log(error);
+            resetLocalStorage();
         }
     } else {
-        localStorage.removeItem("cm-data");
-        localStorage.removeItem("cm-token");
-        window.location.href = "../connectme-frontend/login.html";
+        resetLocalStorage();
     }
-
-    if (!cmToken) {
-        // if user is not logged in, redirect to login page
-        window.location.href = "../connectme-frontend/login.html";
-    }
-
 
     // logout button
     const logoutButton = document.getElementById("logout-button");
-
-    // add event listener to logout button
-    logoutButton.addEventListener("click", function (e) {
-        // prevent default action
+    logoutButton.addEventListener("click", async function (e) {
+        loader(true);
         e.preventDefault();
-
-        // remove cm-data and cm-token from local storage
-        localStorage.removeItem("cm-data");
-        localStorage.removeItem("cm-token");
-
-        // redirect to login page
-        window.location.href = "../connectme-frontend/login.html";
+        await new Promise(r => setTimeout(r, 1000));
+        resetLocalStorage();
     });
 
+    imageUploadInput('upload-btn', 'image-preview');
+    // make a new post
+    const form = document.getElementById('post-form');
+    form.addEventListener('submit', async (event) => {
+        loader(true);
+        event.preventDefault();
 
-    // create a post
-
-    const postBtn = document.getElementById("post-btn");
-    postBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        let postTxt = document.getElementById("post-text").value;
-        if (!postTxt) {
-            alert("Please enter post content.");
-            return;
-        }
-
+        let imageUrl = await imageHostToCloud('upload-btn');
+        const postText = document.getElementById('post-text').value;
         const requestOptions = {
             method: "POST",
             headers: {
@@ -111,84 +63,81 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Authorization": "Bearer " + cmToken
             },
             body: JSON.stringify({
-                postContent: postTxt
+                postContent: postText,
+                image: imageUrl ? imageUrl : ''
             })
         };
-        fetch("http://localhost:3001/api/posts/", requestOptions)
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    // handle errors
-                    return response.json().then(error => {
-                        throw new Error(error.message);
-                    });
-                }
-            })
-            .then(data => {
-                console.log(data);
-                // get the posts container
-                const postsArea = document.querySelector("form.create-post");
 
-                // add the posts to the posts container
-                postsArea.insertAdjacentHTML("afterend", generatePostHtml(loggedInUser, data.postContent));
-
-                document.getElementById("post-text").value = ""
-            })
-            .catch(error => {
-                alert(error.message);
-            });
+        const newPost = await apiRequest("http://localhost:3001/api/posts/", requestOptions);
+        const postsArea = document.querySelector(".create-post");
+        if (newPost.createdAt) {
+            postsArea.insertAdjacentHTML("afterend", generatePostHtml(newPost));
+            loader(false);
+            resetForm('post-text', 'image-preview', 'upload-btn')
+        } else {
+            loader(false);
+        }
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 });
-
-
-
-// SIDEBAR
-const menuItems = document.querySelectorAll('.menu-item');
-const changeActiveItem = () => {
-    menuItems.forEach((item) => {
-        item.classList.remove('active');
-    });
-};
-menuItems.forEach(item => {
-    item.addEventListener('click', () => {
-        changeActiveItem();
-        item.classList.add('active');
-        if (item.id != 'notifications') {
-            document.querySelector('.notifications-popup').style.display = 'none';
-        }
-        else {
-            document.querySelector('.notifications-popup').style.display = 'block';
-            document.querySelector('#notifications .notification-count').style.display = 'none';
-        }
-    })
-})
-
-// post html
-function generatePostHtml(name, content) {
-
-    return `<div class="feeds">
-    <div class="feed">
-        <div class="head">
-            <div class="user">
-                <div class="profile-photo">
-                    <img src="img/profile-1.jpg" alt="">
-                </div>
-                <div class="ingo">
-                    <h3>${name}</h3>
-                    <small> 10 MINUTES AGO</small>
-                </div>
-
-            </div>
-            <span class="edit">
-                <i class="uil uil-ellipsis-h"></i>
-            </span>
-        </div>
-        <div id="post-content" class="post-content">
-            <p>${content}</p>
-        </div>
-
-    </div>
-</div>`
-}

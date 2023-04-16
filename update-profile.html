@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile | Connect Me</title>
+    <!--------iconscout cdn----------->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile-update.css">
+
+
+</head>
+
+<body>
+    <!--------Navbar---------->
+    <nav>
+        <div class="container">
+            <h2 class="logo" onclick="window.location.href='index.html'">
+                <img src="img/logo1.png" alt="" style="width:270px;">
+            </h2>
+            <div class="search-bar">
+                <i class="uil uil-search"></i>
+                <input type="search" placeholder="Search">
+            </div>
+            <div class="create">
+                <label class="btn btn-primary" for="create-post">Create</label>
+                <div class="profile-photo" onclick="window.location.href='profile.html'">
+                    <img src="img/profile-1.jpg" id="nav-user-logo">
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!---------------------------Main-------------------------->
+
+    <div class="profile-container">
+        <img src="img/default-cover.jpg" class="cover-pic" id="profile-cover-image">
+        <div class="profile-details">
+
+            <div class="pd-left">
+                <div class="pd-row">
+                    <img src="img/default-profile.jpg" class="profile-pic" id="profile-image">
+                    <div>
+                        <h3 id="profile-name">Loading...</h3>
+                        <p id="profile-username">@username</p>
+
+                        <img src="assets/profile/Images/profile-4.jpg">
+                        <img src="assets/profile/Images/profile-5.png">
+                        <img src="assets/profile/Images/profile-4.jpg">
+                        <img src="assets/profile/Images/profile-7.png">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="pd-right">
+                <button type="button" onclick="window.location.href='profile.html'"><i class="uil uil-arrow-left"></i>&nbsp;Go Back</button>
+            </div>
+        </div>
+        <div class="profile-info">
+            <div class="info-col">
+
+                <div class="profile-intro">
+                    <h3>Intro</h3>
+                    <p class="intro-text" id="profile-bio">Work hard till you succeed</p>
+                    <hr>
+                    <ul>
+                        <li><img src="assets/profile/Images/Jobicon.png"><span id="profile-profession">Software Engineer</span></li>
+                        <li><img src="assets/profile/Images/studyicon.png"><span id="profile-education">Studies at OAMK</span></li>
+                        <li><img src="assets/profile/Images/location.jpg"> Lives in&nbsp;<span id="profile-location">Dhaka,Bangladesh</span></li>
+                        <li><img src="assets/profile/Images/location.jpg"> From&nbsp;<span id="profile-country">Oulu,Finland</span></li>
+                    </ul>
+                </div>
+
+
+                <div class="profile-intro">
+                    <div class="title-box">
+                        <h3>Photos</h3>
+                        <a href="">All Photos</a>
+                    </div>
+                    <div class="photo-box">
+                        <div><img src="assets/profile/Images/photo1.jpg"></div>
+                        <div><img src="assets/profile/Images/photo2.jpg"></div>
+                        <div><img src="assets/profile/Images/photo3.jpg"></div>
+                        <div><img src="assets/profile/Images/photo4.jpg"></div>
+                        <div><img src="assets/profile/Images/photo5.jpg"></div>
+                        <div><img src="assets/profile/Images/photo1.jpg"></div>
+
+
+                    </div>
+                </div>
+
+                <div class="profile-intro">
+                    <div class="title-box">
+                        <h3>Friends</h3>
+                        <a href="">All friends</a>
+                    </div>
+                    <p>220(4 mutual)</p>
+                    <div class="friends-box">
+                        <div><img src="assets/profile/Images/profile-2.jpg">
+                            <p>John Doe</p>
+                        </div>
+                        <div><img src="assets/profile/Images/shovon profile.jpg">
+                            <p>Shovon Das</p>
+                        </div>
+                        <div><img src="assets/profile/Images/profile-5.png">
+                            <p>Justin </p>
+                        </div>
+                        <div><img src="assets/profile/Images/profile-6.png">
+                            <P>Zane fraser</P>
+                        </div>
+                        <div><img src="assets/profile/Images/profile-3.png">
+                            <p>Franchis Joshep</p>
+                        </div>
+                        <div><img src="assets/profile/Images/Hamid profile.jpg">
+                            <p>Arnold Gregory</p>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <!-- Edit profile form -->
+            <div class="profile-update">
+                <h3>Profile Update</h3>
+                <form action="#" method="post" enctype="multipart/form-data">
+                    <div class="form-left">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                        <label for="bio">Bio:</label>
+                        <textarea id="bio" name="bio" rows="5" cols="50">I am a user of connectme</textarea>
+                        <label for="profession">Profession:</label>
+                        <input type="text" id="profession" name="profession" value="Student">
+                        <label for="education">Education:</label>
+                        <input type="text" id="education" name="education" value="OAMK">
+                        <label for="location">Location:</label>
+                        <input type="text" id="location" name="location" value="Dhaka, Bangladesh">
+                        <label for="country">Country:</label>
+                        <input type="text" id="country" name="country" value="Finland">
+                    </div>
+                    <div class="form-right">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username">
+                        <label for="profile-image">Profile Image:</label>
+                        <div class="file-upload">
+                            <div class="image-upload profile-image-area">
+                                <label for="profile-upload-btn" class="upload-label">
+                                    <img src="img/image-upload.png" alt="Upload Image">
+                                </label>
+                                <input type="file" id="profile-upload-btn" name="profile-image" accept="image/*">
+                            </div>
+                            <div class="image-preview" id="profile-image-preview"></div>
+                        </div>
+                        <label for="cover-image">Cover Image:</label>
+                        <div class="file-upload">
+                            <div class="image-upload cover-image-area">
+                                <label for="cover-upload-btn"  class="upload-label">
+                                    <img src="img/image-upload.png" alt="Upload Image">
+                                </label>
+                                <input type="file" id="cover-upload-btn" name="cover-image" accept="image/*">
+                            </div>
+                            <div class="image-preview" id="cover-image-preview"></div>
+                        </div>
+                    </div>
+                </form>
+                <button type="button" class="btn btn-primary" id="update-profile">Update</button>
+            </div>
+
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="js/common.js"></script>
+    <script src="js/profile/profile-common.js"></script>
+    <script src="js/profile/update-profile.js"></script>
+</body>
+
+</html>
