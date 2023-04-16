@@ -74,6 +74,11 @@ img {
     color: white;
     border: 2px solid white;
 }
+.btn-danger {
+    background: #e74c3c;
+    color: white;
+    border: 2px solid white;
+}
 
 .text-bold {
     font-weight: 500;
@@ -488,6 +493,15 @@ input.comment-box {
     font-size: 1.4rem;
 }
 
+.friend-requests .action {
+    display: flex;
+    height: fit-content;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: end;
+    min-width: 200px;
+}
+
 .middle .liked-by {
     display: flex;
 }
@@ -567,9 +581,14 @@ main .container .right {
 
 .right .messages .message {
     display: flex;
-    gap: 1rem;
+    gap: 14px;
     margin-bottom: 1rem;
-    align-items: start;
+    justify-content: space-between;
+}
+
+.right .messages .message .info {
+    display: flex;
+    gap: 10px;
 }
 
 .right .message .profile-photo {
@@ -600,7 +619,9 @@ main .container .right {
 
 .right .friend-requests h4 {
     color: gray;
-    margin: 1rem 0;
+}
+.right .friend-sugessions h4 {
+    color: gray;
 }
 
 .right .request {
