@@ -499,8 +499,6 @@ input.comment-box {
     height: fit-content;
     gap: 5px;
     flex-wrap: wrap;
-    justify-content: end;
-    min-width: 200px;
 }
 
 .middle .liked-by {
@@ -589,7 +587,7 @@ main .container .right {
 
 .right .messages .message .info {
     display: flex;
-    gap: 10px;
+    gap: 14px;
 }
 
 .right .message .profile-photo {
@@ -620,10 +618,37 @@ main .container .right {
 
 .right .friend-requests h4 {
     color: gray;
+    margin-top: -7px;
 }
 
 .right .friend-sugessions h4 {
     color: gray;
+    margin-top: -7px;
+}
+
+.right .friend-sugessions .btn {
+    margin-top: -7px;
+    padding: 8px 16px;
+}
+
+.right .friend-sugessions .btn i{
+   font-size: 1.2rem;
+}
+
+.right .friend-requests .btn {
+    margin: 0;
+    padding: 8px 16px;
+}
+
+.right .friend-requests .btn i{
+   font-size: 1.2rem;
+}
+
+.right .friend-requests .message-body{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
 }
 
 .right .request {
