@@ -130,7 +130,7 @@ function toggleDropdown(id) {
     dropdownMenu.classList.toggle("show");
 }
 
-// home post delete
+// post delete
 async function deletePost(id) {
     Swal.fire({
         title: 'Are you sure?',
@@ -173,6 +173,7 @@ async function deletePost(id) {
     })
 }
 
+
 let loggedInUser = user;
 // home post html
 function generatePostHtml({ _id, image, postContent, updatedAt, user }) {
@@ -205,7 +206,7 @@ function generatePostHtml({ _id, image, postContent, updatedAt, user }) {
             <span class="dropdown-toggle" onclick="toggleDropdown('${_id}')"><i
                class="uil uil-ellipsis-h"></i></span>
             <div class="dropdown-menu" id="${_id}">
-               <a class="dropdown-item" href="#">Edit</a>
+               <a class="dropdown-item" href="#" onclick="window.location.href='update-post.html?id=${_id}'">Edit</a>
                <a class="dropdown-item" href="#" onclick="deletePost('${_id}')">Delete</a>
             </div>
          </div>
@@ -332,4 +333,3 @@ function showAlert(txt, icon, timer = 3000, showConfirmButton = false) {
         timer: timer
     })
 }
-
