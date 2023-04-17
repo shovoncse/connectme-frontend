@@ -333,4 +333,3 @@ function showAlert(txt, icon, timer = 3000, showConfirmButton = false) {
         timer: timer
     })
 }
-
