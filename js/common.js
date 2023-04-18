@@ -130,7 +130,7 @@ function toggleDropdown(id) {
     dropdownMenu.classList.toggle("show");
 }
 
-// home post delete
+// post delete
 async function deletePost(id) {
     Swal.fire({
         title: 'Are you sure?',
@@ -173,6 +173,7 @@ async function deletePost(id) {
     })
 }
 
+
 let loggedInUser = user;
 // home post html
 function generatePostHtml({ _id, image, postContent, updatedAt, user }) {
@@ -181,37 +182,36 @@ function generatePostHtml({ _id, image, postContent, updatedAt, user }) {
    <div class="feed">
       <div class="head">
          <div class="user">
-         ${loggedInUser.username == user.username ? `
-         <div class="profile-photo" onclick="window.location.href='profile.html'"> 
+            ${loggedInUser.username == user.username ? `
+            <div class="profile-photo" onclick="window.location.href='profile.html'"> 
                <img src="${user.image}" alt=""> 
             </div>
-         ` : `
-         <div class="profile-photo" onclick="window.location.href='profile.html?id=${user.username}'"> 
+            ` : `
+            <div class="profile-photo" onclick="window.location.href='profile.html?id=${user.username}'"> 
                <img src="${user.image}" alt=""> 
             </div>
-         `}
-            
+            `}
             <div class="ingo">
                ${loggedInUser.username == user.username ? `
                <h3 class="c-pointer" onclick="window.location.href='profile.html'" >${user.name}</h3>
-         ` : `
-         <h3 class="c-pointer" onclick="window.location.href='profile.html?id=${user.username}'" >${user.name}</h3>
-         `}
+               ` : `
+               <h3 class="c-pointer" onclick="window.location.href='profile.html?id=${user.username}'" >${user.name}</h3>
+               `}
                <small> ${getRelativeTime(updatedAt)}</small> 
             </div>
          </div>
          ${loggedInUser.username == user.username ?
-            `
-            <div class="dropdown">
-                                <span class="dropdown-toggle" onclick="toggleDropdown('${_id}')"><i
-                                        class="uil uil-ellipsis-h"></i></span>
-                                <div class="dropdown-menu" id="${_id}">
-                                    <a class="dropdown-item" href="#">Edit</a>
-                                    <a class="dropdown-item" href="#" onclick="deletePost('${_id}')">Delete</a>
-                                </div>
-                            </div>
-            ` : ``
-        }
+         `
+         <div class="dropdown">
+            <span class="dropdown-toggle" onclick="toggleDropdown('${_id}')"><i
+               class="uil uil-ellipsis-h"></i></span>
+            <div class="dropdown-menu" id="${_id}">
+               <a class="dropdown-item" href="#" onclick="window.location.href='update-post.html?id=${_id}'">Edit</a>
+               <a class="dropdown-item" href="#" onclick="deletePost('${_id}')">Delete</a>
+            </div>
+         </div>
+         ` : ``
+         }
       </div>
       <div id="post-content" class="post-content">
          <p>${postContent}</p>
@@ -231,7 +231,8 @@ function generatePostHtml({ _id, image, postContent, updatedAt, user }) {
          </div>
       </div>
    </div>
-</div>`
+</div>
+    `
 }
 
 // get relative time
@@ -332,4 +333,3 @@ function showAlert(txt, icon, timer = 3000, showConfirmButton = false) {
         timer: timer
     })
 }
-
