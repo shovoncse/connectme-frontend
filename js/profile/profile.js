@@ -9,10 +9,12 @@ document.addEventListener("DOMContentLoaded", async function () {
   if (cmToken) {
     
     if (!userId) {
-      userId = user.username || user.email;
+      userId = user.username;
       viewIngOthersProfile(false);
-    }else{
+    }else if(userId !== user.username){
       viewIngOthersProfile(true);
+    }else{
+      viewIngOthersProfile(false);
     }
 
     const requestOptions = {
