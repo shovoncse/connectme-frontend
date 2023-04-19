@@ -139,17 +139,17 @@
                     </div>
                     
                     <div class="create-post">
-                        <form class="create-post-inner" id="post-form">
+                        <div class="create-post-inner" id="post-form">
                             <input type="text" placeholder="What is going on Buddy?" id="post-text"
                                 style="padding-left: 8px;">
                             <div class="image-upload">
                                 <label for="upload-btn">
                                     <img src="img/image-upload.png" alt="Upload Image">
                                 </label>
-                                <input type="file" id="upload-btn" accept="image/*">
+                                <form id="file-input"><input type="file" id="upload-btn" accept="image/*"></form>
                             </div>
                             <input type="submit" value="Post" class="btn btn-primary" id="post-btn">
-                        </form>
+                        </div>
                         <div class="image-preview" id="image-preview"></div>
                     </div>
                     <hr>
