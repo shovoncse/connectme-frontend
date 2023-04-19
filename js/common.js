@@ -283,6 +283,7 @@ function imageUploadInput(uploadBtnId = 'upload-btn', imagePreviewId = 'image-pr
     deleteBtn.addEventListener('click', () => {
         imagePreview.innerHTML = '';
         imagePreview.style.display = 'none';
+        document.getElementById('file-input').reset();
     });
 }
 
@@ -313,15 +314,15 @@ async function imageHostToCloud(inputId) {
 
 
 // reset form
-function resetForm(txtInputId, imagePreviewId, inputId) {
-    const input = document.getElementById(inputId);
+function resetForm(txtInputId, imagePreviewId, formId) {
+    const form = document.getElementById(formId);
     const imagePreview = document.getElementById(imagePreviewId);
     const txtInput = document.getElementById(txtInputId);
 
     txtInput.value = ""
     imagePreview.innerHTML = '';
     imagePreview.style.display = 'none';
-    input.files[0] = null;
+    form.reset();
 }
 
 // alert

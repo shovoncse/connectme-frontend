@@ -36,13 +36,13 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
   loader(false);
   imageUploadInput('upload-btn', 'image-preview');
-
+  
   // new post
-  const form = document.getElementById('post-form');
-  form.addEventListener('submit', async (event) => {
+  const formSubmitBtn = document.getElementById('post-btn');
+  formSubmitBtn.addEventListener('click', async (event) => {
     loader(true);
     event.preventDefault();
-
+  
     let imageUrl = await imageHostToCloud('upload-btn');
     const postText = document.getElementById('post-text').value;
 
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     if (postData) {
       const postContainer = document.getElementById('profile-posts');
       postContainer.insertAdjacentHTML('afterend', generatePostHtml(postData));
-      resetForm('post-text', 'image-preview', 'upload-btn')
+      resetForm('post-text', 'image-preview', 'file-input')
 
       // remove no post found if class exist
       const noPostFound = document.querySelector(".no-post-found");
