@@ -130,10 +130,10 @@
             <!-- Edit post form -->
             <div class="profile-update">
                 <h3>Post Update</h3>
-                <form action="#" method="post" enctype="multipart/form-data" style="margin-bottom:20px">
+                <label for="post-content">Post Content:</label>
+                <textarea name="post-content" id="post-content" cols="30" rows="5" style="max-width:371px"></textarea>
+                <form action="#" method="post" id="post-edit-form" enctype="multipart/form-data" style="margin-bottom:20px">
                     <div class="form-right">
-                        <label for="post-content">Post Content:</label>
-                        <input type="text" id="post-content" name="post-content">
                         <label for="profile-image">Post Image:</label>
                         <div class="file-upload">
                             <div class="image-upload profile-image-area">

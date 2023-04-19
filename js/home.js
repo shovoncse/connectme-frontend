@@ -49,8 +49,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     imageUploadInput('upload-btn', 'image-preview');
     // make a new post
-    const form = document.getElementById('post-form');
-    form.addEventListener('submit', async (event) => {
+    const postBtn = document.getElementById('post-btn');
+    postBtn.addEventListener('click', async (event) => {
         loader(true);
         event.preventDefault();
 
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         if (newPost.createdAt) {
             postsArea.insertAdjacentHTML("afterend", generatePostHtml(newPost));
             loader(false);
-            resetForm('post-text', 'image-preview', 'upload-btn')
+            resetForm('post-text', 'image-preview', 'file-input')
         } else {
             loader(false);
         }
