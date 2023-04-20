@@ -455,10 +455,11 @@ main .container .left .profile {
 span.uil-message {
     float: right;
     font: icon;
+    margin-top: -18px;
 }
-
 input.comment-box {
     background: transparent;
+    width: 100%;
 }
 
 /*------------------------FEEDBACK---------------*/
@@ -948,7 +949,6 @@ main .container .right {
 .pd-row {
     display: flex;
     align-items: flex-start;
-
 }
 
 .no-post-found {
@@ -977,9 +977,12 @@ main .container .right {
     font-size: 13px;
 
 }
-
+ul.span-icons {
+    cursor: pointer;
+  }
 .pd-row div img {
-    width: 25px;
+    width: 30px;
+    height: 30px;
     float: left;
     border-radius: 50%;
     margin-top: 12px;
@@ -1086,8 +1089,6 @@ main .container .right {
 }
 
 .intro-text {
-    text-align: center;
-    margin: 10px 0;
     font-size: 15px;
 }
 
@@ -1116,7 +1117,8 @@ main .container .right {
 
 .profile-intro ul li img {
     width: 26px;
-    margin-right: 10px;
+    margin-right: 12px;
+    height: auto;
 }
 
 .title-box {
@@ -1158,6 +1160,8 @@ main .container .right {
     width: 70%;
     cursor: pointer;
     padding-bottom: 20px;
+    height: auto;
+    margin-left: 22px;
 }
 
 .friends-box div {
@@ -1168,7 +1172,7 @@ main .container .right {
     position: relative;
     bottom: 0;
     left: 0;
-
+    text-align: center;
 }
 
 .Write-post-container {
@@ -1417,4 +1421,22 @@ main .container .right {
     align-items: center;
     margin: 0.6rem;
     font-size: 1.4rem;
+}
+i.uil.uil-heart, i.uil.uil-comment-dots,i.uil.uil-share-alt, span.uil-message, i.uil.uil-bookmark  {
+    cursor: pointer;
+}
+img {
+    display: block;
+    width: 100%;
+    background-size: contain;
+    height: 44px;
+    background-size: cover;
+}
+img#profile-image {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+}
+img.all-photo {
+    height: 70px;
 }
