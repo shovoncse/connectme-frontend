@@ -856,7 +856,7 @@ main .container .right {
 }
 
 /***********************Media quries for tablet and mobile mode**************/
-@media screen and (max-width: 992) {
+@media screen and (max-width: 992px) {
     nav .search-bar {
         display: none;
     }
@@ -961,7 +961,7 @@ main .container .right {
 }
 
 .profile-pic {
-    width: 100px;
+    width: 80px;
     margin-right: 20px;
     border-radius: 50px;
     padding: 2px;
@@ -969,7 +969,7 @@ main .container .right {
 }
 
 .pd-row div h3 {
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 600;
 }
 
@@ -981,12 +981,12 @@ ul.span-icons {
     cursor: pointer;
   }
 .pd-row div img {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     float: left;
     border-radius: 50%;
-    margin-top: 12px;
-    margin-left: 10px;
+    margin-top: 5px;
+    margin-left: 4px;
 }
 
 .pd-right button {
@@ -1157,11 +1157,8 @@ ul.span-icons {
 }
 
 .friends-box div img {
-    width: 70%;
     cursor: pointer;
-    padding-bottom: 20px;
-    height: auto;
-    margin-left: 22px;
+    padding-bottom: 18px;
 }
 
 .friends-box div {
@@ -1169,10 +1166,9 @@ ul.span-icons {
 }
 
 .friends-box p {
-    position: relative;
-    bottom: 0;
-    left: 0;
     text-align: center;
+    position: absolute;
+    margin-top: -1em;
 }
 
 .Write-post-container {
@@ -1433,10 +1429,13 @@ img {
     background-size: cover;
 }
 img#profile-image {
-    height: 100px;
-    width: 100px;
+    height: 80px;
     object-fit: cover;
 }
 img.all-photo {
     height: 70px;
+}
+img.frd_img {
+    height: 80px;
+    width: auto;
 }

@@ -10,10 +10,8 @@
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
     <link rel="stylesheet" href="css/style.css">
-
-
+    <link rel="stylesheet" href="css/photo.css">
 </head>
-
 <body>
     <!--------Navbar---------->
     <nav>
@@ -34,11 +32,9 @@
         </div>
     </nav>
     <!---------------------------Main-------------------------->
-
     <div class="profile-container">
         <img src="img/default-cover.jpg" class="cover-pic" id="profile-cover-image">
         <div class="profile-details">
-
             <div class="pd-left">
                 <div class="pd-row">
                     <img src="img/default-profile.jpg" class="profile-pic" id="profile-image">
@@ -54,33 +50,34 @@
                     </div>
                 </div>
             </div>
-
             <div class="pd-right">
                 <button type="button" id="add-friend"><i class="uil uil-user"></i>&nbsp;Add Friend</button>
                 <button type="button" id="send-sms"><i class="uil uil-message"></i>&nbsp;Messages</button>
-                <button type="button" id="edit-profile" onclick="window.location.href='update-profile.html'"><i class="uil uil-edit"></i>&nbsp;Edit</button>
+                <button type="button" id="edit-profile" onclick="window.location.href='update-profile.html'"><i
+                        class="uil uil-edit"></i>&nbsp;Edit</button>
             </div>
         </div>
         <div class="profile-info">
             <div class="info-col">
-
                 <div class="profile-intro">
                     <h3>Intro</h3>
                     <p class="intro-text" id="profile-bio">Work hard till you succeed</p>
                     <hr>
                     <ul class="span-icons">
-                        <li><img src="assets/profile/Images/Jobicon.png" class="intro-icon"><span id="profile-profession">Software Engineer</span></li>
-                        <li><img src="assets/profile/Images/studyicon.png"><span id="profile-education">Studies at OAMK</span></li>
-                        <li><img src="assets/profile/Images/homeicon-removebg-preview.png"> Lives in&nbsp;<span id="profile-location">Dhaka,Bangladesh</span></li>
-                        <li><img src="assets/profile/Images/location-removebg-preview.png"> From&nbsp;<span id="profile-country">Oulu,Finland</span></li>
+                        <li><img src="assets/profile/Images/Jobicon.png" class="intro-icon"><span
+                                id="profile-profession">Software Engineer</span></li>
+                        <li><img src="assets/profile/Images/studyicon.png"><span id="profile-education">Studies at
+                                OAMK</span></li>
+                        <li><img src="assets/profile/Images/homeicon-removebg-preview.png"> Lives in&nbsp;<span
+                                id="profile-location">Dhaka,Bangladesh</span></li>
+                        <li><img src="assets/profile/Images/location-removebg-preview.png"> From&nbsp;<span
+                                id="profile-country">Oulu,Finland</span></li>
                     </ul>
                 </div>
-
-
                 <div class="profile-intro">
                     <div class="title-box">
                         <h3>Photos</h3>
-                        <a href="">All Photos</a>
+                        <a href="#gallery-call" id="all-photos">All Photos</a>
                     </div>
                     <div class="photo-box">
                         <div><img src="assets/profile/Images/photo1.jpg" class="all-photo"></div>
@@ -91,42 +88,35 @@
                         <div><img src="assets/profile/Images/photo1.jpg" class="all-photo"></div>
                     </div>
                 </div>
-
                 <div class="profile-intro">
                     <div class="title-box">
                         <h3>Friends</h3>
-                        <a href="">All friends</a>
+                        <a href="#friend-call" id="all-friends">All friends</a>
                     </div>
                     <p>220(4 mutual)</p>
                     <div class="friends-box">
-                        <div><img src="assets/profile/Images/profile-6.png">
-                            <p>John Doe</p>
+                        <div><img src="assets/profile/Images/profile-6.png" class="frd_img">
+                            <p>John</p>
                         </div>
-                        <div><img src="assets/profile/Images/img2.jpg">
-                            <p>Shovon Das</p>
+                        <div><img src="assets/profile/Images/img2.jpg" class="frd_img">
+                            <p>Shovon</p>
                         </div>
-                        <div><img src="assets/profile/Images/profile-5-removebg-preview.png">
-                            <p>Justin </p>
+                        <div><img src="assets/profile/Images/profile-5-removebg-preview.png" class="frd_img">
+                            <p>Justin</p>
                         </div>
-                        <div><img src="assets/profile/Images/profile-5-removebg-preview.png">
-                            <P>Zane fraser</P>
+                        <div><img src="assets/profile/Images/profile-5-removebg-preview.png" class="frd_img">
+                            <P>Zane</P>
                         </div>
-                        <div><img src="assets/profile/Images/profile-6.png">
-                            <p>Franchis Joshep</p>
+                        <div><img src="assets/profile/Images/profile-6.png" class="frd_img">
+                            <p>Franchis</p>
                         </div>
-                        <div><img src="assets/profile/Images/img2.jpg">
-                            <p>Arnold Gregory</p>
+                        <div><img src="assets/profile/Images/img2.jpg" class="frd_img">
+                            <p>Arnold</p>
                         </div>
-
-
                     </div>
                 </div>
-
-
             </div>
-
-
-            <div class="post-col">
+            <div class="post-col" id="gallery-call1">
                 <div class="Write-post-container" id="profile-posts">
                     <div class="user-profile">
                         <img src="img/default-profile.jpg" id="profile-image-2">
@@ -135,7 +125,7 @@
                             <small>Public<i class="fa-regular fa-angle-down"></i></small>
                         </div>
                     </div>
-                    
+
                     <div class="create-post">
                         <form class="create-post-inner" id="post-form">
                             <input type="text" placeholder="What is going on Buddy?" id="post-text"
@@ -152,8 +142,134 @@
                     </div>
                     <hr>
                 </div>
-                <!-- posts -->
             </div>
+            <div class="post-col" id="gallery-call">
+                <div class="photo-box">
+                    <div class="row" id="img-row">
+                        <h3 style="margin-bottom: 10px;">Photo Gallery</h3>
+                        <div class="column">
+                            <img src="assets/profile/Images/img-1.jpg">
+                        </div>
+                        <div class="column">
+                            <img src="assets/profile/Images/img-14.jpg">
+                        </div>
+                        <div class="column">
+                            <img src="assets/profile/Images/img-14.jpg">
+                        </div>
+                        <div class="column">
+                            <img src="assets/profile/Images/img-16.jpg">
+                        </div>
+                        <div class="column">
+                            <img src="assets/profile/Images/img-12.jpg">
+                        </div>
+                        <div class="column">
+                            <img src="assets/profile/Images/img-11.jpg">
+                        </div>
+                        <div class="column">
+                            <img src="assets/profile/Images/img-13.jpg">
+                        </div>
+                        <div class="column">
+                            <img src="assets/profile/Images/img-7.jpg">
+                        </div>
+                        <div class="column">
+                            <img src="assets/profile/Images/img-8.jpg">
+                        </div>
+                        <div class="column">
+                            <img src="assets/profile/Images/img-9.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-----------------friends-start------------>
+            <div class="post-col" id="friend-call">
+                <h3 style="margin-top: 10px;">All Friends</h3>
+                <div class="photo-box" id="friend-bar">
+                    <div>
+                        <img src="assets/profile/Images/post-4.jpg" class="all-photo"
+                            style="height: 60px; width: 80px; border-radius: 10px;">
+                    </div>
+                    <div class="para">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos earum libero dolor expedita,
+                        dolore
+                        commodi quia suscipit mollitia neque dolores, animi facilis enim. Nam, consectetur
+                        perspiciatis
+                        assumenda obcaecati iusto omnis!
+                    </div>
+                    <i class="uil uil-ellipsis-h" style="cursor: pointer;"></i>
+                </div>
+
+                <div class="media-icons">
+                    <i class="uil uil-heart"></i>
+                    <i class="uil uil-comment"></i>
+                    <i class="uil uil-share"></i>
+                    <button class="view-profile">View Profile</button>
+                </div>
+                <hr style="border-bottom: 1 px solid black;">
+                <div class="photo-box">
+                    <div>
+                        <img src="assets/profile/Images/post-2.jpg" class="all-photo"
+                            style="height: 60px; width: 80px; border-radius: 10px;">
+                    </div>
+                    <div class="para">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos earum libero dolor expedita,
+                        dolore
+                        commodi quia suscipit mollitia neque dolores, animi facilis enim. Nam, consectetur
+                        perspiciatis
+                        assumenda obcaecati iusto omnis!
+                    </div>
+                    <i class="uil uil-ellipsis-h" style="cursor: pointer;"></i>
+                </div>
+                <div class="media-icons">
+                    <i class="uil uil-heart"></i>
+                    <i class="uil uil-comment"></i>
+                    <i class="uil uil-share"></i>
+                    <button class="view-profile">View Profile</button>
+                </div>
+                <hr style="border-bottom: 1 px solid black;">
+                <div class="photo-box">
+                    <div>
+                        <img src="assets/profile/Images/post-3.jpg" class="all-photo"
+                            style="height: 60px; width: 80px; border-radius: 10px;">
+                    </div>
+                    <div class="para">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos earum libero dolor expedita,
+                        dolore
+                        commodi quia suscipit mollitia neque dolores, animi facilis enim. Nam, consectetur
+                        perspiciatis
+                        assumenda obcaecati iusto omnis!
+                    </div>
+                    <i class="uil uil-ellipsis-h" style="cursor: pointer;"></i>
+                </div>
+                <div class="media-icons">
+                    <i class="uil uil-heart"></i>
+                    <i class="uil uil-comment"></i>
+                    <i class="uil uil-share"></i>
+                    <button class="view-profile">View Profile</button>
+                </div>
+                <hr style="border-bottom: 1 px solid black;">
+                <div class="photo-box">
+                    <div>
+                        <img src="assets/profile/Images/post-4.jpg" class="all-photo"
+                            style="height: 60px; width: 80px; border-radius: 10px;">
+                    </div>
+                    <div class="para">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos earum libero dolor expedita,
+                        dolore
+                        commodi quia suscipit mollitia neque dolores, animi facilis enim. Nam, consectetur
+                        perspiciatis
+                        assumenda obcaecati iusto omnis!
+                    </div>
+                    <i class="uil uil-ellipsis-h" style="cursor: pointer;"></i>
+                </div>
+                <div class="media-icons">
+                    <i class="uil uil-heart"></i>
+                    <i class="uil uil-comment"></i>
+                    <i class="uil uil-share"></i>
+                    <button class="view-profile">View Profile</button>
+                </div>
+                <hr style="border-bottom: 1 px solid black;">
+            </div>
+            <!-----------------friends-end------------>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -161,5 +277,4 @@
     <script src="js/profile/profile-common.js"></script>
     <script src="js/profile/profile.js"></script>
 </body>
-
 </html>

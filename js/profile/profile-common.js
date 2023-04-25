@@ -18,3 +18,4 @@ function generalProfileData(user) {
   profileProfession.innerHTML = user.profession;
   profileBio.innerHTML = user.bio;
 }
+

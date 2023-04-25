@@ -1,0 +1,84 @@
+.info-col {
+    flex-basis: 30%;
+}
+
+.post-col {
+    margin-left: 20px;
+    background: white;
+    width: 70%;
+}
+
+.post-col {
+    margin-left: 20px;
+    background: white;
+    width: 70%;
+}
+
+div#profile-posts {
+    margin-bottom: 25px;
+}
+
+#gallery-call {
+    display: none;
+}
+
+#gallery-call1 {
+    display: block;
+}
+
+#friend-call {
+    display: none;
+}
+
+button.view-profile {
+    padding: 5px;
+    border-radius: 20px;
+    background: #39add4;
+    color: white;
+    cursor: pointer;
+    font-size: 10px;
+    float: right;
+}
+
+button.view-profile:hover {
+    background: #2c8bb5;
+}
+
+.para {
+    font-size: 12px;
+}
+
+div#friend-call {
+    padding-inline: 25px;
+}
+
+.media-icons {
+    color: #39add4;
+    float: right;
+}
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+#img-row {
+    background: none;
+    margin-left: 20px;
+    border-radius: 10px;
+    padding: 40px;
+    margin-top: -0.6rem;
+}
+
+.photo-box div img {
+    width: 100%;
+    cursor: pointer;
+    height: 100px;
+}
