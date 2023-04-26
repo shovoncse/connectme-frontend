@@ -484,3 +484,23 @@ function showAlert(txt, icon, timer = 3000, showConfirmButton = false) {
         timer: timer
     })
 }
+
+// searchInsideDom
+function searchInsideDom(event) {
+    loader(true);
+    const searchInput = event.target.value.toLowerCase();
+    const posts = document.querySelectorAll('.feeds');
+    posts.forEach(post => {
+        const postContent = post.querySelector('.post-content p').textContent.toLowerCase();
+        const postTitle = post.querySelector('.user h3').textContent.toLowerCase();
+        if (postContent.indexOf(searchInput) == -1 && postTitle.indexOf(searchInput) == -1) {
+            post.style.display = 'none';
+        } else {
+            post.style.display = 'block';
+        }
+    });
+    //loader(false); after 1 sec
+    setTimeout(() => {
+        loader(false);
+    }, 500);
+}

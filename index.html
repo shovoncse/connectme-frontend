@@ -21,10 +21,6 @@
             <h2 class="logo" onclick="window.location.href='index.html'">
                 <img src="img/logo1.png" alt="" style="width:270px;">
             </h2>
-            <div class="search-bar">
-                <i class="uil uil-search"></i>
-                <input type="search" placeholder="Search">
-            </div>
             <div class="create">
                 <label class="btn btn-primary" for="create-post">Create</label>
                 <div class="profile-photo" onclick="window.location.href='profile.html'">
@@ -148,6 +144,13 @@
 
             <div class="right">
                 <!-- People you may know -->
+                <div class="search-bar">
+                    <div class="search-bar-inner">
+                        <input type="text" placeholder="Search..." id="post-text" style="padding-left: 8px;" onkeyup="searchInsideDom(event)">
+                        <i class="uil uil-search"></i>
+                        
+                    </div>
+                </div>
                 <div class="messages friend-sugessions">
                     <div class="heading">
                         <h4>Suggestions</h4><i class="uil uil-user"></i>

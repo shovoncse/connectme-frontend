@@ -108,21 +108,24 @@ nav .container {
 }
 
 .search-bar {
-    background: rgb(230, 216, 216);
+    background: rgb(255 255 255);
     border-radius: 2rem;
     padding: 0.6rem 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
 }
 
-.search-bar input[type="search"] {
-    background: transparent;
-    color: var(--color-dark);
-    font-size: 0.9rem;
-    width: 30vw;
-    margin-left: 1rem;
+.search-bar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-nav .search-bar input[type="search"]::placeholder {
-    color: var(--color-grey);
+.search-bar input {
+    border: none;
+    outline: none;
+    width: 90%;
+    padding-left: 8px;
 }
 
 nav .create {
