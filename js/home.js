@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 }
             };
             const allPosts = await apiRequest("http://localhost:3001/api/posts/", requestOptions);
+            console.log(allPosts);
             const postsArea = document.querySelector(".create-post");
             if (allPosts.length > 0) {
                 let posts = "";

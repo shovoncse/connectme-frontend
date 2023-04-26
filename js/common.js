@@ -35,11 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             };
 
-            const checkUsername = await apiRequest(`http://localhost:3001/api/users/verify_username/${user.username}`, requestOptions);
-
-            if (checkUsername.available) {
-                resetLocalStorage();
-            }
+            await apiRequest(`http://localhost:3001/api/users/verify_username/${user.username}`, requestOptions);
         }
     } catch (e) {
         console.log(e);
@@ -90,9 +86,10 @@ async function apiRequest(url, requestOptions) {
                 return data;
             })
             .catch(error => {
-                console.log(error);
-                // resetLocalStorage();
-                return error;
+                if (error.status == 401) {
+                    resetLocalStorage();
+                }
+                return error.message;
             });
         return res;
     } catch (error) {
@@ -173,10 +170,45 @@ async function deletePost(id) {
     })
 }
 
+// comment delete
+async function deleteComment(postId, commentId) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+            loader(true);
+            const requestOptions = {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + user.accessToken
+                }
+            };
+
+            const deleteComment = await apiRequest(`http://localhost:3001/api/posts/${postId}/${commentId}`, requestOptions);
+
+            if (deleteComment) {
+                const comment = document.getElementById('comment_' + commentId);
+                comment.remove();
+            } else {
+                showAlert(deletePost, "error");
+            }
+
+            loader(false);
+        }
+    })
+}
+
 
 let loggedInUser = user;
 // home post html
-function generatePostHtml({ _id, image, postContent, updatedAt, user }) {
+function generatePostHtml({ _id, image, postContent, updatedAt, user, numComments, numLikes, comments, likes }) {
     return `
     <div class="feeds" id="post_${_id}">
    <div class="feed">
@@ -218,22 +250,140 @@ function generatePostHtml({ _id, image, postContent, updatedAt, user }) {
       </div>
       <div class="photo"> ${image ? `<img src="${image}" alt="">` : ''} </div>
       <div class="action-buttons">
-         <div class="interation-button"> <span> <i class="uil uil-heart"></i></span> <span> <i class="uil uil-comment-dots"></i> </span> <span> <i class="uil uil-share-alt"></i></span> </div>
-         <div class="bookmark"> <span> <i class="uil uil-bookmark"></i></span> </div>
+         <div class="interation-button"> 
+            <span> <i class="uil uil-thumbs-up ${
+        likes.find(like => like.user == loggedInUser._id) ? 'color-theme' : ''
+            }" onclick="newLike('${_id}')"></i> <span  id="likesCount_${_id}">${numLikes?numLikes:''}</span></span> 
+            <span> <i class="uil uil-comment-dots" onclick="inputFocus('${_id}')"></i> ${numComments?numComments:''}</span> 
+            <span> <i class="uil uil-share-alt"></i></span> 
+         </div>
+         <div class="bookmark"> <span> <i class="uil uil-bookmark c-pointer" onclick="toggleBookmark(event)"></i></span> </div>
       </div>
-      <div>
+      <div class="comments">
          <div class="row">
             <div class="col-md-12">
-               <div class="comment">
-                  <div class="comment-body"> <input type="text" placeholder="Add a comment..." class="comment-box"> <span class="uil-message"></span> </div>
+               <div class="comment-add">
+                  <div class="comment-body"> <input type="text" onfocusout="inputFocusOut('${_id}')" onfocus="inputFocus('${_id}')" onkeyup="inputKeyUp(event,'${_id}')" placeholder="Add a comment..." class="comment-box"> <span class="uil-message" onclick="newComment('${_id}')"></span> </div>
                </div>
             </div>
          </div>
       </div>
+      
+      ${comments.length > 0 ? (
+        comments.map(comment => {
+            return generateInitialCommentHtml(_id, comment);
+        }).join('')
+    ) : ''}
+
    </div>
 </div>
     `
 }
+
+// toggle bookmark
+function toggleBookmark(e) {
+    console.log(e);
+    e.target.classList.toggle('color-theme');
+}
+// inputKeyUp
+function inputKeyUp(e, id) {
+    if (e.keyCode == 13) {
+        newComment(id);
+    }
+}
+// inputFocus
+function inputFocus(id) {
+    document.querySelector(`#post_${id} .comments .row`).style.border = "1px solid #39add4";
+    document.querySelector(`#post_${id} .comment-box`).focus();
+}
+
+function inputFocusOut(id) {
+    document.querySelector(`#post_${id} .comments .row`).style.border = "none";
+}
+
+// new comment
+async function newComment(id) {
+    loader(true);
+    const comment = document.querySelector(`#post_${id} .comment-box`).value;
+    if (comment) {
+        const requestOptions = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + user.accessToken
+            },
+            body: JSON.stringify({ commentContent: comment })
+        };
+        
+        const newComment = await apiRequest(`http://localhost:3001/api/posts/${id}`, requestOptions);
+        loader(false);
+        if (newComment.commentContent) {
+            const commentHtml = generateInitialCommentHtml(id, newComment);
+            const comments = document.querySelector(`#post_${id} .comments`);
+            comments.insertAdjacentHTML("afterend", commentHtml);
+            document.querySelector(`#post_${id} .comment-box`).value = "";
+        } else {
+            showAlert(newComment.message, "error");
+        }
+
+    }
+    loader(false);
+}
+
+// new like
+async function newLike(id) {
+    loader(true);
+    const requestOptions = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + user.accessToken
+        }
+    };
+
+    const newLike = await apiRequest(`http://localhost:3001/api/posts/${id}/like`, requestOptions);
+
+    if (newLike.message) {
+        const likeBtn = document.querySelector(`#post_${id} .uil-thumbs-up`);
+        likeBtn.classList.toggle('color-theme');
+        const numLikes = document.querySelector(`#likesCount_${id}`);
+        if (likeBtn.classList.contains('color-theme')) {
+            numLikes.innerHTML = parseInt(numLikes.innerHTML) || 0 + 1;
+        } else {
+            numLikes.innerHTML = parseInt(numLikes.innerHTML) - 1;
+        }
+    }
+    loader(false);
+}
+
+
+// generate initial comment html
+function generateInitialCommentHtml(id, comment) {
+    return `
+<div class="comment" id="comment_${comment._id}">
+    <div class="comment-body">
+        <img src="${comment.user.image}"><div class="comment-content">
+            <div class="info">
+                <h3>${comment.user.name}</h3>
+                <small>${getRelativeTime(comment.updatedAt)}</small>
+            </div><div class="comment-text-area"><p>${comment.commentContent}</p><span> 
+            <i class="c-pointer comment-reaction-btn uil uil-thumbs-up"></i><span> <i class="uil uil-comment-dots"></i> </span>
+            </div>
+        </div>
+    </div>
+    ${comment.user.username == loggedInUser.username ? `<div class="dropdown">
+    <span class="dropdown-toggle" onclick="toggleDropdown('${comment._id}')"><i
+       class="uil uil-ellipsis-v"></i></span>
+    <div class="dropdown-menu" id="${comment._id}">
+       <a class="dropdown-item" href="#" onclick="deleteComment('${id}','${comment._id}')">Delete</a>
+    </div>
+ </div>` : ''}
+</div>
+    `
+}
+
+
+
 
 // get relative time
 function getRelativeTime(dateTimeString) {
@@ -333,4 +483,24 @@ function showAlert(txt, icon, timer = 3000, showConfirmButton = false) {
         showConfirmButton: showConfirmButton,
         timer: timer
     })
+}
+
+// searchInsideDom
+function searchInsideDom(event) {
+    loader(true);
+    const searchInput = event.target.value.toLowerCase();
+    const posts = document.querySelectorAll('.feeds');
+    posts.forEach(post => {
+        const postContent = post.querySelector('.post-content p').textContent.toLowerCase();
+        const postTitle = post.querySelector('.user h3').textContent.toLowerCase();
+        if (postContent.indexOf(searchInput) == -1 && postTitle.indexOf(searchInput) == -1) {
+            post.style.display = 'none';
+        } else {
+            post.style.display = 'block';
+        }
+    });
+    //loader(false); after 1 sec
+    setTimeout(() => {
+        loader(false);
+    }, 500);
 }
