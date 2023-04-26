@@ -265,7 +265,7 @@ function generatePostHtml({ _id, image, postContent, updatedAt, user, comments }
       
       ${comments.length > 0 ? (
         comments.map(comment => {
-            return generateInitialCommentHtml(_id, comment, user);
+            return generateInitialCommentHtml(_id, comment);
         }).join('')
     ) : ''}
 
@@ -291,7 +291,7 @@ async function newComment(id) {
         const newComment = await apiRequest(`http://localhost:3001/api/posts/${id}`, requestOptions);
         loader(false);
         if (newComment.commentContent) {
-            const commentHtml = generateCommentHtml(newComment);
+            const commentHtml = generateInitialCommentHtml(id, newComment);
             const comments = document.querySelector(`#post_${id} .comments`);
             comments.insertAdjacentHTML("afterend", commentHtml);
             document.querySelector(`#post_${id} .comment-box`).value = "";
@@ -303,38 +303,22 @@ async function newComment(id) {
     loader(false);
 }
 
-// generate comment html
-function generateCommentHtml({ _id, commentContent, updatedAt, user }) {
-    return `
-<div class="comment" id="comment_${_id}">
-    <div class="comment-body">
-        <img src="${user.image}"><div class="comment-content">
-            <div class="info">
-                <h3>${user.name}</h3>
-                <small>${getRelativeTime(updatedAt)}</small>
-            </div><div class="comment-text-area"><p>${commentContent}</p><span> 
-            <i class="c-pointer comment-reaction-btn uil uil-thumbs-up"></i><span> <i class="uil uil-comment-dots"></i> </span>
-            </div>
-        </div>
-    </div>
-</div>
-    `
-}
+
 // generate initial comment html
-function generateInitialCommentHtml(id, comment, user ) {
+function generateInitialCommentHtml(id, comment) {
     return `
 <div class="comment" id="comment_${comment._id}">
     <div class="comment-body">
-        <img src="${user.image}"><div class="comment-content">
+        <img src="${comment.user.image}"><div class="comment-content">
             <div class="info">
-                <h3>${user.name}</h3>
+                <h3>${comment.user.name}</h3>
                 <small>${getRelativeTime(comment.updatedAt)}</small>
             </div><div class="comment-text-area"><p>${comment.commentContent}</p><span> 
             <i class="c-pointer comment-reaction-btn uil uil-thumbs-up"></i><span> <i class="uil uil-comment-dots"></i> </span>
             </div>
         </div>
     </div>
-    ${user.username == loggedInUser.username ? `<div class="dropdown">
+    ${comment.user.username == loggedInUser.username ? `<div class="dropdown">
     <span class="dropdown-toggle" onclick="toggleDropdown('${comment._id}')"><i
        class="uil uil-ellipsis-v"></i></span>
     <div class="dropdown-menu" id="${comment._id}">
