@@ -35,11 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             };
 
-            const checkUsername = await apiRequest(`http://localhost:3001/api/users/verify_username/${user.username}`, requestOptions);
-
-            if (checkUsername.available) {
-                resetLocalStorage();
-            }
+            await apiRequest(`http://localhost:3001/api/users/verify_username/${user.username}`, requestOptions);
         }
     } catch (e) {
         console.log(e);
@@ -90,9 +86,10 @@ async function apiRequest(url, requestOptions) {
                 return data;
             })
             .catch(error => {
-                console.log(error);
-                // resetLocalStorage();
-                return error;
+                if (error.status == 401) {
+                    resetLocalStorage();
+                }
+                return error.message;
             });
         return res;
     } catch (error) {
@@ -219,13 +216,13 @@ function generatePostHtml({ _id, image, postContent, updatedAt, user }) {
       <div class="photo"> ${image ? `<img src="${image}" alt="">` : ''} </div>
       <div class="action-buttons">
          <div class="interation-button"> <span> <i class="uil uil-heart"></i></span> <span> <i class="uil uil-comment-dots"></i> </span> <span> <i class="uil uil-share-alt"></i></span> </div>
-         <div class="bookmark"> <span> <i class="uil uil-bookmark"></i></span> </div>
+         <div class="bookmark"> <span> <i class="uil uil-bookmark c-pointer"></i></span> </div>
       </div>
-      <div>
+      <div class="comments">
          <div class="row">
             <div class="col-md-12">
-               <div class="comment">
-                  <div class="comment-body"> <input type="text" placeholder="Add a comment..." class="comment-box"> <span class="uil-message"></span> </div>
+               <div class="comment-add">
+                  <div class="comment-body"> <input type="text" placeholder="Add a comment..." class="comment-box"> <span class="uil-message" onclick="newComment('${_id}')"></span> </div>
                </div>
             </div>
          </div>
@@ -234,6 +231,56 @@ function generatePostHtml({ _id, image, postContent, updatedAt, user }) {
 </div>
     `
 }
+
+// new comment
+async function newComment(id) {
+    loader(true);
+    const comment = document.querySelector(`#post_${id} .comment-box`).value;
+    if (comment) {
+        const requestOptions = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + user.accessToken
+            },
+            body: JSON.stringify({ commentContent: comment })
+        };
+        
+        const newComment = await apiRequest(`http://localhost:3001/api/posts/${id}`, requestOptions);
+        loader(false);
+        if (newComment.commentContent) {
+            const commentHtml = generateCommentHtml(newComment);
+            const comments = document.querySelector(`#post_${id} .comments`);
+            comments.insertAdjacentHTML("afterend", commentHtml);
+            document.querySelector(`#post_${id} .comment-box`).value = "";
+        } else {
+            showAlert(newComment.message, "error");
+        }
+
+    }
+    loader(false);
+}
+
+// generate comment html
+function generateCommentHtml({ _id, commentContent, updatedAt, user }) {
+    return `
+<div class="comment" id="comment_${_id}">
+    <div class="comment-body">
+        <img src="${user.image}"><div class="comment-content">
+            <div class="info">
+                <h3>${user.name}</h3>
+                <small>${getRelativeTime(updatedAt)}</small>
+            </div><div class="comment-text-area"><p>${commentContent}</p><span> 
+            <i class="c-pointer comment-reaction-btn uil uil-heart"></i><span> <i class="uil uil-comment-dots"></i> </span>
+            </div>
+        </div>
+    </div>
+</div>
+    `
+}
+
+
+
 
 // get relative time
 function getRelativeTime(dateTimeString) {
