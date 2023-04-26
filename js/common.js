@@ -208,7 +208,7 @@ async function deleteComment(postId, commentId) {
 
 let loggedInUser = user;
 // home post html
-function generatePostHtml({ _id, image, postContent, updatedAt, user, comments }) {
+function generatePostHtml({ _id, image, postContent, updatedAt, user, numComments, numLikes, comments, likes }) {
     return `
     <div class="feeds" id="post_${_id}">
    <div class="feed">
@@ -250,14 +250,20 @@ function generatePostHtml({ _id, image, postContent, updatedAt, user, comments }
       </div>
       <div class="photo"> ${image ? `<img src="${image}" alt="">` : ''} </div>
       <div class="action-buttons">
-         <div class="interation-button"> <span> <i class="uil uil-thumbs-up"></i></span> <span> <i class="uil uil-comment-dots"></i> </span> <span> <i class="uil uil-share-alt"></i></span> </div>
-         <div class="bookmark"> <span> <i class="uil uil-bookmark c-pointer"></i></span> </div>
+         <div class="interation-button"> 
+            <span> <i class="uil uil-thumbs-up ${
+        likes.find(like => like.user == loggedInUser._id) ? 'color-theme' : ''
+            }" onclick="newLike('${_id}')"></i> <span  id="likesCount_${_id}">${numLikes?numLikes:''}</span></span> 
+            <span> <i class="uil uil-comment-dots" onclick="inputFocus('${_id}')"></i> ${numComments?numComments:''}</span> 
+            <span> <i class="uil uil-share-alt"></i></span> 
+         </div>
+         <div class="bookmark"> <span> <i class="uil uil-bookmark c-pointer" onclick="toggleBookmark(event)"></i></span> </div>
       </div>
       <div class="comments">
          <div class="row">
             <div class="col-md-12">
                <div class="comment-add">
-                  <div class="comment-body"> <input type="text" placeholder="Add a comment..." class="comment-box"> <span class="uil-message" onclick="newComment('${_id}')"></span> </div>
+                  <div class="comment-body"> <input type="text" onfocusout="inputFocusOut('${_id}')" onfocus="inputFocus('${_id}')" onkeyup="inputKeyUp(event,'${_id}')" placeholder="Add a comment..." class="comment-box"> <span class="uil-message" onclick="newComment('${_id}')"></span> </div>
                </div>
             </div>
          </div>
@@ -272,6 +278,27 @@ function generatePostHtml({ _id, image, postContent, updatedAt, user, comments }
    </div>
 </div>
     `
+}
+
+// toggle bookmark
+function toggleBookmark(e) {
+    console.log(e);
+    e.target.classList.toggle('color-theme');
+}
+// inputKeyUp
+function inputKeyUp(e, id) {
+    if (e.keyCode == 13) {
+        newComment(id);
+    }
+}
+// inputFocus
+function inputFocus(id) {
+    document.querySelector(`#post_${id} .comments .row`).style.border = "1px solid #39add4";
+    document.querySelector(`#post_${id} .comment-box`).focus();
+}
+
+function inputFocusOut(id) {
+    document.querySelector(`#post_${id} .comments .row`).style.border = "none";
 }
 
 // new comment
@@ -299,6 +326,32 @@ async function newComment(id) {
             showAlert(newComment.message, "error");
         }
 
+    }
+    loader(false);
+}
+
+// new like
+async function newLike(id) {
+    loader(true);
+    const requestOptions = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + user.accessToken
+        }
+    };
+
+    const newLike = await apiRequest(`http://localhost:3001/api/posts/${id}/like`, requestOptions);
+
+    if (newLike.message) {
+        const likeBtn = document.querySelector(`#post_${id} .uil-thumbs-up`);
+        likeBtn.classList.toggle('color-theme');
+        const numLikes = document.querySelector(`#likesCount_${id}`);
+        if (likeBtn.classList.contains('color-theme')) {
+            numLikes.innerHTML = parseInt(numLikes.innerHTML) || 0 + 1;
+        } else {
+            numLikes.innerHTML = parseInt(numLikes.innerHTML) - 1;
+        }
     }
     loader(false);
 }

@@ -492,7 +492,8 @@ input.comment-box {
     justify-content: space-between;
     align-items: center;
     margin: 0.6rem;
-    font-size: 1.4rem;
+    font-size: 1rem;
+    margin-top: 0;
 }
 
 .friend-requests .action {
@@ -1481,4 +1482,8 @@ main .container .right {
 
 i.c-pointer.comment-reaction-btn.uil.uil-thumbs-up {
     font-size: 20px;
+}
+
+.color-theme {
+    color: #39add4;
 }
