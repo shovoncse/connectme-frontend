@@ -170,10 +170,45 @@ async function deletePost(id) {
     })
 }
 
+// comment delete
+async function deleteComment(postId, commentId) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+            loader(true);
+            const requestOptions = {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + user.accessToken
+                }
+            };
+
+            const deleteComment = await apiRequest(`http://localhost:3001/api/posts/${postId}/${commentId}`, requestOptions);
+
+            if (deleteComment) {
+                const comment = document.getElementById('comment_' + commentId);
+                comment.remove();
+            } else {
+                showAlert(deletePost, "error");
+            }
+
+            loader(false);
+        }
+    })
+}
+
 
 let loggedInUser = user;
 // home post html
-function generatePostHtml({ _id, image, postContent, updatedAt, user }) {
+function generatePostHtml({ _id, image, postContent, updatedAt, user, comments }) {
     return `
     <div class="feeds" id="post_${_id}">
    <div class="feed">
@@ -215,7 +250,7 @@ function generatePostHtml({ _id, image, postContent, updatedAt, user }) {
       </div>
       <div class="photo"> ${image ? `<img src="${image}" alt="">` : ''} </div>
       <div class="action-buttons">
-         <div class="interation-button"> <span> <i class="uil uil-heart"></i></span> <span> <i class="uil uil-comment-dots"></i> </span> <span> <i class="uil uil-share-alt"></i></span> </div>
+         <div class="interation-button"> <span> <i class="uil uil-thumbs-up"></i></span> <span> <i class="uil uil-comment-dots"></i> </span> <span> <i class="uil uil-share-alt"></i></span> </div>
          <div class="bookmark"> <span> <i class="uil uil-bookmark c-pointer"></i></span> </div>
       </div>
       <div class="comments">
@@ -227,6 +262,13 @@ function generatePostHtml({ _id, image, postContent, updatedAt, user }) {
             </div>
          </div>
       </div>
+      
+      ${comments.length > 0 ? (
+        comments.map(comment => {
+            return generateInitialCommentHtml(_id, comment, user);
+        }).join('')
+    ) : ''}
+
    </div>
 </div>
     `
@@ -271,10 +313,34 @@ function generateCommentHtml({ _id, commentContent, updatedAt, user }) {
                 <h3>${user.name}</h3>
                 <small>${getRelativeTime(updatedAt)}</small>
             </div><div class="comment-text-area"><p>${commentContent}</p><span> 
-            <i class="c-pointer comment-reaction-btn uil uil-heart"></i><span> <i class="uil uil-comment-dots"></i> </span>
+            <i class="c-pointer comment-reaction-btn uil uil-thumbs-up"></i><span> <i class="uil uil-comment-dots"></i> </span>
             </div>
         </div>
     </div>
+</div>
+    `
+}
+// generate initial comment html
+function generateInitialCommentHtml(id, comment, user ) {
+    return `
+<div class="comment" id="comment_${comment._id}">
+    <div class="comment-body">
+        <img src="${user.image}"><div class="comment-content">
+            <div class="info">
+                <h3>${user.name}</h3>
+                <small>${getRelativeTime(comment.updatedAt)}</small>
+            </div><div class="comment-text-area"><p>${comment.commentContent}</p><span> 
+            <i class="c-pointer comment-reaction-btn uil uil-thumbs-up"></i><span> <i class="uil uil-comment-dots"></i> </span>
+            </div>
+        </div>
+    </div>
+    ${user.username == loggedInUser.username ? `<div class="dropdown">
+    <span class="dropdown-toggle" onclick="toggleDropdown('${comment._id}')"><i
+       class="uil uil-ellipsis-v"></i></span>
+    <div class="dropdown-menu" id="${comment._id}">
+       <a class="dropdown-item" href="#" onclick="deleteComment('${id}','${comment._id}')">Delete</a>
+    </div>
+ </div>` : ''}
 </div>
     `
 }

@@ -1431,6 +1431,19 @@ main .container .right {
 
 .comment {
     margin: 20px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.comment .dropdown {
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+.comment:hover .dropdown {
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
 }
 
 .comment-body {
@@ -1466,6 +1479,6 @@ main .container .right {
     align-items: center;
 }
 
-i.c-pointer.comment-reaction-btn.uil.uil-heart {
+i.c-pointer.comment-reaction-btn.uil.uil-thumbs-up {
     font-size: 20px;
 }
