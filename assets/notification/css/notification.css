@@ -78,3 +78,8 @@ main .c-left {
   border-radius: 5px;
   margin-left: 20px;
 }
+
+.notification-content-area {
+  padding: 26px;
+  padding-top: 0;
+}
