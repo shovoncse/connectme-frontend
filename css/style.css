@@ -1421,7 +1421,8 @@ main .container .right {
     justify-content: space-between;
     align-items: center;
     margin: 0.6rem;
-    font-size: 1.4rem;
+    font-size: 1rem;
+    margin-top: 0;
 }
 
 /* Comment */
