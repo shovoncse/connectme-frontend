@@ -196,6 +196,10 @@ async function deleteComment(postId, commentId) {
             if (deleteComment) {
                 const comment = document.getElementById('comment_' + commentId);
                 comment.remove();
+
+                // update comment count
+                const numComments = document.querySelector(`#post_${postId} #commentsCount_${postId}`);
+                numComments.innerHTML = parseInt(numComments.innerHTML?numComments.innerHTML: 0) - 1;
             } else {
                 showAlert(deletePost, "error");
             }
@@ -254,7 +258,7 @@ function generatePostHtml({ _id, image, postContent, updatedAt, user, numComment
             <span> <i class="uil uil-thumbs-up ${
         likes.find(like => like.user == loggedInUser._id) ? 'color-theme' : ''
             }" onclick="newLike('${_id}')"></i> <span  id="likesCount_${_id}">${numLikes?numLikes:''}</span></span> 
-            <span> <i class="uil uil-comment-dots" onclick="inputFocus('${_id}')"></i> ${numComments?numComments:''}</span> 
+            <span> <i class="uil uil-comment-dots" onclick="inputFocus('${_id}')"></i> <span  id="commentsCount_${_id}">${numComments?numComments:''}</span></span> 
             <span> <i class="uil uil-share-alt"></i></span> 
          </div>
          <div class="bookmark"> <span> <i class="uil uil-bookmark c-pointer" onclick="toggleBookmark(event)"></i></span> </div>
@@ -322,6 +326,9 @@ async function newComment(id) {
             const comments = document.querySelector(`#post_${id} .comments`);
             comments.insertAdjacentHTML("afterend", commentHtml);
             document.querySelector(`#post_${id} .comment-box`).value = "";
+
+            const numComments = document.querySelector(`#post_${id} #commentsCount_${id}`);
+            numComments.innerHTML = parseInt(numComments.innerHTML?numComments.innerHTML: 0) + 1;
         } else {
             showAlert(newComment.message, "error");
         }
@@ -348,7 +355,7 @@ async function newLike(id) {
         likeBtn.classList.toggle('color-theme');
         const numLikes = document.querySelector(`#likesCount_${id}`);
         if (likeBtn.classList.contains('color-theme')) {
-            numLikes.innerHTML = parseInt(numLikes.innerHTML) || 0 + 1;
+            numLikes.innerHTML = parseInt(numLikes.innerHTML?numLikes.innerHTML: 0) + 1;
         } else {
             numLikes.innerHTML = parseInt(numLikes.innerHTML) - 1;
         }
