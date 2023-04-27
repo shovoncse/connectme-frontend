@@ -1088,7 +1088,7 @@ url("./fonts/bootstrap-icons.woff?856008caa5eb66df68595e734e59580d") format("wof
 .bi-server::before { content: "\f52c"; }
 .bi-share-fill::before { content: "\f52d"; }
 .bi-share::before { content: "\f52e"; }
-.bi-shield-check::before { content: "\f52f"; }
+.bi-uil-shield-check::before { content: "\f52f"; }
 .bi-shield-exclamation::before { content: "\f530"; }
 .bi-shield-fill-check::before { content: "\f531"; }
 .bi-shield-fill-exclamation::before { content: "\f532"; }
@@ -1099,7 +1099,7 @@ url("./fonts/bootstrap-icons.woff?856008caa5eb66df68595e734e59580d") format("wof
 .bi-shield-lock-fill::before { content: "\f537"; }
 .bi-shield-lock::before { content: "\f538"; }
 .bi-shield-minus::before { content: "\f539"; }
-.bi-shield-plus::before { content: "\f53a"; }
+.bi-uil-shield-check::before { content: "\f53a"; }
 .bi-shield-shaded::before { content: "\f53b"; }
 .bi-shield-slash-fill::before { content: "\f53c"; }
 .bi-shield-slash::before { content: "\f53d"; }
