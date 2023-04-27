@@ -348,7 +348,7 @@ async function newLike(id) {
         likeBtn.classList.toggle('color-theme');
         const numLikes = document.querySelector(`#likesCount_${id}`);
         if (likeBtn.classList.contains('color-theme')) {
-            numLikes.innerHTML = parseInt(numLikes.innerHTML) || 0 + 1;
+            numLikes.innerHTML = parseInt(numLikes.innerHTML?numLikes.innerHTML: 0) + 1;
         } else {
             numLikes.innerHTML = parseInt(numLikes.innerHTML) - 1;
         }
