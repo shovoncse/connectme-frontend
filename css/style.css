@@ -1,11 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 :root {
+    --primary-color-hue:252 ;
+    --color-withe: hsl(252, 30%, 100%);
+    --color-light: hsl(252, 30%, 95%);
+    --color-gray:hsl(252, 30%, 65%);
+    --color-dark: hsl(252, 30%, 35%);
+    --color-primary:hsl(var(--primary-color-hue), 75%, 60%);
+    --color-danger: hsl(0, 95%, 65%);
+    --color-success: #2ecc71;
+    --color-black: hsl(252, 0, 0);
+    --color-secondary: hsl(252, 100%, 90%);
     --border-radius: 2rem;
     --card-border-radius: 1rem;
     --btn-padding: 0.6rem 1rem;
     --card-padding: 1rem;
     --search-padding: 0.6rem 1rem;
+    --sticky-top-left: 5.4rem;
+    --sticky-top-right: -18rem;
 }
 
 *,
@@ -151,7 +163,7 @@ main .container {
 main .container .left {
     height: max-content;
     position: sticky;
-    top: 5.4rem;
+    top:var(--sticky-top-left);
 }
 
 main .container .left .profile {
@@ -533,7 +545,7 @@ input.comment-box {
 main .container .right {
     height: max-content;
     position: sticky;
-    top: -18rem;
+    top: var(--sticky-top-right);
     bottom: 0;
 }
 
@@ -676,44 +688,43 @@ main .container .right {
 
 /*-----------------------------Theme customization---------------------------*/
 .customize-theme {
-    background: rgba(246, 206, 206, 0.951);
+    background: rgba(255,255,255,0.5);
     width: 100vw;
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 100;
-    display: grid;
     text-align: center;
+    display: grid;
     place-items: center;
     font-size: 0.9rem;
-    display: none;
-
 }
 
 .customize-theme .card {
-    background: white;
+    background: var(--color-withe);
     padding: 3rem;
-    border-radius: 1rem;
-    width: 50%
+    border-radius: var(--card-border-radius);
+    width: 50%;
+    box-shadow: 0 0 1rem var(--color-primary);
 }
 
 /*-------------------------------font size---------------------*/
 .customize-theme .font-size {
-    margin-top: 5rem;
+    margin-top: 2rem;
 }
 
-.customize-theme .font-size>div {
+.customize-theme .font-size > div {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(223, 215, 215, 0.947);
-    padding: 0.5rem;
-    border-radius: 1rem;
+    background:var(--color-light);
+    padding: var(--search-padding);
+    border-radius: var(--card-border-radius);
 }
 
 .customize-theme .choose-size {
-    background: rgb(183, 179, 222);
+    background: var(--color-secondary);
     height: 0.3rem;
     width: 100%;
     margin: 0 1rem;
@@ -726,12 +737,12 @@ main .container .right {
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
-    background: rgb(166, 162, 203);
+    background:var(--color-secondary);
     cursor: pointer;
 }
 
 .customize-theme .choose-size span.active {
-    background: rgb(108, 93, 240);
+    background: var(--color-primary);
 }
 
 /*-------------font color----------------------------*/
@@ -743,9 +754,9 @@ main .container .right {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(223, 215, 215, 0.947);
-    padding: 0.5rem;
-    border-radius: 1rem;
+    background: var(--color-light);
+    padding: var(--search-padding);
+    border-radius: var(--card-border-radius);
 }
 
 .customize-theme .choose-color span {
@@ -775,7 +786,7 @@ main .container .right {
 }
 
 .customize-theme .choose-color span.active {
-    border: 5px solid white;
+    border: 5px solid black;
 }
 
 /*-----------------------background------------*/
@@ -790,8 +801,8 @@ main .container .right {
     gap: 1.5rem;
 }
 
-.customize-theme .choose-bg>div {
-    padding: 1rem;
+.customize-theme .choose-bg > div {
+    padding: var(--card-padding);
     width: 100%;
     display: flex;
     align-items: center;
@@ -801,8 +812,8 @@ main .container .right {
     border-radius: 0.4rem;
 }
 
-.customize-theme .choose-bg>div.active {
-    border: 2px solid rgb(108, 93, 240);
+.customize-theme .choose-bg > div.active {
+    border: 2px solid var(--color-primary);
     ;
 }
 
@@ -821,11 +832,11 @@ main .container .right {
     color: white;
 }
 
-.customize-theme .choose-bg>div span {
+.customize-theme .choose-bg > div span {
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-    border: 2px solid gray;
+    border: 2px solid var(--color-gray);
     margin-right: 1rem;
 }
 
@@ -856,6 +867,9 @@ main .container .right {
 
     .left .btn {
         display: none;
+    }
+    .customize-theme .card {
+        width: 92vw;
     }
 }
 
@@ -897,6 +911,10 @@ main .container .right {
 
     main .container .right {
         display: none;
+    }
+    
+    .customize-theme .card {
+        width: 92vw;
     }
 }
 
