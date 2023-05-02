@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification | Connect Me</title>
+    <!--------iconscout cdn----------->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/notification/css/notification.css">
+
+
+</head>
+
+<body>
+    <!--------Navbar---------->
+    <nav>
+        <div class="container">
+            <h2 class="logo" onclick="window.location.href='index.html'">
+                <img src="img/logo.png" alt="" style="width:270px;">
+            </h2>
+            <div class="create">
+                <label class="btn btn-primary" for="create-post">Create</label>
+                <div class="profile-photo" onclick="window.location.href='profile.html'">
+                    <img src="img/profile-1.jpg" id="nav-user-logo">
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!---------------------------Main-------------------------->
+    <main>
+        <div class="container c-left">
+            <!---------------------------Left-------------------------->
+
+            <div class="left">
+                <a href="profile.html" class="profile">
+                    <div class="profile-photo">
+                        <img src="img/profile-1.jpg">
+                    </div>
+                    <div class="handle">
+                        <h4 style="color:black" id="user-name">Loading...</h4>
+                        <p class="text-muted" id="user-profession">Loading...</p>
+                    </div>
+                </a>
+                <!---------------------------Sidebar-------------------------->
+                <div class="sidebar">
+                    <a class="menu-item active">
+                        <span><i class="uil uil-home"></i></span>
+                        <h3>Home</h3>
+                    </a>
+                    <a class="menu-item" id="notifications" href="notification.html">
+                        <span><i class="uil uil-bell"><small class="notification-count">9+</small></i></span>
+                        <h3>Notification</h3>
+                    </a>
+                    <a class="menu-item" id="messages-notifications" href="message.html">
+                        <span><i class="uil uil-envelope-alt"><small class="notification-count">6</small></i></span>
+                        <h3>Messages</h3>
+                    </a>
+                    <a href="profile.html" class="menu-item">
+                        <span><i class="uil uil-user"></i></span>
+                        <h3>Profile</h3>
+                    </a>
+                    <a class="menu-item" id="theme" href="privacy-policy.html">
+                        <span><i class="uil uil-shield-check"></i></span>
+                        <h3>Privacy</h3>
+                    </a>
+                    <a class="menu-item">
+                        <span><i class="uil uil-setting"></i></span>
+                        <h3>Settings</h3>
+                    </a>
+                    <a class="menu-item" id="logout-button">
+                        <span><i class="uil uil-sign-out-alt"></i></span>
+                        <h3>Logout</h3>
+                    </a>
+                </div>
+                <!---------------------------End of Sidebar-------------------------->
+                <label for="create-post" class="btn btn-primary">Create Post</label>
+
+            </div>
+            <!--------------------------END OF LEFT------------------>
+
+
+
+            <div class="right card notification-content-area">
+
+                <h3 class="m-b-50 heading-line">Notifications <i class="fa fa-bell text-muted"
+                        style="font-size: 18px;"></i></h3>
+                <div class="notification-ui_dd-content">
+                    <div class="notification-list notification-list--unread">
+                        <div class="notification-list_content">
+                            <div class="notification-list_img">
+                                <img src="img/profile-11.jpg" alt="user">
+                            </div>
+                            <div class="notification-list_detail">
+                                <p><b>Shovan Das</b> reacted to your post</p>
+                                <p class="text-muted">Spending quality time with my lovely sister.</p>
+                                <p class="text-muted"><small>10 mins ago</small></p>
+                            </div>
+                        </div>
+                        <div class="notification-list_feature-img">
+                            <img src="img/feed-1.jpg" alt="Feature image">
+                        </div>
+                    </div>
+                    <div class="notification-list notification-list--unread">
+                        <div class="notification-list_content">
+                            <div class="notification-list_img">
+                                <img src="img/profile-2.jpg" alt="user">
+                            </div>
+                            <div class="notification-list_detail">
+                                <p><b>Rachna Kumar</b> liked your post</p>
+                                <p class="text-muted">Happiness is a direction not a place.</p>
+                                <p class="text-muted"><small>10 mins ago</small></p>
+                            </div>
+                        </div>
+                        <div class="notification-list_feature-img">
+                            <img src="img/feed-5.jpg" alt="Feature image">
+                        </div>
+                    </div>
+                    <div class="notification-list">
+                        <div class="notification-list_content">
+                            <div class="notification-list_img">
+                                <img src="img/profile-15.jpg" alt="user">
+                            </div>
+                            <div class="notification-list_detail">
+                                <p><b>Ashif Ahmed</b> reacted to your post</p>
+                                <p class="text-muted">Keep smiling, because life is a beautiful thing and there's so
+                                    much to smile about.</p>
+                                <p class="text-muted"><small>10 mins ago</small></p>
+                            </div>
+                        </div>
+                        <div class="notification-list_feature-img">
+                            <img src="img/feed-3.jpg" alt="Feature image">
+                        </div>
+                    </div>
+                    <div class="notification-list">
+                        <div class="notification-list_content">
+                            <div class="notification-list_img">
+                                <img src="img/profile-12.jpg" alt="user">
+                            </div>
+                            <div class="notification-list_detail">
+                                <p><b>Mst Airin</b> reacted to your post</p>
+                                <p class="text-muted">This is my new workstation.So calm and quit.</p>
+                                <p class="text-muted"><small>10 mins ago</small></p>
+                            </div>
+                        </div>
+                        <div class="notification-list_feature-img">
+                            <img src="img/feed-6.jpg" alt="Feature image">
+                        </div>
+                    </div>
+                    <div class="notification-list">
+                        <div class="notification-list_content">
+                            <div class="notification-list_img">
+                                <img src="img/profile-8.jpg" alt="user">
+                            </div>
+                            <div class="notification-list_detail">
+                                <p><b>Hamid Reza</b> reacted to your post</p>
+                                <p class="text-muted">Enjoying my last weekend.</p>
+                                <p class="text-muted"><small>10 mins ago</small></p>
+                            </div>
+                        </div>
+                        <div class="notification-list_feature-img">
+                            <img src="img/feed-5.jpg" alt="Feature image">
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="create" style="text-align: center;">
+                    <label class="btn btn-primary" for="create-post">Load More</label>
+                    <div class="profile-photo">
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!---------------------------Right end-------------------------->
+    </main>
+
+    <script src="js/common.js"></script>
+
+</body>
+
+</html>

@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     const userData = await apiRequest(`http://localhost:3001/api/users/${userId}`, requestOptions);
 
     if (userData) {
-      console.log(userData);
       populateProfile(userData);
     }
   } else {
