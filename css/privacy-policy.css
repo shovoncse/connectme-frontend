@@ -4,81 +4,93 @@
 #content4,
 #content5,
 #content6,
-#content7{
-  padding : 10px;
+#content7 {
+  padding: 10px;
 }
 
 
 
 
 #content1 .content-text h1 {
-    color: black;
-    padding-bottom: 2px;
-    font-family :'Times New Roman', Times, serif;
-    
-  }
-  #content1 .content-text p {
-    font-size: 14px;
+  color: black;
+  padding-bottom: 2px;
+  font-family: 'Times New Roman', Times, serif;
 
-  }
-  #content2 .content-text h2 {
-    color: black;
-    padding-bottom: 2px;
-    font-family :'Times New Roman', Times, serif;
-    
-  }
-  #content2 .content-text p {
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
-  #content3 .content-text h2 {
-    color: black;
-    padding-bottom: 2px;
-    font-family :'Times New Roman', Times, serif;
-    
-  }
-  #content3 .content-text p {
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
-  #content4 .content-text h2 {
-    padding-bottom: 2px;
-    color: black;
-    font-family :'Times New Roman', Times, serif;
-    
-  }
-  #content4 .content-text p {
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
-  #content5 .content-text h2 {
-    padding-bottom: 2px;
-    color: black;
-    font-family :'Times New Roman', Times, serif;
-    
-  }
-  #content5 .content-text p {
-    font-size: 14px;
-    margin-bottom:5px;
-  }
-  #content6 .content-text h2 {
-    padding-bottom: 2px;
-    color: black;
-    font-family :'Times New Roman', Times, serif;
-    
-  }
-  #content6 .content-text p {
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
+}
 
-  #content7 .content-text h2 {
-    padding-bottom: 2px;
-    color: black;
-    font-family :'Times New Roman', Times, serif;
-    
-  }
-  #content7 .content-text p {
-    font-size: 14px;
-    padding-bottom: 1px;
-  }
+#content1 .content-text p {
+  font-size: 14px;
+
+}
+
+#content2 .content-text h2 {
+  color: black;
+  padding-bottom: 2px;
+  font-family: 'Times New Roman', Times, serif;
+
+}
+
+#content2 .content-text p {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+#content3 .content-text h2 {
+  color: black;
+  padding-bottom: 2px;
+  font-family: 'Times New Roman', Times, serif;
+
+}
+
+#content3 .content-text p {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+#content4 .content-text h2 {
+  padding-bottom: 2px;
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+
+}
+
+#content4 .content-text p {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+#content5 .content-text h2 {
+  padding-bottom: 2px;
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+
+}
+
+#content5 .content-text p {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+#content6 .content-text h2 {
+  padding-bottom: 2px;
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+
+}
+
+#content6 .content-text p {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+#content7 .content-text h2 {
+  padding-bottom: 2px;
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+
+}
+
+#content7 .content-text p {
+  font-size: 14px;
+  padding-bottom: 1px;
+}

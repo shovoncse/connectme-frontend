@@ -412,7 +412,8 @@ main .container .left .profile {
     object-fit: cover;
 }
 
-.delete-btn, .delete-btn-temp {
+.delete-btn,
+.delete-btn-temp {
     position: absolute;
     top: 12px;
     right: 12px;
@@ -636,8 +637,8 @@ main .container .right {
     padding: 8px 16px;
 }
 
-.right .friend-sugessions .btn i{
-   font-size: 1.2rem;
+.right .friend-sugessions .btn i {
+    font-size: 1.2rem;
 }
 
 .right .friend-requests .btn {
@@ -645,11 +646,11 @@ main .container .right {
     padding: 8px 16px;
 }
 
-.right .friend-requests .btn i{
-   font-size: 1.2rem;
+.right .friend-requests .btn i {
+    font-size: 1.2rem;
 }
 
-.right .friend-requests .message-body{
+.right .friend-requests .message-body {
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -1446,6 +1447,7 @@ main .container .right {
     opacity: 0;
     transition: all 0.3s ease-in-out;
 }
+
 .comment:hover .dropdown {
     opacity: 1;
     transition: all 0.3s ease-in-out;
@@ -1461,11 +1463,13 @@ main .container .right {
     width: 40px;
     height: fit-content;
 }
+
 .comment-content {
     width: 100%;
 }
+
 .comment-body .info {
-        display: flex;
+    display: flex;
     align-items: center;
     gap: 10px;
 }
@@ -1473,6 +1477,7 @@ main .container .right {
 .comment-body .info h3 {
     font-size: 18px;
 }
+
 .comment-body .info small {
     font-size: 12px;
 }

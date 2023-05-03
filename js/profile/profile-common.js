@@ -8,7 +8,7 @@ function generalProfileData(user) {
   const profileCountry = document.getElementById("profile-country");
   const profileProfession = document.getElementById("profile-profession");
   const profileBio = document.getElementById("profile-bio");
-  
+
   profileImage.src = user.image;
   coverImage.src = user.cover;
   profileName.innerHTML = user.name;

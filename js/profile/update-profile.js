@@ -96,108 +96,108 @@ document.addEventListener("DOMContentLoaded", async function () {
   loader(false);
 
 
-// initial update form Data 
-function initialProfileData(user) {
-  const name = document.getElementById("name");
-  name.value = user.name;
+  // initial update form Data 
+  function initialProfileData(user) {
+    const name = document.getElementById("name");
+    name.value = user.name;
 
-  const bio = document.getElementById("bio");
-  bio.innerHTML = user.bio;
+    const bio = document.getElementById("bio");
+    bio.innerHTML = user.bio;
 
-  const profession = document.getElementById("profession");
-  profession.value = user.profession;
+    const profession = document.getElementById("profession");
+    profession.value = user.profession;
 
-  const education = document.getElementById("education");
-  education.value = user.education;
+    const education = document.getElementById("education");
+    education.value = user.education;
 
-  const location = document.getElementById("location");
-  location.value = user.location;
+    const location = document.getElementById("location");
+    location.value = user.location;
 
-  const country = document.getElementById("country");
-  country.value = user.country;
+    const country = document.getElementById("country");
+    country.value = user.country;
 
-  const username = document.getElementById("username");
-  username.value = user.username;
+    const username = document.getElementById("username");
+    username.value = user.username;
 
-  const profileImagePreview = document.querySelector('.profile-image-area');
-  if (user.image) {
-    profileImagePreview.style.backgroundImage = `url('${user.image}')`;
-  }
-
-  const coverImagePreview = document.querySelector('.cover-image-area');
-  if (user.cover) {
-    coverImagePreview.style.backgroundImage = `url('${user.cover}')`;
-  }
-}
-
-
-// image upload input 
-function imageUploadInputProfile(uploadBtnId, imagePreviewId, imageAreaId) {
-  const uploadBtn = document.getElementById(uploadBtnId);
-  const imagePreview = document.getElementById(imagePreviewId);
-  const deleteBtn = document.createElement('div');
-  const imageArea = document.querySelector(`.${imageAreaId}`);
-  deleteBtn.classList.add('delete-btn');
-  deleteBtn.innerHTML = '&times;';
-
-  uploadBtn.addEventListener('change', () => {
-    const file = uploadBtn.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      const image = document.createElement('img');
-      image.src = reader.result;
-      imagePreview.innerHTML = '';
-      imagePreview.appendChild(image);
-      imagePreview.style.display = 'block';
-      imagePreview.appendChild(deleteBtn);
-
-      // hide the image area
-      imageArea.style.display = 'none';
-    };
-  });
-
-  deleteBtn.addEventListener('click', () => {
-    imagePreview.innerHTML = '';
-    imagePreview.style.display = 'none';
-    imageArea.style.display = 'flex';
-  });
-}
-
-// function to check if the username input is valid
-async function validateUsername(username) {
-  username = username.trim();
-
-  // check if the username is between 6-20 characters long
-  if (username.length < 6 || username.length > 20) {
-    showAlert("Username must be between 6-20 characters", "info", 8000, true);
-    return false;
-  }
-
-  // check if the username contains only alphanumeric characters and underscores
-  if (!/^[a-zA-Z0-9_]+$/.test(username)) {
-    showAlert("Username can only contain alphanumeric characters and underscores", "info", 8000, true);
-    return false;
-  }
-
-  const requestOptions = {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer " + cmToken
+    const profileImagePreview = document.querySelector('.profile-image-area');
+    if (user.image) {
+      profileImagePreview.style.backgroundImage = `url('${user.image}')`;
     }
-  };
-  if(username === user.username){
-    return true;
-  }
-  const checkUsername = await apiRequest(`http://localhost:3001/api/users/verify_username/${username}`, requestOptions);
 
-  if (checkUsername && checkUsername.available) {
-    return true;
-  } else {
-    showAlert("Username already taken", "warning", 8000, true);
-    return false;
+    const coverImagePreview = document.querySelector('.cover-image-area');
+    if (user.cover) {
+      coverImagePreview.style.backgroundImage = `url('${user.cover}')`;
+    }
   }
-}
+
+
+  // image upload input 
+  function imageUploadInputProfile(uploadBtnId, imagePreviewId, imageAreaId) {
+    const uploadBtn = document.getElementById(uploadBtnId);
+    const imagePreview = document.getElementById(imagePreviewId);
+    const deleteBtn = document.createElement('div');
+    const imageArea = document.querySelector(`.${imageAreaId}`);
+    deleteBtn.classList.add('delete-btn');
+    deleteBtn.innerHTML = '&times;';
+
+    uploadBtn.addEventListener('change', () => {
+      const file = uploadBtn.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        const image = document.createElement('img');
+        image.src = reader.result;
+        imagePreview.innerHTML = '';
+        imagePreview.appendChild(image);
+        imagePreview.style.display = 'block';
+        imagePreview.appendChild(deleteBtn);
+
+        // hide the image area
+        imageArea.style.display = 'none';
+      };
+    });
+
+    deleteBtn.addEventListener('click', () => {
+      imagePreview.innerHTML = '';
+      imagePreview.style.display = 'none';
+      imageArea.style.display = 'flex';
+    });
+  }
+
+  // function to check if the username input is valid
+  async function validateUsername(username) {
+    username = username.trim();
+
+    // check if the username is between 6-20 characters long
+    if (username.length < 6 || username.length > 20) {
+      showAlert("Username must be between 6-20 characters", "info", 8000, true);
+      return false;
+    }
+
+    // check if the username contains only alphanumeric characters and underscores
+    if (!/^[a-zA-Z0-9_]+$/.test(username)) {
+      showAlert("Username can only contain alphanumeric characters and underscores", "info", 8000, true);
+      return false;
+    }
+
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + cmToken
+      }
+    };
+    if (username === user.username) {
+      return true;
+    }
+    const checkUsername = await apiRequest(`http://localhost:3001/api/users/verify_username/${username}`, requestOptions);
+
+    if (checkUsername && checkUsername.available) {
+      return true;
+    } else {
+      showAlert("Username already taken", "warning", 8000, true);
+      return false;
+    }
+  }
 
 });

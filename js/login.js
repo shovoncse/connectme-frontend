@@ -74,11 +74,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // alert
-function showAlert(txt, icon, timer = 3000, showConfirmButton = false ) {
+function showAlert(txt, icon, timer = 3000, showConfirmButton = false) {
     Swal.fire({
         icon: icon,
         text: txt,
         showConfirmButton: showConfirmButton,
         timer: timer
     })
-  }
+}

@@ -199,7 +199,7 @@ async function deleteComment(postId, commentId) {
 
                 // update comment count
                 const numComments = document.querySelector(`#post_${postId} #commentsCount_${postId}`);
-                numComments.innerHTML = parseInt(numComments.innerHTML?numComments.innerHTML: 0) - 1;
+                numComments.innerHTML = parseInt(numComments.innerHTML ? numComments.innerHTML : 0) - 1;
             } else {
                 showAlert(deletePost, "error");
             }
@@ -237,7 +237,7 @@ function generatePostHtml({ _id, image, postContent, updatedAt, user, numComment
             </div>
          </div>
          ${loggedInUser.username == user.username ?
-         `
+            `
          <div class="dropdown">
             <span class="dropdown-toggle" onclick="toggleDropdown('${_id}')"><i
                class="uil uil-ellipsis-h"></i></span>
@@ -247,7 +247,7 @@ function generatePostHtml({ _id, image, postContent, updatedAt, user, numComment
             </div>
          </div>
          ` : ``
-         }
+        }
       </div>
       <div id="post-content" class="post-content">
          <p>${postContent}</p>
@@ -255,10 +255,9 @@ function generatePostHtml({ _id, image, postContent, updatedAt, user, numComment
       <div class="photo"> ${image ? `<img src="${image}" alt="">` : ''} </div>
       <div class="action-buttons">
          <div class="interation-button"> 
-            <span> <i class="uil uil-thumbs-up ${
-        likes.find(like => like.user == loggedInUser._id) ? 'color-theme' : ''
-            }" onclick="newLike('${_id}')"></i> <span  id="likesCount_${_id}">${numLikes?numLikes:''}</span></span> 
-            <span> <i class="uil uil-comment-dots" onclick="inputFocus('${_id}')"></i> <span  id="commentsCount_${_id}">${numComments?numComments:''}</span></span> 
+            <span> <i class="uil uil-thumbs-up ${likes.find(like => like.user == loggedInUser._id) ? 'color-theme' : ''
+        }" onclick="newLike('${_id}')"></i> <span  id="likesCount_${_id}">${numLikes ? numLikes : ''}</span></span> 
+            <span> <i class="uil uil-comment-dots" onclick="inputFocus('${_id}')"></i> <span  id="commentsCount_${_id}">${numComments ? numComments : ''}</span></span> 
             <span> <i class="uil uil-share-alt"></i></span> 
          </div>
          <div class="bookmark"> <span> <i class="uil uil-bookmark c-pointer" onclick="toggleBookmark(event)"></i></span> </div>
@@ -274,10 +273,10 @@ function generatePostHtml({ _id, image, postContent, updatedAt, user, numComment
       </div>
       
       ${comments.length > 0 ? (
-        comments.map(comment => {
-            return generateInitialCommentHtml(_id, comment);
-        }).join('')
-    ) : ''}
+            comments.map(comment => {
+                return generateInitialCommentHtml(_id, comment);
+            }).join('')
+        ) : ''}
 
    </div>
 </div>
@@ -318,7 +317,7 @@ async function newComment(id) {
             },
             body: JSON.stringify({ commentContent: comment })
         };
-        
+
         const newComment = await apiRequest(`http://localhost:3001/api/posts/${id}`, requestOptions);
         loader(false);
         if (newComment.commentContent) {
@@ -328,7 +327,7 @@ async function newComment(id) {
             document.querySelector(`#post_${id} .comment-box`).value = "";
 
             const numComments = document.querySelector(`#post_${id} #commentsCount_${id}`);
-            numComments.innerHTML = parseInt(numComments.innerHTML?numComments.innerHTML: 0) + 1;
+            numComments.innerHTML = parseInt(numComments.innerHTML ? numComments.innerHTML : 0) + 1;
         } else {
             showAlert(newComment.message, "error");
         }
@@ -355,7 +354,7 @@ async function newLike(id) {
         likeBtn.classList.toggle('color-theme');
         const numLikes = document.querySelector(`#likesCount_${id}`);
         if (likeBtn.classList.contains('color-theme')) {
-            numLikes.innerHTML = parseInt(numLikes.innerHTML?numLikes.innerHTML: 0) + 1;
+            numLikes.innerHTML = parseInt(numLikes.innerHTML ? numLikes.innerHTML : 0) + 1;
         } else {
             numLikes.innerHTML = parseInt(numLikes.innerHTML) - 1;
         }

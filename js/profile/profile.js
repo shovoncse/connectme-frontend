@@ -7,13 +7,13 @@ document.addEventListener("DOMContentLoaded", async function () {
   const cmToken = localStorage.getItem("cm-token");
 
   if (cmToken) {
-    
+
     if (!userId) {
       userId = user.username;
       viewIngOthersProfile(false);
-    }else if(userId !== user.username){
+    } else if (userId !== user.username) {
       viewIngOthersProfile(true);
-    }else{
+    } else {
       viewIngOthersProfile(false);
     }
 
@@ -35,13 +35,13 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
   loader(false);
   imageUploadInput('upload-btn', 'image-preview');
-  
+
   // new post
   const formSubmitBtn = document.getElementById('post-btn');
   formSubmitBtn.addEventListener('click', async (event) => {
     loader(true);
     event.preventDefault();
-  
+
     let imageUrl = await imageHostToCloud('upload-btn');
     const postText = document.getElementById('post-text').value;
 
@@ -84,7 +84,7 @@ function populateProfile({ user, posts }) {
   profileName2.innerHTML = user.name;
   const profileImage2 = document.getElementById("profile-image-2");
   profileImage2.src = user.image;
-  
+
   if (posts.length) {
     profilePosts.insertAdjacentHTML("afterend", profilePostHtml(posts));
     // remove no post found if class exist
@@ -95,14 +95,14 @@ function populateProfile({ user, posts }) {
   } else {
     profilePosts.insertAdjacentHTML("afterend", `<p class="no-post-found">No posts found</p>`);
   }
-  
+
 }
 
 // generate multiple profile post html
 function profilePostHtml(posts) {
   let html = "";
   posts.forEach(post => {
-      console.log(post);
+    console.log(post);
     html += generatePostHtml(post);
   });
   return html;
@@ -122,7 +122,7 @@ function viewIngOthersProfile(otherProfile = true) {
     editProfile.classList.add("hide");
     sendSms.classList.remove("hide");
     addFriend.classList.remove("hide");
-  } 
+  }
   else {
     postArea.classList.remove("hide");
     editProfile.classList.remove("hide");
