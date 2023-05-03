@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", async function () {
           }, 1000);
         }).then(() => {
           localStorage.setItem("cm-data", JSON.stringify(updateData));
-          window.location.href = "../connectme-frontend/profile.html";
+          window.location.href = "../profile.html";
         });
       }
 

@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       if (updatePost && updatePost.status !== 404) {
         showAlert("Post updated successfully", "success", 8000, true);
-        window.location.href = `../connectme-frontend/profile.html?id=${user.username}`;
+        window.location.href = `../profile.html?id=${user.username}`;
       } else {
         showAlert("Something went wrong", "error", 8000, true);
       }

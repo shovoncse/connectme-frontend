@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // check if any user already logged in
     if (localStorage.getItem("cm-token")) {
         // if user is already logged in, redirect to home page
-        window.location.href = "../connectme-frontend/index.html";
+        window.location.href = "../index.html";
     } else {
         // else continue with the registration process
         // get the register button element
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         }, 1000);
                     }).then(() => {
                         registerButton.disabled = false;
-                        window.location.href = "../connectme-frontend/index.html";
+                        window.location.href = "../index.html";
                     });
                 })
                 .catch(error => {

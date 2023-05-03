@@ -66,7 +66,7 @@ function resetLocalStorage() {
     localStorage.removeItem("cm-data");
     localStorage.removeItem("cm-token");
     loader(false);
-    window.location.href = "../connectme-frontend/login.html";
+    window.location.href = "../login.html";
 }
 
 // function for api request
