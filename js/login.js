@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const loginButton = document.getElementById("login-button");
         // add event listener to login button
         loginButton.addEventListener("click", function (e) {
+            loginButton.disabled = true;
             // prevent default action
             e.preventDefault();
             // get the values from the form
@@ -18,12 +19,14 @@ document.addEventListener("DOMContentLoaded", function () {
             // check for empty values
             if (!email || !password) {
                 showAlert("Please fill in all the fields.", "warning", 5000, true);
+                loginButton.disabled = false;
                 return;
             }
             // check the format of email
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
                 showAlert("Please enter a valid email address.", "warning", 5000, true);
+                loginButton.disabled = false;
                 return;
             }
             // create the API request options object
@@ -38,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
             };
             // send the API request
-            fetch("http://localhost:3001/api/users/login", requestOptions)
+            fetch("https://connectme-backend.onrender.com/api/users/login", requestOptions)
                 .then(response => {
                     if (response.ok) {
                         // handle success
@@ -46,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     } else {
                         // handle errors
                         return response.json().then(error => {
+                            loginButton.disabled = false;
                             throw new Error(error.message);
                         });
                     }
@@ -61,15 +65,19 @@ document.addEventListener("DOMContentLoaded", function () {
                             resolve();
                         }, 1000);
                     }).then(() => {
+                        loginButton.disabled = false;
                         window.location.href = "../connectme-frontend/index.html";
                     });
                 })
                 .catch(error => {
                     // handle errors
+                    loginButton.disabled = false;
                     showAlert(error.message, "error", 8000, true);
                 });
+
         });
     }
+    loginButton.disabled = false;
 });
 
 

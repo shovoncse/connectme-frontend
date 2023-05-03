@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
             };
 
             // send the API request
-            fetch("http://localhost:3001/api/users/", requestOptions)
+            fetch("https://connectme-backend.onrender.com/api/users/", requestOptions)
                 .then(response => {
 
                     if (response.ok) {

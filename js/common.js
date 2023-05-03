@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             };
 
-            await apiRequest(`http://localhost:3001/api/users/verify_username/${user.username}`, requestOptions);
+            await apiRequest(`https://connectme-backend.onrender.com/api/users/verify_username/${user.username}`, requestOptions);
         }
     } catch (e) {
         console.log(e);
@@ -148,7 +148,7 @@ async function deletePost(id) {
                 }
             };
 
-            const deletePost = await apiRequest(`http://localhost:3001/api/posts/${id}`, requestOptions);
+            const deletePost = await apiRequest(`https://connectme-backend.onrender.com/api/posts/${id}`, requestOptions);
 
             if (deletePost) {
                 const post = document.getElementById('post_' + id);
@@ -191,7 +191,7 @@ async function deleteComment(postId, commentId) {
                 }
             };
 
-            const deleteComment = await apiRequest(`http://localhost:3001/api/posts/${postId}/${commentId}`, requestOptions);
+            const deleteComment = await apiRequest(`https://connectme-backend.onrender.com/api/posts/${postId}/${commentId}`, requestOptions);
 
             if (deleteComment) {
                 const comment = document.getElementById('comment_' + commentId);
@@ -318,7 +318,7 @@ async function newComment(id) {
             body: JSON.stringify({ commentContent: comment })
         };
 
-        const newComment = await apiRequest(`http://localhost:3001/api/posts/${id}`, requestOptions);
+        const newComment = await apiRequest(`https://connectme-backend.onrender.com/api/posts/${id}`, requestOptions);
         loader(false);
         if (newComment.commentContent) {
             const commentHtml = generateInitialCommentHtml(id, newComment);
@@ -347,7 +347,7 @@ async function newLike(id) {
         }
     };
 
-    const newLike = await apiRequest(`http://localhost:3001/api/posts/${id}/like`, requestOptions);
+    const newLike = await apiRequest(`https://connectme-backend.onrender.com/api/posts/${id}/like`, requestOptions);
 
     if (newLike.message) {
         const likeBtn = document.querySelector(`#post_${id} .uil-thumbs-up`);

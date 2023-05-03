@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         })
       };
 
-      const updateData = await apiRequest(`http://localhost:3001/api/users/`, requestOptions);
+      const updateData = await apiRequest(`https://connectme-backend.onrender.com/api/users/`, requestOptions);
 
       loader(false);
       if (updateData) {
@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     if (username === user.username) {
       return true;
     }
-    const checkUsername = await apiRequest(`http://localhost:3001/api/users/verify_username/${username}`, requestOptions);
+    const checkUsername = await apiRequest(`https://connectme-backend.onrender.com/api/users/verify_username/${username}`, requestOptions);
 
     if (checkUsername && checkUsername.available) {
       return true;
