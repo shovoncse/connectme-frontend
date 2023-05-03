@@ -77,7 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         });
     }
-    loginButton.disabled = false;
 });
 
 
