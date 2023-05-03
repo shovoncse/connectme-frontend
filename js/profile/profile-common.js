@@ -10,7 +10,7 @@ function generalProfileData(user) {
   const profileBio = document.getElementById("profile-bio");
 
   profileImage.src = user.image;
-  coverImage.src = user.cover;
+  coverImage.style.background = `url(${user.cover}) no-repeat top center / cover`;
   profileName.innerHTML = user.name;
   profileUsername.innerHTML = '@' + user.username;
   profileLoaction.innerHTML = user.location;

@@ -940,6 +940,9 @@ main .container .right {
     height: 450px;
     border-radius: 10px;
     margin-bottom: 10px;
+    background: url('../img/default-cover.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .profile-details {
