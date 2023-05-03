@@ -47,11 +47,11 @@ document.addEventListener("DOMContentLoaded", async function () {
         })
       };
 
-      const updatePost = await apiRequest(`http://localhost:3001/api/posts/${postId}`, requestOptions);
+      const updatePost = await apiRequest(`https://connectme-backend.onrender.com/api/posts/${postId}`, requestOptions);
 
       if (updatePost && updatePost.status !== 404) {
         showAlert("Post updated successfully", "success", 8000, true);
-        window.location.href = `../connectme-frontend/profile.html?id=${user.username}`;
+        window.location.href = `../profile.html?id=${user.username}`;
       } else {
         showAlert("Something went wrong", "error", 8000, true);
       }
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       }
     };
 
-    const getPostById = await apiRequest(`http://localhost:3001/api/posts/${id}`, requestOptions);
+    const getPostById = await apiRequest(`https://connectme-backend.onrender.com/api/posts/${id}`, requestOptions);
     if (getPostById && getPostById.status !== 404) {
       if (getPostById.user._id !== user._id) {
         showAlert("You are not authorized to edit this post", "error", 8000, true);

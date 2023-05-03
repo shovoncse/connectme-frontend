@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                     "Authorization": "Bearer " + cmToken
                 }
             };
-            const allPosts = await apiRequest("http://localhost:3001/api/posts/", requestOptions);
+            const allPosts = await apiRequest("https://connectme-backend.onrender.com/api/posts/", requestOptions);
             console.log(allPosts);
             const postsArea = document.querySelector(".create-post");
             if (allPosts.length > 0) {
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             })
         };
 
-        const newPost = await apiRequest("http://localhost:3001/api/posts/", requestOptions);
+        const newPost = await apiRequest("https://connectme-backend.onrender.com/api/posts/", requestOptions);
         const postsArea = document.querySelector(".create-post");
         if (newPost.createdAt) {
             postsArea.insertAdjacentHTML("afterend", generatePostHtml(newPost));

@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       }
     };
 
-    const userData = await apiRequest(`http://localhost:3001/api/users/${userId}`, requestOptions);
+    const userData = await apiRequest(`https://connectme-backend.onrender.com/api/users/${userId}`, requestOptions);
 
     if (userData) {
       populateProfile(userData);
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       })
     };
 
-    const postData = await apiRequest(`http://localhost:3001/api/posts/`, requestOptions);
+    const postData = await apiRequest(`https://connectme-backend.onrender.com/api/posts/`, requestOptions);
 
     if (postData) {
       const postContainer = document.getElementById('profile-posts');

@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // check if any user already logged in
     if (localStorage.getItem("cm-token")) {
         // if user is already logged in, redirect to home page
-        window.location.href = "../connectme-frontend/index.html";
+        window.location.href = "../index.html";
     } else {
         // else continue with the registration process
         // get the register button element
@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // add event listener to register button
         registerButton.addEventListener("click", function (e) {
+            registerButton.disabled = true;
             // prevent default action
             e.preventDefault();
             // get the values from the form
@@ -21,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // check for empty values
             if (!name || !email || !password) {
+                registerButton.disabled = false;
                 showAlert("Please fill in all the fields.", "warning", 5000, true);
                 return;
             }
@@ -28,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // check the format of email
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
+                registerButton.disabled = false;
                 showAlert("Please enter a valid email address.", "warning", 5000, true);
                 return;
             }
@@ -46,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
             };
 
             // send the API request
-            fetch("http://localhost:3001/api/users/", requestOptions)
+            fetch("https://connectme-backend.onrender.com/api/users/", requestOptions)
                 .then(response => {
 
                     if (response.ok) {
@@ -54,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     } else {
                         // handle errors
                         return response.json().then(error => {
+                            registerButton.disabled = false;
                             throw new Error(error.message);
                         });
                     }
@@ -68,12 +72,15 @@ document.addEventListener("DOMContentLoaded", function () {
                             resolve();
                         }, 1000);
                     }).then(() => {
-                        window.location.href = "../connectme-frontend/index.html";
+                        registerButton.disabled = false;
+                        window.location.href = "../index.html";
                     });
                 })
                 .catch(error => {
+                    registerButton.disabled = false;
                     showAlert(error.message, "error", 8000, true);
                 });
+            registerButton.disabled = false;
         });
     }
 });
